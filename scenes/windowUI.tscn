@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dy2msgto4xmnk"]
+
+[ext_resource type="Script" uid="uid://b277xdqn4qhb5" path="res://scripts/main_menu.gd" id="1_yreha"]
+[ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_21et7"]
+[ext_resource type="AudioStream" uid="uid://fbwy76kw6j73" path="res://assets/placeholders/music/Morale.mp3" id="3_21et7"]
+
+[sub_resource type="Theme" id="Theme_tftr1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ery3r"]
+bg_color = Color(1, 0.929412, 0.831373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yreha"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21et7"]
+bg_color = Color(0.178212, 0.178212, 0.178212, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnvkp"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yreha")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tftr1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ery3r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -81.0
+offset_right = 125.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_21et7")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_yreha")
+theme_override_styles/normal = SubResource("StyleBoxFlat_21et7")
+text = "Play
+"
+
+[node name="quit_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.632819, 0.523052, 0.723404, 1)
+theme_override_fonts/font = ExtResource("2_21et7")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnvkp")
+text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_21et7")
+autoplay = true
+bus = &"bg Audio"
+
+[connection signal="pressed" from="VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

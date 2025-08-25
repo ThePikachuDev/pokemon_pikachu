@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dem5csxed1cbp" path="res://assets/my aesprite assets/moving_platform.png" id="1_ba0x2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
-radius = 8.0
-height = 50.0
+radius = 9.0
+height = 52.0
 
 [node name="Node2D" type="AnimatableBody2D"]
 

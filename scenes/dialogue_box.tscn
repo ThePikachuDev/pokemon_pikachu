@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgstbj0d6kmk7"]
+
+[ext_resource type="Texture2D" uid="uid://bjtn4mjuwfakr" path="res://assets/my aesprite assets/dialog_box.png" id="1_rc1id"]
+[ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_fu8b5"]
+
+[node name="DialogueBox" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -939.0
+offset_bottom = -557.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rc1id")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_fu8b5")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

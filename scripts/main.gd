@@ -17,4 +17,5 @@ func _process(delta: float) -> void:
 
 
 func _on_kill_zone_below_world_body_entered(body: Node2D) -> void:
-	pass
+		get_tree().call_deferred("reload_current_scene")
+	

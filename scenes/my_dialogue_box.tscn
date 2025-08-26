@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d02r3mredhtd0"]
+[gd_scene load_steps=6 format=3 uid="uid://d02r3mredhtd0"]
 
 [ext_resource type="Script" uid="uid://bw7ndorc6h77g" path="res://my_dialogue_Box.gd" id="1_q80h1"]
-[ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_4ipiv"]
+[ext_resource type="Texture2D" uid="uid://bjtn4mjuwfakr" path="res://assets/my aesprite assets/dialog_box.png" id="2_4ns3n"]
+[ext_resource type="FontFile" uid="uid://cy0vldshwh6ah" path="res://assets/fonts/Monocraft.ttc" id="3_4ns3n"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q80h1"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijhpe"]
+texture = ExtResource("2_4ns3n")
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ns3n"]
 
@@ -25,12 +26,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -163.0
+offset_left = -113.0
 offset_top = -116.0
-offset_right = 163.0
+offset_right = 222.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_q80h1")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijhpe")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(200, 100)
@@ -54,7 +55,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_4ipiv")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_4ns3n")
+theme_override_font_sizes/font_size = 56
 label_settings = SubResource("LabelSettings_4ns3n")
-autowrap_mode = 1
+autowrap_mode = 2

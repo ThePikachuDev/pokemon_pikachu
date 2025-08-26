@@ -885,15 +885,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -48.0
+offset_right = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DialogueBoxV2" parent="Player/Camera2D/Control" instance=ExtResource("10_choun")]
 layout_mode = 1
-offset_left = -125.0
-offset_top = 159.0
-offset_right = -125.0
-offset_bottom = 159.0
+offset_left = -124.0
+offset_top = 158.0
+offset_right = -124.0
+offset_bottom = 158.0
 
 [node name="Powerup" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(549, -351)

@@ -1,33 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://d02r3mredhtd0"]
+[gd_scene load_steps=5 format=3 uid="uid://d02r3mredhtd0"]
 
 [ext_resource type="Script" uid="uid://bw7ndorc6h77g" path="res://my_dialogue_Box.gd" id="1_q80h1"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_4ipiv"]
-[ext_resource type="Texture2D" uid="uid://blxti38fxxw0p" path="res://assets/my aesprite assets/questionable_pikachu.png" id="2_4ns3n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q80h1"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ns3n"]
 
-[node name="Control" type="Control"]
+[node name="DialogueBoxV2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q80h1")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -116.0
+offset_right = 163.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_q80h1")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -42,15 +48,13 @@ size_flags_stretch_ratio = 2.78
 theme_override_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("2_4ns3n")
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 4.69)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4ipiv")
-theme_override_font_sizes/font_size = 24
-text = "some text
-moejfa dlaskdfjlaskjdflaskjdfl;aksdjf aslkdfjasl dflas dlfkas dfkasl dfkasl dfklas dflaskdj falskjd falskd falksd faskjdfl asdlkasdfasdfasdfasdfasdfasdfasfj asldkjfla skdf aslkdf as"
+theme_override_font_sizes/font_size = 32
 label_settings = SubResource("LabelSettings_4ns3n")
 autowrap_mode = 1

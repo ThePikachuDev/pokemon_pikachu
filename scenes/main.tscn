@@ -880,6 +880,21 @@ zoom = Vector2(2.005, 2.005)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
+[node name="Control" type="Control" parent="Player/Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBoxV2" parent="Player/Camera2D/Control" instance=ExtResource("10_choun")]
+layout_mode = 1
+offset_left = -125.0
+offset_top = 159.0
+offset_right = -125.0
+offset_bottom = 159.0
+
 [node name="Powerup" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(549, -351)
 
@@ -979,10 +994,5 @@ offset_bottom = -1468.0
 text = "here's the Version 1 of that pikachu you saw down ther : ) . 
 
 thats pretty much the prototype for now TT"
-
-[node name="Control" parent="." instance=ExtResource("10_choun")]
-offset_left = -273.0
-offset_right = 312.0
-offset_bottom = 127.0
 
 [connection signal="body_entered" from="killZoneBelowWorld" to="." method="_on_kill_zone_below_world_body_entered"]

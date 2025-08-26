@@ -9,6 +9,7 @@ var is_next_dialog: bool = false
 
 # Example: in Main.gd or a singleton
 func _input(event):
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_going_brrr:
 			is_going_brrr = false
@@ -16,13 +17,27 @@ func _input(event):
 			can_run_next_dialog = true
 		else:
 			close_dialog()
-		
+	
+	if event.is_action_pressed("dialogue"):
+		send_dialog("this is an example text that i am showing you", "res://assets/my aesprite assets/questionable_pikachu.png")
+	
+
 func close_dialog():
 	panel.hide()
 
-func send_dialog(text, pfp):
+func send_dialog(text, pfp_path):
+	var texture: Texture2D = load(pfp_path)
 	
-	dialog_image.texture = pfp
+	var textureCurrentHeight = texture.get_height()
+	var textureCurrentWidth = texture.get_width()
+	
+	var max_size = Vector2(200,200)
+	
+	var sizeX = min(max_size.x,textureCurrentWidth)
+	var sizeY = min(max_size.y, textureCurrentHeight)
+	
+	dialog_image.texture = texture
+	dialog_image.size = Vector2(sizeX, sizeY)
 	is_going_brrr = true
 	var current_text: String = ""
 	for i in range(len(text)):
@@ -33,6 +48,7 @@ func send_dialog(text, pfp):
 		while i < len(text)-1 and text[i] != " " and text[i+1] != " ":
 			i += 2
 			current_text += "\u3000"
+		
 		
 		dialog_label.text = current_text
 		await get_tree().create_timer(0.02).timeout
@@ -54,5 +70,6 @@ func send_multiple_dialogs(texts: Array, pfp):
 
 func _ready():
 	dialog_image = $PanelContainer/MarginContainer/HBoxContainer/TextureRect
+	
 	dialog_label = $PanelContainer/MarginContainer/HBoxContainer/Label
 	panel = $PanelContainer

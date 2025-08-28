@@ -15,10 +15,6 @@ run/main_scene="uid://dy2msgto4xmnk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-DialogManager="res://singletons/DialogManager.gd"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

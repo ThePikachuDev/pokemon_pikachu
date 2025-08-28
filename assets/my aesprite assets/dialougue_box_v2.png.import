@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dem5csxed1cbp"
-path="res://.godot/imported/moving_platform.png-d3ca6645e91c306d566b0d5333d11fac.ctex"
+uid="uid://rr8wtv3eb2wl"
+path="res://.godot/imported/dialougue_box_v2.png-8a7a61730bf2e64c98c345e2392a4d0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/moving_platform.png"
-dest_files=["res://.godot/imported/moving_platform.png-d3ca6645e91c306d566b0d5333d11fac.ctex"]
+source_file="res://assets/my aesprite assets/dialougue_box_v2.png"
+dest_files=["res://.godot/imported/dialougue_box_v2.png-8a7a61730bf2e64c98c345e2392a4d0f.ctex"]
 
 [params]
 

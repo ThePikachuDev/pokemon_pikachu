@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ieclb263m02f"
-path="res://.godot/imported/grass_1.png-ea73acb70cdc5c85e976b0146db360f3.ctex"
+uid="uid://catbwf3ih84ok"
+path="res://.godot/imported/pikachu pfp.png-d19f57b19d0cc1150e42949dd60331e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/grass_1.png"
-dest_files=["res://.godot/imported/grass_1.png-ea73acb70cdc5c85e976b0146db360f3.ctex"]
+source_file="res://assets/my aesprite assets/pikachu pfp.png"
+dest_files=["res://.godot/imported/pikachu pfp.png-d19f57b19d0cc1150e42949dd60331e5.ctex"]
 
 [params]
 

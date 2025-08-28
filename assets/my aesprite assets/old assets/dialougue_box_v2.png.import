@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr06ulf07jrby"
-path="res://.godot/imported/pikachu_v3.png-7a75a455b93c1215a20455a4f7e03a82.ctex"
+uid="uid://chaca6kojyorp"
+path="res://.godot/imported/dialougue_box_v2.png-8a7a61730bf2e64c98c345e2392a4d0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/pikachu_v3.png"
-dest_files=["res://.godot/imported/pikachu_v3.png-7a75a455b93c1215a20455a4f7e03a82.ctex"]
+source_file="res://assets/my aesprite assets/dialougue_box_v2.png"
+dest_files=["res://.godot/imported/dialougue_box_v2.png-8a7a61730bf2e64c98c345e2392a4d0f.ctex"]
 
 [params]
 

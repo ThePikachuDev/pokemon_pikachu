@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blxti38fxxw0p"
-path="res://.godot/imported/questionable_pikachu.png-854b3a5e5e3d73ffc073f37fa68415fd.ctex"
+uid="uid://ieclb263m02f"
+path="res://.godot/imported/grass_1.png-9ae8251fa3eaff4818f1789e7f56b2bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/questionable_pikachu.png"
-dest_files=["res://.godot/imported/questionable_pikachu.png-854b3a5e5e3d73ffc073f37fa68415fd.ctex"]
+source_file="res://assets/my aesprite assets/old assets/grass_1.png"
+dest_files=["res://.godot/imported/grass_1.png-9ae8251fa3eaff4818f1789e7f56b2bc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjtn4mjuwfakr"
-path="res://.godot/imported/dialog_box.png-d32a18f06c902fba3ed070f0dceec747.ctex"
+uid="uid://blxti38fxxw0p"
+path="res://.godot/imported/questionable_pikachu.png-dc43c25cd448ec2acf88954fe8cc5731.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/dialog_box.png"
-dest_files=["res://.godot/imported/dialog_box.png-d32a18f06c902fba3ed070f0dceec747.ctex"]
+source_file="res://assets/my aesprite assets/old assets/questionable_pikachu.png"
+dest_files=["res://.godot/imported/questionable_pikachu.png-dc43c25cd448ec2acf88954fe8cc5731.ctex"]
 
 [params]
 

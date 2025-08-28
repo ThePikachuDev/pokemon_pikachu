@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gel3awam3abd"
-path="res://.godot/imported/questionalabe_side_pikachu.png-925501bad52ad2c2bd74cc135574a689.ctex"
+uid="uid://dm6qoftavirct"
+path="res://.godot/imported/pikachu pfp.png-d19f57b19d0cc1150e42949dd60331e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/questionalabe_side_pikachu.png"
-dest_files=["res://.godot/imported/questionalabe_side_pikachu.png-925501bad52ad2c2bd74cc135574a689.ctex"]
+source_file="res://assets/my aesprite assets/pikachu pfp.png"
+dest_files=["res://.godot/imported/pikachu pfp.png-d19f57b19d0cc1150e42949dd60331e5.ctex"]
 
 [params]
 

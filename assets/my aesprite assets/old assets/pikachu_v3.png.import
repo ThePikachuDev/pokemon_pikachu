@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cieaxhi8weyif"
-path="res://.godot/imported/allGrassesV2.png-a910bd1cecc64d3bd35b5d3d96297be3.ctex"
+uid="uid://by5qddmdenq21"
+path="res://.godot/imported/pikachu_v3.png-7a75a455b93c1215a20455a4f7e03a82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/allGrassesV2.png"
-dest_files=["res://.godot/imported/allGrassesV2.png-a910bd1cecc64d3bd35b5d3d96297be3.ctex"]
+source_file="res://assets/my aesprite assets/pikachu_v3.png"
+dest_files=["res://.godot/imported/pikachu_v3.png-7a75a455b93c1215a20455a4f7e03a82.ctex"]
 
 [params]
 

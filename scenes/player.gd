@@ -5,6 +5,8 @@ var JUMP_VELOCITY = -300.0
 @onready var sprite_2d = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @export var max_jumps = 2
+@onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
+@onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 
 @onready var my_dialouge_box = get_node("Camera2D/Control/DialogueBoxV2")
 
@@ -22,6 +24,10 @@ var can_move: bool = true  # Control flag for movement
 func _ready():
 	my_dialouge_box.dialogue_started.connect(_on_dialougue_running)
 	my_dialouge_box.dialogue_ended.connect(_on_dialogue_ended)  # Add this line
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("exit"):
+		get_tree().change_scene_to_file("res://scenes/windowUI.tscn")
 
 
 func give_powerup():
@@ -57,6 +63,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and jumps_done < max_jumps:		
 			velocity.y = JUMP_VELOCITY
 			jumps_done += 1
+			jump_audio.play()
+			await jump_audio.finished
+			
 
 		# Movement input
 		var direction := Input.get_axis("left", "right")
@@ -74,11 +83,18 @@ func _physics_process(delta: float) -> void:
 		sprite_2d.play("idle")
 	elif not is_on_floor():
 		if velocity.y < 0:
+			
 			sprite_2d.play("jump")   # going up
 		#else:
 			#sprite_2d.play("fall")   # going down
 	elif velocity.x != 0:
+			# if the footstep audio isn't playing, play the audio
+		#if !footstep_audio.playing:
+			#footstep_audio.pitch_scale = randf_range(.8, 1.2)
+			#footstep_audio.play()
+
 		sprite_2d.play("run")
+		
 	else:
 		sprite_2d.play("idle")
 

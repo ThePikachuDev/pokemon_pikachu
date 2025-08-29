@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8d2k68s3bd81"
+path="res://.godot/imported/run-112647_782UqlzU.mp3-ea37868142164b57758499262e60b9d3.mp3str"
+
+[deps]
+
+source_file="res://assets/music/player-movement /run-112647_782UqlzU.mp3"
+dest_files=["res://.godot/imported/run-112647_782UqlzU.mp3-ea37868142164b57758499262e60b9d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

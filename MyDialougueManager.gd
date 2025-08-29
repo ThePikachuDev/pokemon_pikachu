@@ -12,10 +12,9 @@ var current_dialogs: Array = []
 var current_pfp: String = ""
 
 var default_dialogs = [
-	"Detective Pikachu reporting, you can move with WASD or arrow keys btw",
-	"press space/up arrow/w twice to do double jump",
-	"this is Super Subtle Shiba Reference!!",
-	"althought you will not find it, just die : ) ",
+	"Detective Pikachu reporting, i'll guide you through some basics",
+	"you can move with WASD or arrow keys ",
+	"press space/upArrow/w once to jump and twice to double jump",
 ]
 
 signal dialogue_started()

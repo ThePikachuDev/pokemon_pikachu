@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://r68qm5wsi487"
+path="res://.godot/imported/404793__owlstorm__retro-video-game-sfx-jump.wav-0ba9a5a4ee34ccf5bac7f967866e52d8.sample"
+
+[deps]
+
+source_file="res://assets/music/player-movement /404793__owlstorm__retro-video-game-sfx-jump.wav"
+dest_files=["res://.godot/imported/404793__owlstorm__retro-video-game-sfx-jump.wav-0ba9a5a4ee34ccf5bac7f967866e52d8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

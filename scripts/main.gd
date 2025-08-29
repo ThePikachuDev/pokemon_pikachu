@@ -10,6 +10,7 @@ extends Node2D
 
 
 func _input(event: InputEvent) -> void:
+
 	pass	
 
 # Called when the node enters the scene tree for the first time.

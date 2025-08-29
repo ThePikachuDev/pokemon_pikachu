@@ -1,22 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy2msgto4xmnk"]
+[gd_scene load_steps=26 format=3 uid="uid://dy2msgto4xmnk"]
 
 [ext_resource type="Script" uid="uid://b277xdqn4qhb5" path="res://scripts/main_menu.gd" id="1_yreha"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_21et7"]
-[ext_resource type="AudioStream" uid="uid://fbwy76kw6j73" path="res://assets/placeholders/music/Morale.mp3" id="3_21et7"]
+[ext_resource type="Texture2D" uid="uid://qxgigsx2r4pp" path="res://assets/my aesprite assets/ui/button1.png" id="2_kij43"]
+[ext_resource type="Texture2D" uid="uid://b5i2nwlfcdkbr" path="res://assets/my aesprite assets/ui/button2.png" id="3_7tr8k"]
+[ext_resource type="AudioStream" uid="uid://bbyy0lce5ldkw" path="res://assets/music/background music/Cozy Serenade (aa619f663fdf4d3b96de6d87471ecf7a).mp3" id="3_21et7"]
+[ext_resource type="AudioStream" uid="uid://b4rxoa65myl6j" path="res://assets/music/User interface/game-start-61041_13T8PbgK.mp3" id="3_wnvkp"]
+[ext_resource type="Texture2D" uid="uid://dc4n2058wfflq" path="res://assets/my aesprite assets/ui/button3.png" id="4_dsf0y"]
+[ext_resource type="FontFile" uid="uid://cy0vldshwh6ah" path="res://assets/fonts/Monocraft.ttc" id="8_7tr8k"]
+[ext_resource type="Texture2D" uid="uid://4uxeq3auavlh" path="res://assets/placeholders/forest bg.jpg" id="9_dsf0y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s8lox"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_kij43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7tr8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dsf0y")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}]
 
 [sub_resource type="Theme" id="Theme_tftr1"]
+/fonts/asdf = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ery3r"]
 bg_color = Color(1, 0.929412, 0.831373, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yreha"]
-bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_secbx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21et7"]
-bg_color = Color(0.178212, 0.178212, 0.178212, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m62ni"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnvkp"]
-bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drefm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8lox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukp5k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tr8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5q8qq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gc8rp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ur5ik"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnvlk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wss2h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dsf0y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsf0y"]
+bg_color = Color(0, 0, 0, 0.639216)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -27,7 +69,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yreha")
 
+[node name="play_button_click_animation" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(581.688, 269)
+scale = Vector2(3.35781, 5.1875)
+sprite_frames = SubResource("SpriteFrames_s8lox")
+animation = &"click"
+
 [node name="Panel" type="Panel" parent="."]
+z_index = -2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,24 +100,38 @@ offset_right = 125.5
 offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 50
 
 [node name="play_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_21et7")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_yreha")
-theme_override_styles/normal = SubResource("StyleBoxFlat_21et7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_secbx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m62ni")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_drefm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s8lox")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ukp5k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7tr8k")
 text = "Play
 "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VBoxContainer/play_button"]
+stream = ExtResource("3_wnvkp")
 
 [node name="quit_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.632819, 0.523052, 0.723404, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_21et7")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_wnvkp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5q8qq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gc8rp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ur5ik")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gnvlk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wss2h")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dsf0y")
 text = "Quit"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -75,16 +139,50 @@ stream = ExtResource("3_21et7")
 autoplay = true
 bus = &"bg Audio"
 
-[node name="Label" type="Label" parent="."]
+[node name="helper_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 314.0
-offset_top = 56.0
-offset_right = 910.0
-offset_bottom = 193.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
+offset_left = 19.0
+offset_top = 566.0
+offset_right = 320.0
+offset_bottom = 623.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.99558, 0.99558, 0.99558, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("8_7tr8k")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsf0y")
 text = "press enter/space to Play 
 press q or Esc key to quit"
+
+[node name="quit_button_click_animation2" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(577, 393)
+scale = Vector2(3.31406, 5.04907)
+sprite_frames = SubResource("SpriteFrames_s8lox")
+animation = &"click"
+frame_progress = 0.0468768
+
+[node name="Heading_title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.0
+offset_top = 80.0
+offset_right = 395.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_7tr8k")
+theme_override_font_sizes/font_size = 80
+text = "Pokemon Pikachu  "
+
+[node name="ForestBg" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(568, 322)
+scale = Vector2(1.60598, 1.73913)
+texture = ExtResource("9_dsf0y")
 
 [connection signal="pressed" from="VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

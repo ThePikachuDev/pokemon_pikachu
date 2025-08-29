@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4rxoa65myl6j"
+path="res://.godot/imported/game-start-61041_13T8PbgK.mp3-059ccf30ec76fd644f6a7f10249060f8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/User interface/game-start-61041_13T8PbgK.mp3"
+dest_files=["res://.godot/imported/game-start-61041_13T8PbgK.mp3-059ccf30ec76fd644f6a7f10249060f8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

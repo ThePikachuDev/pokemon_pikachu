@@ -1,8 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://c68ic6fsranbt"]
+[gd_scene load_steps=43 format=3 uid="uid://c68ic6fsranbt"]
 
 [ext_resource type="Texture2D" uid="uid://gel3awam3abd" path="res://assets/my aesprite assets/old assets/questionalabe_side_pikachu.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bkv6hghgyhwqy" path="res://assets/placeholders/Male Skin1.png" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://b8d2k68s3bd81" path="res://assets/music/player-movement /run-112647_782UqlzU.mp3" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dl4cgmgutdxat" path="res://assets/music/player-movement /cartoon-jump-6462.mp3" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(20, 43)
@@ -305,3 +307,10 @@ animation = &"attack"
 autoplay = "idle"
 frame = 3
 frame_progress = 0.280094
+
+[node name="footstep_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dqkch")
+
+[node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
+bus = &"player movement"

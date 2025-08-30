@@ -22,7 +22,7 @@ signal dialogue_ended()
 
 func _input(event):
 	if event.is_action_pressed("dialogue") and not panel.visible:
-		start_multiple_dialogs(default_dialogs, "res://assets/my aesprite assets/pikachu pfp.png")
+		start_multiple_dialogs(default_dialogs,"res://assets/my aesprite assets/pikachu/pikachu pfp.png")
 		dialogue_started.emit()
 	
 	if event is InputEventMouseButton or event.is_action_pressed("dialogue"):

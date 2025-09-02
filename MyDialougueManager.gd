@@ -1,6 +1,6 @@
 extends Control
 
-@onready var dialog_image: TextureRect =$PanelContainer/MarginContainer/HBoxContainer/TextureRect
+@onready var dialog_image: TextureRect = $PanelContainer/MarginContainer/HBoxContainer/TextureRect
 @onready var dialog_label: Label = $PanelContainer/MarginContainer/HBoxContainer/Label
 @onready var panel: PanelContainer = $PanelContainer
 
@@ -10,6 +10,7 @@ var has_next_dialog: bool = false
 var current_dialog_index: int = 0
 var current_dialogs: Array = []
 var current_pfp: String = ""
+
 
 var default_dialogs = [
 	"Detective Pikachu reporting, i'll guide you through some basics",
@@ -21,10 +22,10 @@ signal dialogue_started()
 signal dialogue_ended()
 
 func _input(event):
-	if event.is_action_pressed("dialogue") and not panel.visible:
-		start_multiple_dialogs(default_dialogs,"res://assets/my aesprite assets/pikachu/pikachu pfp.png")
-		dialogue_started.emit()
-	
+	#if event.is_action_pressed("dialogue") and not panel.visible:
+		#start_multiple_dialogs(default_dialogs,"res://assets/my aesprite assets/pikachu/pikachu pfp.png")
+		#dialogue_started.emit()
+	#
 	if event is InputEventMouseButton or event.is_action_pressed("dialogue"):
 		if is_animating_text:
 			is_animating_text = false
@@ -42,6 +43,7 @@ func close_dialog():
 
 func show_dialog(text: String, pfp_path: String) -> void:
 	panel.visible = true
+	print("show dialogue ran")
 	
 	var texture: Texture2D = load(pfp_path)
 	if texture:
@@ -67,12 +69,14 @@ func show_dialog(text: String, pfp_path: String) -> void:
 	is_animating_text = false
 
 func start_multiple_dialogs(texts: Array, pfp: String) -> void:
+	print("start multiple dialogue func working")
 	current_dialogs = texts
 	current_pfp = pfp
 	current_dialog_index = 0
 	await process_next_dialog()
 
 func process_next_dialog() -> void:
+	print("process_next_dialog ran ")
 	if current_dialog_index >= current_dialogs.size():
 		has_next_dialog = false
 		return
@@ -90,4 +94,5 @@ func process_next_dialog() -> void:
 	await process_next_dialog()
 
 func _ready():
-	panel.visible = false
+	#panel.visible = false
+	pass

@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://qxgigsx2r4pp" path="res://assets/my aesprite assets/ui/button1.png" id="2_kij43"]
 [ext_resource type="Texture2D" uid="uid://b5i2nwlfcdkbr" path="res://assets/my aesprite assets/ui/button2.png" id="3_7tr8k"]
 [ext_resource type="AudioStream" uid="uid://bbyy0lce5ldkw" path="res://assets/music/background music/Cozy Serenade (aa619f663fdf4d3b96de6d87471ecf7a).mp3" id="3_21et7"]
-[ext_resource type="AudioStream" uid="uid://b4rxoa65myl6j" path="res://assets/music/User interface/game-start-61041_13T8PbgK.mp3" id="3_wnvkp"]
 [ext_resource type="Texture2D" uid="uid://dc4n2058wfflq" path="res://assets/my aesprite assets/ui/button3.png" id="4_dsf0y"]
+[ext_resource type="AudioStream" uid="uid://d0t2fsaq4h3vk" path="res://assets/music/User interface/computer-mouse-click-352734.mp3" id="6_dsf0y"]
 [ext_resource type="FontFile" uid="uid://cy0vldshwh6ah" path="res://assets/fonts/Monocraft.ttc" id="8_7tr8k"]
 [ext_resource type="Texture2D" uid="uid://4uxeq3auavlh" path="res://assets/placeholders/forest bg.jpg" id="9_dsf0y"]
 
@@ -118,7 +118,7 @@ text = "Play
 "
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VBoxContainer/play_button"]
-stream = ExtResource("3_wnvkp")
+stream = ExtResource("6_dsf0y")
 
 [node name="quit_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -179,6 +179,7 @@ theme_override_font_sizes/font_size = 80
 text = "Pokemon Pikachu  "
 
 [node name="ForestBg" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 position = Vector2(568, 322)
 scale = Vector2(1.60598, 1.73913)

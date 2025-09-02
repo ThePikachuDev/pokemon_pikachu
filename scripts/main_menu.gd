@@ -17,7 +17,7 @@ func _on_play_button_pressed() -> void:
 	play_button.position.y += 5
 	await audio_stream_player_2d.finished
 	#await get_tree().create_timer(audio_stream_player_2d.e).timeout
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_scene_v_2.tscn")
 
 func _on_quit_button_pressed() -> void:
 	$quit_button_click_animation2.play("click")

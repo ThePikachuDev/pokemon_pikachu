@@ -1,115 +1,131 @@
+# This script is a self-contained CharacterBody2D controller with enhanced dashing.
+# You can copy and paste this code directly onto a CharacterBody2D node in Godot.
+
 extends CharacterBody2D
 
-var SPEED = 200.0
-var JUMP_VELOCITY = -300.0
-@onready var sprite_2d = $AnimatedSprite2D
-@onready var collision: CollisionShape2D = $CollisionShape2D
-@export var max_jumps = 2
-@onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
+# ----------------- Physics Constants -----------------
+const GRAVITY = 980.0
+const WALK_SPEED = 200.0
+const JUMP_VELOCITY = -300.0
+
+const DASH_IMPULSE_SPEED = 800.0
+const DASH_DURATION = 0.15
+const DASH_COOLDOWN = 0.5
+const AIR_DASH_VERTICAL_IMPULSE = -50.0
+
+# ----------------- State Variables -----------------
+var is_dashing: bool = false
+var can_dash: bool = true
+var jumps_left: int = 2
+
+# ----------------- Node References -----------------
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var dash_duration_timer: Timer = $DashDurationTimer
+@onready var dash_cooldown_timer: Timer = $DashEffectTimer
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
+@onready var dash_audio: AudioStreamPlayer2D = $DashAudio
 
-@onready var my_dialouge_box = get_node("Camera2D/Control/DialogueBoxV2")
-
-const lines: Array[String] = [
-	"less goo !",
-	"i made it !!",
-	"I am sooo much happy !",
-	"you dont bileve me that i dont know how to speel that 3rd word in this line"
-]
-
-var jumps_done: int = 0
-var can_move: bool = true  # Control flag for movement
-
-
+# ----------------- Main Functions -----------------
 func _ready():
-	my_dialouge_box.dialogue_started.connect(_on_dialougue_running)
-	my_dialouge_box.dialogue_ended.connect(_on_dialogue_ended)  # Add this line
+	# Timers are created dynamically if they don't exist, for "out of the box" functionality.
+	# We'll just create them on the fly to avoid relying on the scene tree.
+	if not has_node("DashDurationTimer"):
+		dash_duration_timer = Timer.new()
+		add_child(dash_duration_timer)
+	dash_duration_timer.wait_time = DASH_DURATION
+	dash_duration_timer.one_shot = true
+	dash_duration_timer.timeout.connect(_on_dash_duration_timer_timeout)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("exit"):
-		get_tree().change_scene_to_file("res://scenes/windowUI.tscn")
-
-
-func give_powerup():
-	var powerup_duration = 6
-	
-	sprite_2d.scale *= 2
-	sprite_2d.position.y *= 2
-	SPEED = 300
-	JUMP_VELOCITY = -450
-	collision.scale *= 2
-	collision.position.y *= 2
-	
-	await get_tree().create_timer(powerup_duration).timeout
-	
-	SPEED = 200
-	JUMP_VELOCITY = -300
-	
-	sprite_2d.scale /= 2
-	sprite_2d.position.y /= 2
-	
-	collision.scale /= 2
-	collision.position.y /= 2
-
+	if not has_node("DashCooldownTimer"):
+		dash_cooldown_timer = Timer.new()
+		add_child(dash_cooldown_timer)
+	dash_cooldown_timer.wait_time = DASH_COOLDOWN
+	dash_cooldown_timer.one_shot = true
+	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timer_timeout)
 
 func _physics_process(delta: float) -> void:
+	# Apply gravity if not on the floor
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-	else: 
-		jumps_done = 0
+		velocity.y += GRAVITY * delta
+	else:
+		# Reset jump and dash on the floor
+		jumps_left = 2
+		can_dash = true
+
+	# Handle input for jumping and dashing
+	handle_input()
 	
-	if can_move:
-		# Jump input
-		if Input.is_action_just_pressed("jump") and jumps_done < max_jumps:		
-			velocity.y = JUMP_VELOCITY
-			jumps_done += 1
-			jump_audio.play()
-			await jump_audio.finished
-			
-
-		# Movement input
-		var direction := Input.get_axis("left", "right")
+	# Apply dash physics or normal movement
+	if is_dashing:
+		# Keep horizontal velocity constant during the dash
+		velocity.y = 0 
+	else:
+		# Horizontal movement
+		var direction = Input.get_axis("left", "right")
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * WALK_SPEED
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
-		# Stop horizontal movement during dialogue but keep vertical physics
-		velocity.x = 0
-
-	# ---- Animation Logic ----
-	if not can_move:
-		# Play idle animation during dialogue
-		sprite_2d.play("idle")
-	elif not is_on_floor():
-		if velocity.y < 0:
+			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 			
-			sprite_2d.play("jump")   # going up
-		#else:
-			#sprite_2d.play("fall")   # going down
-	elif velocity.x != 0:
-			# if the footstep audio isn't playing, play the audio
-		#if !footstep_audio.playing:
-			#footstep_audio.pitch_scale = randf_range(.8, 1.2)
-			#footstep_audio.play()
-
-		sprite_2d.play("run")
-		
-	else:
-		sprite_2d.play("idle")
-
-	# Flip sprite (only if moving)
-	if velocity.x < 0:
-		sprite_2d.flip_h = false
-	elif velocity.x > 0:
-		sprite_2d.flip_h = true
-
+	# Update sprite direction and animation
+	update_animation_and_direction()
+	
 	move_and_slide()
 
+# ----------------- Input Handling -----------------
+func handle_input():
+	# Jump
+	if Input.is_action_just_pressed("jump") and jumps_left > 0:
+		velocity.y = JUMP_VELOCITY
+		jumps_left -= 1
+		# Uncomment this line if you have a JumpAudio node
+		# jump_audio.play()
 
-func _on_dialougue_running():
-	can_move = true
+	# Dash
+	if Input.is_action_just_pressed("dash") and can_dash:
+		start_dash()
 
+func start_dash():
+	is_dashing = true
+	can_dash = false
+	
+	var dash_direction = Input.get_axis("left", "right")
+	if dash_direction == 0:
+		dash_direction = 1 if not animated_sprite.flip_h else -1
+	
+	# Set a powerful, instantaneous horizontal velocity
+	velocity.x = dash_direction * DASH_IMPULSE_SPEED
+	
+	# Add a slight vertical boost for a dynamic air dash feel
+	if not is_on_floor():
+		velocity.y = AIR_DASH_VERTICAL_IMPULSE
 
-func _on_dialogue_ended():
-	can_move = true
+	dash_duration_timer.start()
+	dash_cooldown_timer.start()
+
+	# Uncomment this line if you have a DashAudio node
+	# dash_audio.play()
+
+# ----------------- Timer Callbacks -----------------
+func _on_dash_duration_timer_timeout():
+	is_dashing = false
+
+func _on_dash_cooldown_timer_timeout():
+	can_dash = true
+
+# ----------------- Animation and Direction -----------------
+func update_animation_and_direction():
+	if is_dashing:
+		animated_sprite.play("dash")
+	elif not is_on_floor():
+		animated_sprite.play("jump" if velocity.y < 0 else "fall")
+	elif velocity.x != 0:
+		animated_sprite.play("run")
+	else:
+		animated_sprite.play("idle")
+		
+	# Flip sprite based on movement direction
+	if velocity.x > 0:
+		animated_sprite.flip_h = false
+	elif velocity.x < 0:
+		animated_sprite.flip_h = true

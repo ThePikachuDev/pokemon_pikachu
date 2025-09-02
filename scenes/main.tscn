@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cg3143cso27y2"]
+[gd_scene load_steps=27 format=4 uid="uid://cg3143cso27y2"]
 
 [ext_resource type="Script" uid="uid://c3oh2p2ngs88r" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://c68ic6fsranbt" path="res://scenes/player.tscn" id="2_0wfyh"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://blgi481am80eg" path="res://scenes/kill_zone_below_world.gd" id="6_tipki"]
 [ext_resource type="AudioStream" uid="uid://dg4gc5cwahy80" path="res://assets/music/background music/cool-hip-hop-loop-275527.mp3" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://blxti38fxxw0p" path="res://assets/my aesprite assets/old assets/questionable_pikachu.png" id="9_85g3d"]
-[ext_resource type="PackedScene" uid="uid://d02r3mredhtd0" path="res://scenes/my_dialogue_box.tscn" id="10_choun"]
 [ext_resource type="Texture2D" uid="uid://cr06ulf07jrby" path="res://assets/my aesprite assets/pikachu/pikachu_v3.png" id="11_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://w2tehktxxj8y" path="res://assets/jumpy3.png" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://lxtivvonujh2" path="res://scenes/enemy.tscn" id="13_trceg"]
@@ -949,31 +948,6 @@ script = ExtResource("1_tbgi4")
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
 z_index = 5
 position = Vector2(-114, -44)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(2, 11)
-zoom = Vector2(2.005, 2.005)
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
-[node name="Control" type="Control" parent="Player/Camera2D"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_right = -48.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="DialogueBoxV2" parent="Player/Camera2D/Control" instance=ExtResource("10_choun")]
-layout_mode = 1
-offset_left = -124.0
-offset_top = 158.0
-offset_right = -124.0
-offset_bottom = 158.0
 
 [node name="Powerup" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(549, -351)

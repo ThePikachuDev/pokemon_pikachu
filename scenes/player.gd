@@ -20,10 +20,11 @@ var jumps_left: int = 2
 
 # ----------------- Node References -----------------
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var dash_duration_timer: Timer = $DashDurationTimer
+@onready var dash_duration_timer: Timer = $DashDurationTImer
 @onready var dash_cooldown_timer: Timer = $DashEffectTimer
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 @onready var dash_audio: AudioStreamPlayer2D = $DashAudio
+@onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
 
 # ----------------- Main Functions -----------------
 func _ready():
@@ -42,6 +43,10 @@ func _ready():
 	dash_cooldown_timer.wait_time = DASH_COOLDOWN
 	dash_cooldown_timer.one_shot = true
 	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timer_timeout)
+	
+	# Connect the footstep audio's finished signal to stop it when the sound is done.
+	# This prevents the sound from looping infinitely.
+	footstep_audio.finished.connect(_on_footstep_audio_finished)
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity if not on the floor
@@ -67,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 			
-	# Update sprite direction and animation
+	# Update sprite direction and animation, including footstep audio logic
 	update_animation_and_direction()
 	
 	move_and_slide()
@@ -79,7 +84,8 @@ func handle_input():
 		velocity.y = JUMP_VELOCITY
 		jumps_left -= 1
 		# Uncomment this line if you have a JumpAudio node
-		# jump_audio.play()
+		footstep_audio.stop()
+		jump_audio.play()
 
 	# Dash
 	if Input.is_action_just_pressed("dash") and can_dash:
@@ -88,6 +94,10 @@ func handle_input():
 func start_dash():
 	is_dashing = true
 	can_dash = false
+	
+	# Stop footsteps immediately when dashing
+	if footstep_audio.playing:
+		footstep_audio.stop()
 	
 	var dash_direction = Input.get_axis("left", "right")
 	if dash_direction == 0:
@@ -104,7 +114,7 @@ func start_dash():
 	dash_cooldown_timer.start()
 
 	# Uncomment this line if you have a DashAudio node
-	# dash_audio.play()
+	dash_audio.play()
 
 # ----------------- Timer Callbacks -----------------
 func _on_dash_duration_timer_timeout():
@@ -121,11 +131,29 @@ func update_animation_and_direction():
 		animated_sprite.play("jump" if velocity.y < 0 else "fall")
 	elif velocity.x != 0:
 		animated_sprite.play("run")
+		# Play footstep audio only if it's not already playing to avoid overlapping sounds
+		if not footstep_audio.playing:
+			footstep_audio.play()
 	else:
 		animated_sprite.play("idle")
+		# Stop footstep audio when the player is idle
+		if footstep_audio.playing:
+			footstep_audio.stop()
 		
 	# Flip sprite based on movement direction
 	if velocity.x > 0:
 		animated_sprite.flip_h = false
 	elif velocity.x < 0:
 		animated_sprite.flip_h = true
+
+# ----------------- Audio Callbacks -----------------
+func _on_footstep_audio_finished():
+	# When the current footstep sound finishes, check if the character is still moving.
+	# If so, play the sound again to create a loop.
+	if is_on_floor() and velocity.x != 0:
+		footstep_audio.play()
+
+
+func _on_kill_zone_below_world_body_entered(body: Node2D) -> void:
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

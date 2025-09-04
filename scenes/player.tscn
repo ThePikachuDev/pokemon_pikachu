@@ -1,11 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://c68ic6fsranbt"]
+[gd_scene load_steps=39 format=3 uid="uid://c68ic6fsranbt"]
 
 [ext_resource type="Texture2D" uid="uid://gel3awam3abd" path="res://assets/my aesprite assets/old assets/questionalabe_side_pikachu.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bkv6hghgyhwqy" path="res://assets/placeholders/Male Skin1.png" id="3_qhqgy"]
-[ext_resource type="AudioStream" uid="uid://b8d2k68s3bd81" path="res://assets/music/player-movement /run-112647_782UqlzU.mp3" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dlr87k5dh7bxl" path="res://assets/FinnSprite.png" id="4_fjrip"]
-[ext_resource type="AudioStream" uid="uid://bja5qffickk1o" path="res://assets/music/player-movement /350906__cabled_mess__jump_c_04.wav" id="6_fjrip"]
+[ext_resource type="AudioStream" uid="uid://r68qm5wsi487" path="res://assets/music/player-movement /404793__owlstorm__retro-video-game-sfx-jump.wav" id="6_fjrip"]
 [ext_resource type="PackedScene" uid="uid://d02r3mredhtd0" path="res://scenes/my_dialogue_box.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
@@ -281,14 +280,13 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="footstep_audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_dqkch")
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fjrip")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 11)
-zoom = Vector2(3, 3)
+zoom = Vector2(2.15, 2.15)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 

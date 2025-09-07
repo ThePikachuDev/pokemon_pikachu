@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbitvcig2bjpk"]
+
+[ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
+[ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
+[ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_oo0fn"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_5ysmq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_ahhtf")
+theme_override_fonts/bold_font = ExtResource("2_oo0fn")
+bbcode_enabled = true
+text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : 3 [/font]
+"

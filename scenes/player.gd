@@ -12,6 +12,8 @@ const DASH_IMPULSE_SPEED = 800.0
 const DASH_DURATION = 0.15
 const DASH_COOLDOWN = 0.5
 const AIR_DASH_VERTICAL_IMPULSE = -50.0
+const acceleration = 0.1
+
 
 # ----------------- State Variables -----------------
 var is_dashing: bool = false
@@ -113,8 +115,7 @@ func start_dash():
 	dash_duration_timer.start()
 	dash_cooldown_timer.start()
 
-	# Uncomment this line if you have a DashAudio node
-	dash_audio.play()
+	#dash_audio.play()
 
 # ----------------- Timer Callbacks -----------------
 func _on_dash_duration_timer_timeout():

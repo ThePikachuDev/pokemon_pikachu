@@ -18,6 +18,7 @@ extends Node2D
 @onready var timer: Timer = $Leaves/Timer
 @onready var animated_enemy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var leaves_collision_shape: CollisionShape2D = $Leaves/Area2D/CollisionShape2D
+@onready var head: Area2D = $head
 
 # Set a constant for the movement speed for better organization.
 const SPEED = 100.0  # Adjust this value to change how fast the leaves move.
@@ -31,9 +32,9 @@ var is_throwing: bool = false
 # This function is called once when the node is ready.
 func _ready() -> void:
 	# Connect the timer's timeout signal to the _on_timer_timeout function
-	if timer:
-		timer.timeout.connect(_on_timer_timeout)
-	#pass
+	#if timer:
+		#timer.timeout.connect(_on_timer_timeout)
+	pass
 
 # This function is called every frame and is used for game logic.
 func _process(delta: float) -> void:
@@ -67,5 +68,11 @@ func _on_timer_timeout() -> void:
 # This function handles the player colliding with the enemy.
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	# Check if the body is a player or another specific node.
-	if body.name == "Player":  # Change "Player" to the name of your player node.
+	if body.name == "Player": 
 		get_tree().reload_current_scene()
+
+
+func _on_head_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		print('you died ?')
+		self.queue_free()

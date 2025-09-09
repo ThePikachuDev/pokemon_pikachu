@@ -18,6 +18,8 @@ animations = [{
 }]
 
 [node name="bolt" type="Area2D"]
+light_mask = 4
+visibility_layer = 7
 script = ExtResource("1_hu2p6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

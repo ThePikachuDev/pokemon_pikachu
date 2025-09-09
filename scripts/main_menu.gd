@@ -10,10 +10,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit"):
 		_on_quit_button_pressed()	
 
-
+var i = 0
 func _on_play_button_pressed() -> void:
 	audio_stream_player_2d.play(0.0)
 	$play_button_click_animation.play("click")
+	i += 1
+	if i > 1:
+		return
 	play_button.position.y += 5
 	await audio_stream_player_2d.finished
 	#await get_tree().create_timer(audio_stream_player_2d.e).timeout

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://lxtivvonujh2"]
+[gd_scene load_steps=8 format=3 uid="uid://lxtivvonujh2"]
 
 [ext_resource type="Texture2D" uid="uid://cxxhhsamau0g7" path="res://assets/my aesprite assets/env/enemy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dek7xlc6m8q3g" path="res://scripts/enemy.gd" id="1_md0e3"]
@@ -21,6 +21,9 @@ size = Vector2(30, 36.5)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
 radius = 10.6667
 height = 37.4634
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(31, 3)
 
 [node name="enemy" type="RigidBody2D"]
 script = ExtResource("1_md0e3")
@@ -56,5 +59,13 @@ shape = SubResource("CapsuleShape2D_4ra3w")
 [node name="Timer" type="Timer" parent="Leaves"]
 wait_time = 3.0
 
+[node name="head" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
+position = Vector2(0.5, -18.5)
+shape = SubResource("RectangleShape2D_5uy6h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Leaves/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Leaves/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="head" to="." method="_on_head_body_entered"]

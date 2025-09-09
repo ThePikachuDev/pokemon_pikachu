@@ -164,6 +164,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+light_mask = 5
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -187,6 +188,7 @@ frame_progress = 0.09743
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fjrip")
+bus = &"player movement"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 11)

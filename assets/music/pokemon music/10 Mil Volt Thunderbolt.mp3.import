@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1ukbohn5ckri"
+path="res://.godot/imported/10 Mil Volt Thunderbolt.mp3-d7380e7fb087261139c2f89518a39cd4.mp3str"
+
+[deps]
+
+source_file="res://assets/music/pokemon music/10 Mil Volt Thunderbolt.mp3"
+dest_files=["res://.godot/imported/10 Mil Volt Thunderbolt.mp3-d7380e7fb087261139c2f89518a39cd4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

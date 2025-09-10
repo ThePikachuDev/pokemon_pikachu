@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c68ic6fsranbt"]
+[gd_scene load_steps=31 format=3 uid="uid://c68ic6fsranbt"]
 
 [ext_resource type="Texture2D" uid="uid://gel3awam3abd" path="res://assets/my aesprite assets/old assets/questionalabe_side_pikachu.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
@@ -6,10 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://bkv6hghgyhwqy" path="res://assets/placeholders/Male Skin1.png" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://r68qm5wsi487" path="res://assets/music/player-movement /404793__owlstorm__retro-video-game-sfx-jump.wav" id="6_fjrip"]
 [ext_resource type="PackedScene" uid="uid://d02r3mredhtd0" path="res://scenes/my_dialogue_box.tscn" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://blghj7npig6fh" path="res://assets/music/audacity/jump or dash ? .mp3" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
 radius = 15.0
 height = 40.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(80, 171, 80, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(160, 171, 80, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(320, 171, 80, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("3_fjrip")
+region = Rect2(0, 228, 80, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("3_fjrip")
@@ -84,6 +101,23 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}],
+"loop": true,
+"name": &"dash",
 "speed": 5.0
 }, {
 "frames": [],
@@ -181,8 +215,7 @@ texture = ExtResource("1_3vyb7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.02344, 1)
 sprite_frames = SubResource("SpriteFrames_fulsm")
-animation = &"jump"
-frame_progress = 0.09743
+animation = &"dash"
 
 [node name="footstep_audio" type="AudioStreamPlayer2D" parent="."]
 
@@ -192,7 +225,7 @@ bus = &"player movement"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 11)
-zoom = Vector2(3.035, 3.035)
+zoom = Vector2(2.895, 2.895)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
@@ -225,10 +258,13 @@ grow_horizontal = 1
 grow_vertical = 0
 
 [node name="DashDurationTImer" type="Timer" parent="."]
-wait_time = 0.2
 
 [node name="DashEffectTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
+
+[node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fjrip")
+bus = &"player movement"
 
 [connection signal="timeout" from="DashDurationTImer" to="." method="_on_dash_duration_t_imer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvq54fa3rj5hh"
+path="res://.godot/imported/High Jump Kick.mp3-ef928affc194b915db3600950ce95266.mp3str"
+
+[deps]
+
+source_file="res://assets/music/pokemon music/High Jump Kick.mp3"
+dest_files=["res://.godot/imported/High Jump Kick.mp3-ef928affc194b915db3600950ce95266.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

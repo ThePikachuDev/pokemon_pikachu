@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dendqavnuc8gn"
+path="res://.godot/imported/Bolt pickup.mp3-fd6f13d6014db81ed011029b816c4882.mp3str"
+
+[deps]
+
+source_file="res://assets/music/audacity/Bolt pickup.mp3"
+dest_files=["res://.godot/imported/Bolt pickup.mp3-fd6f13d6014db81ed011029b816c4882.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

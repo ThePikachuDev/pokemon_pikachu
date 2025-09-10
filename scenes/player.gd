@@ -1,6 +1,3 @@
-# This script is a self-contained CharacterBody2D controller with enhanced dashing.
-# You can copy and paste this code directly onto a CharacterBody2D node in Godot.
-
 extends CharacterBody2D
 
 # ----------------- Physics Constants -----------------
@@ -16,6 +13,10 @@ const acceleration = 0.1
 
 
 # ----------------- State Variables -----------------
+enum States {IDLE,RUNNING,JUMPING,DASHING}
+var state: States = States.IDLE
+
+
 var is_dashing: bool = false
 var can_dash: bool = true
 var jumps_left: int = 2
@@ -38,17 +39,14 @@ func _ready():
 	dash_duration_timer.wait_time = DASH_DURATION
 	dash_duration_timer.one_shot = true
 	dash_duration_timer.timeout.connect(_on_dash_duration_timer_timeout)
-
+	
 	if not has_node("DashCooldownTimer"):
 		dash_cooldown_timer = Timer.new()
 		add_child(dash_cooldown_timer)
 	dash_cooldown_timer.wait_time = DASH_COOLDOWN
 	dash_cooldown_timer.one_shot = true
 	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timer_timeout)
-	
-	# Connect the footstep audio's finished signal to stop it when the sound is done.
-	# This prevents the sound from looping infinitely.
-	footstep_audio.finished.connect(_on_footstep_audio_finished)
+
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity if not on the floor
@@ -115,7 +113,7 @@ func start_dash():
 	dash_duration_timer.start()
 	dash_cooldown_timer.start()
 
-	#dash_audio.play()
+	dash_audio.play()
 
 # ----------------- Timer Callbacks -----------------
 func _on_dash_duration_timer_timeout():

@@ -2,15 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://ctjrtlj4xuv88" path="res://assets/my aesprite assets/env/platform.png" id="1_ba0x2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
-radius = 9.0
-height = 52.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba0x2"]
+size = Vector2(52, 13)
 
 [node name="Node2D" type="AnimatableBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_nlgqw")
+light_mask = 7
+visibility_layer = 7
+shape = SubResource("RectangleShape2D_ba0x2")
+one_way_collision = true
 
 [node name="MovingPlatform" type="Sprite2D" parent="."]
 visible = false

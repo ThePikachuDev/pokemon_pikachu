@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b71hp7iq6vm08"]
+[gd_scene load_steps=6 format=3 uid="uid://b71hp7iq6vm08"]
 
 [ext_resource type="Texture2D" uid="uid://b7o6vyfv3bxjy" path="res://assets/my aesprite assets/ui/heart.png" id="1_gsnt5"]
 [ext_resource type="Script" uid="uid://52uo7vh3ya1h" path="res://scripts/bolt.gd" id="1_hu2p6"]
+[ext_resource type="AudioStream" uid="uid://dendqavnuc8gn" path="res://assets/music/audacity/Bolt pickup.mp3" id="3_s0h4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsnt5"]
 size = Vector2(22, 27)
@@ -32,5 +33,6 @@ scale = Vector2(0.816408, 0.75)
 sprite_frames = SubResource("SpriteFrames_hu2p6")
 
 [node name="PickUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s0h4p")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

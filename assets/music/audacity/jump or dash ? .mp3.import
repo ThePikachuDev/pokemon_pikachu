@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blghj7npig6fh"
+path="res://.godot/imported/jump or dash ? .mp3-6d8bb3434e2551b9e76ab268953606bd.mp3str"
+
+[deps]
+
+source_file="res://assets/music/audacity/jump or dash ? .mp3"
+dest_files=["res://.godot/imported/jump or dash ? .mp3-6d8bb3434e2551b9e76ab268953606bd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

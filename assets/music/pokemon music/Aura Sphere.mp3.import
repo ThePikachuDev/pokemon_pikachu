@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://eht5ghyxylh6"
+path="res://.godot/imported/Aura Sphere.mp3-1c0b0ec63d2aa18a11608c941be2b81b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/pokemon music/Aura Sphere.mp3"
+dest_files=["res://.godot/imported/Aura Sphere.mp3-1c0b0ec63d2aa18a11608c941be2b81b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

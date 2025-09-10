@@ -1,13 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://dy2msgto4xmnk"]
+[gd_scene load_steps=20 format=3 uid="uid://dy2msgto4xmnk"]
 
 [ext_resource type="Script" uid="uid://b277xdqn4qhb5" path="res://scripts/main_menu.gd" id="1_yreha"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_21et7"]
 [ext_resource type="Texture2D" uid="uid://qxgigsx2r4pp" path="res://assets/my aesprite assets/ui/button1.png" id="2_kij43"]
 [ext_resource type="Texture2D" uid="uid://b5i2nwlfcdkbr" path="res://assets/my aesprite assets/ui/button2.png" id="3_7tr8k"]
-[ext_resource type="AudioStream" uid="uid://bbyy0lce5ldkw" path="res://assets/music/background music/Cozy Serenade (aa619f663fdf4d3b96de6d87471ecf7a).mp3" id="3_21et7"]
 [ext_resource type="Texture2D" uid="uid://dc4n2058wfflq" path="res://assets/my aesprite assets/ui/button3.png" id="4_dsf0y"]
+[ext_resource type="Texture2D" uid="uid://c37063utf2dnp" path="res://assets/main_menu_bg.png" id="5_s8lox"]
 [ext_resource type="AudioStream" uid="uid://d0t2fsaq4h3vk" path="res://assets/music/User interface/computer-mouse-click-352734.mp3" id="6_dsf0y"]
 [ext_resource type="FontFile" uid="uid://cy0vldshwh6ah" path="res://assets/fonts/Monocraft.ttc" id="8_7tr8k"]
+[ext_resource type="AudioStream" uid="uid://fgbp6dk7cpvv" path="res://assets/music/pokemon music/1-01. Opening.mp3" id="8_dsf0y"]
 [ext_resource type="Texture2D" uid="uid://4uxeq3auavlh" path="res://assets/placeholders/forest bg.jpg" id="9_dsf0y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s8lox"]
@@ -30,47 +31,29 @@ animations = [{
 [sub_resource type="Theme" id="Theme_tftr1"]
 /fonts/asdf = null
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ery3r"]
-bg_color = Color(1, 0.929412, 0.831373, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gnvlk"]
+texture = ExtResource("5_s8lox")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsf0y"]
 bg_color = Color(0, 0, 0, 0.639216)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsf0y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnvlk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q8qq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc8rp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur5ik"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8lox"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8lox"]
 content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(8.66354e-07, 0.805929, 0.32926, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wss2h"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnvlk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_secbx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m62ni"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drefm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukp5k"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5q8qq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwek2"]
 content_margin_left = 5.0
@@ -78,14 +61,11 @@ content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
 bg_color = Color(1, 0.351376, 0.477243, 1)
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -113,21 +93,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tftr1")
-theme_override_styles/panel = SubResource("StyleBoxFlat_ery3r")
+theme_override_styles/panel = SubResource("StyleBoxTexture_gnvlk")
 
 [node name="helper_label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -69.0
-offset_right = 555.0
+offset_top = -53.0
+offset_right = 416.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.99558, 0.99558, 0.99558, 1)
 theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("8_7tr8k")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_dsf0y")
 text = "press enter/space to Play 
 press q or Esc key to quit"
@@ -150,14 +130,13 @@ theme_override_constants/separation = 50
 [node name="play_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+focus_mode = 1
+mouse_filter = 1
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_21et7")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxTexture_dsf0y")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_gnvlk")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5q8qq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gc8rp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ur5ik")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8lox")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s8lox")
 text = "Play
 "
@@ -168,19 +147,16 @@ stream = ExtResource("6_dsf0y")
 [node name="quit_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_21et7")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/focus = SubResource("StyleBoxFlat_wss2h")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_secbx")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_m62ni")
-theme_override_styles/hover = SubResource("StyleBoxFlat_drefm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ukp5k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gnvlk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5q8qq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qwek2")
 text = "Quit"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_21et7")
+stream = ExtResource("8_dsf0y")
 autoplay = true
 bus = &"bg Audio"
 
@@ -198,15 +174,17 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -331.0
-offset_top = 80.0
-offset_right = 395.0
-offset_bottom = 145.0
+offset_left = -422.0
+offset_top = 49.0
+offset_right = 422.0
+offset_bottom = 179.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("8_7tr8k")
-theme_override_font_sizes/font_size = 80
+theme_override_colors/font_color = Color(0.996078, 0.823529, 0.239216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1.05888e-06, 0.347726, 0.90809, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_21et7")
+theme_override_font_sizes/font_size = 128
 text = "Pokemon Pikachu  "
 
 [node name="ForestBg" type="Sprite2D" parent="."]
@@ -215,13 +193,6 @@ z_index = -2
 position = Vector2(568, 322)
 scale = Vector2(1.60598, 1.73913)
 texture = ExtResource("9_dsf0y")
-
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 113.0
-offset_top = -158.0
-offset_right = 448.0
-offset_bottom = -36.0
 
 [connection signal="pressed" from="VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

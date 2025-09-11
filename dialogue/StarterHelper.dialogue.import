@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dvo7k5sfmo6q0"
+path="res://.godot/imported/StarterHelper.dialogue-e896ff33f8365fca944ee03adf21eea3.tres"
+
+[deps]
+
+source_file="res://dialogue/StarterHelper.dialogue"
+dest_files=["res://.godot/imported/StarterHelper.dialogue-e896ff33f8365fca944ee03adf21eea3.tres"]
+
+[params]
+
+defaults=true

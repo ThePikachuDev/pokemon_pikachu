@@ -4,48 +4,57 @@ extends CharacterBody2D
 const GRAVITY = 980.0
 const WALK_SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-
-const DASH_IMPULSE_SPEED = 800.0
-const DASH_DURATION = 0.15
-const DASH_COOLDOWN = 0.5
-const AIR_DASH_VERTICAL_IMPULSE = -50.0
+#
+#const DASH_IMPULSE_SPEED = 800.0
+#const DASH_DURATION = 0.15
+#const DASH_COOLDOWN = 0.5
+#const AIR_DASH_VERTICAL_IMPULSE = -50.0
 const acceleration = 0.1
 
+@export var dash_speed = 700.0
+@export var dash_max_distance = 300.0
+@export var dash_curve : Curve 
+@export var dash_cooldown = 1.0 
 
 # ----------------- State Variables -----------------
 enum States {IDLE,RUNNING,JUMPING,DASHING}
 var state: States = States.IDLE
 
-
+#
 var is_dashing: bool = false
-var can_dash: bool = true
+var dash_start_postion = 0 
+var dash_direction = 0
+var dash_timer = 0
+
+#var can_dash: bool = true
 var jumps_left: int = 2
 
 # ----------------- Node References -----------------
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var dash_duration_timer: Timer = $DashDurationTImer
-@onready var dash_cooldown_timer: Timer = $DashEffectTimer
+#@onready var dash_duration_timer: Timer = $DashDurationTImer
+#@onready var dash_cooldown_timer: Timer = $DashEffectTimer
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 @onready var dash_audio: AudioStreamPlayer2D = $DashAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
 
 # ----------------- Main Functions -----------------
 func _ready():
+	pass
 	# Timers are created dynamically if they don't exist, for "out of the box" functionality.
 	# We'll just create them on the fly to avoid relying on the scene tree.
-	if not has_node("DashDurationTimer"):
-		dash_duration_timer = Timer.new()
-		add_child(dash_duration_timer)
-	dash_duration_timer.wait_time = DASH_DURATION
-	dash_duration_timer.one_shot = true
-	dash_duration_timer.timeout.connect(_on_dash_duration_timer_timeout)
+	#if not has_node("DashDurationTimer"):
+		#dash_duration_timer = Timer.new()
+		#add_child(dash_duration_timer)
+	#dash_duration_timer.wait_time = DASH_DURATION
+	#dash_duration_timer.one_shot = true
+	#dash_duration_timer.timeout.connect(_on_dash_duration_timer_timeout)
 	
-	if not has_node("DashCooldownTimer"):
-		dash_cooldown_timer = Timer.new()
-		add_child(dash_cooldown_timer)
-	dash_cooldown_timer.wait_time = DASH_COOLDOWN
-	dash_cooldown_timer.one_shot = true
-	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timer_timeout)
+	#if not has_node("DashCooldownTimer"):
+		#dash_cooldown_timer = Timer.new()
+		#add_child(dash_cooldown_timer)
+	#dash_cooldown_timer.wait_time = DASH_COOLDOWN
+	#dash_cooldown_timer.one_shot = true
+	#dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timer_timeout)
 
 
 func _physics_process(delta: float) -> void:
@@ -55,25 +64,52 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Reset jump and dash on the floor
 		jumps_left = 2
-		can_dash = true
+		#can_dash = true
 
 	# Handle input for jumping and dashing
 	handle_input()
 	
+	
+	
+	
 	# Apply dash physics or normal movement
-	if is_dashing:
-		# Keep horizontal velocity constant during the dash
-		velocity.y = 0 
+	#if is_dashing:
+		## Keep horizontal velocity constant during the dash
+		#velocity.y = 0 
+	#else:
+		## Horizontal movement
+	var direction = Input.get_axis("left", "right")
+	if direction:
+		velocity.x = direction * WALK_SPEED
 	else:
-		# Horizontal movement
-		var direction = Input.get_axis("left", "right")
-		if direction:
-			velocity.x = direction * WALK_SPEED
+		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+	
+	
+		# Dash
+	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
+		is_dashing = true
+		dash_start_postion = position.x
+		dash_direction = direction
+		dash_timer = dash_cooldown
+		start_dash()
+	
+	#perform dash
+	if is_dashing:
+		var current_distance = abs(position.x - dash_start_postion)
+		if current_distance >= dash_max_distance or is_on_wall():
+			is_dashing = false
 		else:
-			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-			
+			velocity.x = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
+			velocity.y = 0
+	
+	# reduce dash timer 
+	if dash_timer > 0:
+		dash_timer -= delta
+	
+	
 	# Update sprite direction and animation, including footstep audio logic
 	update_animation_and_direction()
+	
 	
 	move_and_slide()
 
@@ -87,40 +123,38 @@ func handle_input():
 		footstep_audio.stop()
 		jump_audio.play()
 
-	# Dash
-	if Input.is_action_just_pressed("dash") and can_dash:
-		start_dash()
+
 
 func start_dash():
-	is_dashing = true
-	can_dash = false
+	#is_dashing = true
+	#can_dash = false
 	
-	# Stop footsteps immediately when dashing
-	if footstep_audio.playing:
-		footstep_audio.stop()
+	## Stop footsteps immediately when dashing
+	#if footstep_audio.playing:
+		#footstep_audio.stop()
 	
-	var dash_direction = Input.get_axis("left", "right")
-	if dash_direction == 0:
-		dash_direction = 1 if not animated_sprite.flip_h else -1
-	
+	#var dash_direction = Input.get_axis("left", "right")
+	#if dash_direction == 0:
+		#dash_direction = 1 if not animated_sprite.flip_h else -1
+	#
 	# Set a powerful, instantaneous horizontal velocity
-	velocity.x = dash_direction * DASH_IMPULSE_SPEED
+	#velocity.x = dash_direction * DASH_IMPULSE_SPEED
 	
 	# Add a slight vertical boost for a dynamic air dash feel
-	if not is_on_floor():
-		velocity.y = AIR_DASH_VERTICAL_IMPULSE
-
-	dash_duration_timer.start()
-	dash_cooldown_timer.start()
+	#if not is_on_floor():
+		#velocity.y = AIR_DASH_VERTICAL_IMPULSE
+#
+	#dash_duration_timer.start()
+	#dash_cooldown_timer.start()
 
 	dash_audio.play()
 
 # ----------------- Timer Callbacks -----------------
-func _on_dash_duration_timer_timeout():
-	is_dashing = false
-
-func _on_dash_cooldown_timer_timeout():
-	can_dash = true
+#func _on_dash_duration_timer_timeout():
+	#is_dashing = false
+#
+#func _on_dash_cooldown_timer_timeout():
+	#can_dash = true
 
 # ----------------- Animation and Direction -----------------
 func update_animation_and_direction():

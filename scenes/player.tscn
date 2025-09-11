@@ -1,12 +1,15 @@
 [gd_scene load_steps=31 format=3 uid="uid://c68ic6fsranbt"]
 
-[ext_resource type="Texture2D" uid="uid://gel3awam3abd" path="res://assets/my aesprite assets/old assets/questionalabe_side_pikachu.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://32m17wqdtohs" path="res://assets/my aesprite assets/pikachu/pikachu_all_sprites_fr.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bkv6hghgyhwqy" path="res://assets/placeholders/Male Skin1.png" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://r68qm5wsi487" path="res://assets/music/player-movement /404793__owlstorm__retro-video-game-sfx-jump.wav" id="6_fjrip"]
 [ext_resource type="PackedScene" uid="uid://d02r3mredhtd0" path="res://scenes/my_dialogue_box.tscn" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://blghj7npig6fh" path="res://assets/music/audacity/jump or dash ? .mp3" id="7_fjrip"]
+
+[sub_resource type="Curve" id="Curve_tuyoq"]
+_data = [Vector2(0, 0.982736), 0.0, 0.0, 0, 0, Vector2(0.975169, 0.692943), -0.860118, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
 radius = 15.0
@@ -200,17 +203,12 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 light_mask = 5
 script = ExtResource("1_g2els")
+dash_curve = SubResource("Curve_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 11)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f1ej7")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-4.76837e-07, 0)
-scale = Vector2(0.398438, 0.398438)
-texture = ExtResource("1_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.02344, 1)
@@ -226,8 +224,11 @@ bus = &"player movement"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 11)
 zoom = Vector2(2.895, 2.895)
+process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

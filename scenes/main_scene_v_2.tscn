@@ -577,6 +577,15 @@ offset_right = 3960.0
 offset_bottom = 259.0
 text = "jump on enemies head to kill them."
 
+[node name="Label6" type="Label" parent="labels"]
+offset_left = 3351.0
+offset_top = 26.0
+offset_right = 3574.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 14
+text = "wait a sec here : )
+till platform comes down"
+
 [node name="Label5" type="Label" parent="labels"]
 offset_left = 4298.0
 offset_top = -561.0

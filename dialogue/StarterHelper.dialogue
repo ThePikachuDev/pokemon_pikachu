@@ -1,0 +1,11 @@
+~ something
+Nathan: [[Hi|vaj|kida]], this is some dialogue.
+Nathan: Here are some choices.
+- First fadla
+	Nathan: You picked the first one.
+- Second fadla
+	Nathan: You picked the second one.
+- ferto fadla => something
+- na fad conversation => END
+Nathan: For more information see the online documentation.
+=> END

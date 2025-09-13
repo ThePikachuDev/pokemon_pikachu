@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b8o483r53rcdi"]
+[gd_scene load_steps=33 format=4 uid="uid://b8o483r53rcdi"]
 
 [ext_resource type="Texture2D" uid="uid://c8b4tktphbeqp" path="res://assets/my aesprite assets/env/grass_tiles.png" id="1_548ac"]
 [ext_resource type="Texture2D" uid="uid://d0v1v55drciay" path="res://assets/my aesprite assets/env/env_grass.png" id="2_7cvoq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://lxtivvonujh2" path="res://scenes/enemy.tscn" id="6_t6h7r"]
 [ext_resource type="AudioStream" uid="uid://bsnxg6gfbv4dt" path="res://assets/music/pokemon music/11 - Juniper Pokémon Lab.mp3" id="6_woirg"]
 [ext_resource type="Script" uid="uid://blgi481am80eg" path="res://scenes/kill_zone_below_world.gd" id="7_14gs7"]
+[ext_resource type="FontFile" uid="uid://cy0vldshwh6ah" path="res://assets/fonts/Monocraft.ttc" id="9_gsf78"]
 [ext_resource type="Texture2D" uid="uid://bwnahqj8ufnoq" path="res://assets/parallax-bg/1.png" id="9_ymfkd"]
 [ext_resource type="Texture2D" uid="uid://2w3b1vfgwvvv" path="res://assets/parallax-bg/2.png" id="10_r1uqj"]
 [ext_resource type="Texture2D" uid="uid://8lkrh1vboebj" path="res://assets/parallax-bg/3.png" id="11_pfs8w"]
@@ -501,15 +502,27 @@ bus = &"bg Audio"
 
 [node name="labels" type="Node" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="labels"]
-offset_left = -125.0
-offset_top = 474.0
-offset_right = 185.0
-offset_bottom = 518.0
+[node name="RichTextLabel6" type="RichTextLabel" parent="labels"]
+offset_left = 223.0
+offset_top = 279.0
+offset_right = 533.0
+offset_bottom = 323.0
 theme = SubResource("Theme_t6h7r")
 theme_override_fonts/normal_font = ExtResource("5_h5r37")
 bbcode_enabled = true
-text = "use [font_size=24]WASD[/font_size] or [font_size=24]Arrow Keys[/font_size] to Move"
+text = "there's a known bug that if you spam the h key , it spawns that many dialogue boxes , it'll be fixed soon , so please don't mind that  for now"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="labels"]
+offset_left = -101.0
+offset_top = 463.0
+offset_right = 209.0
+offset_bottom = 507.0
+theme = SubResource("Theme_t6h7r")
+theme_override_fonts/normal_font = ExtResource("5_h5r37")
+bbcode_enabled = true
+text = "Press [font_size=24]h[/font_size] key to spawn a helper dialogue
+Press [font_size=24]Space/Enter[/font_size] to skip them"
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="labels"]
@@ -578,11 +591,12 @@ offset_bottom = 259.0
 text = "jump on enemies head to kill them."
 
 [node name="Label6" type="Label" parent="labels"]
-offset_left = 3351.0
-offset_top = 26.0
-offset_right = 3574.0
-offset_bottom = 94.0
-theme_override_font_sizes/font_size = 14
+offset_left = 3261.0
+offset_top = -51.0
+offset_right = 3517.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("9_gsf78")
+theme_override_font_sizes/font_size = 16
 text = "wait a sec here : )
 till platform comes down"
 
@@ -609,7 +623,7 @@ motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1152, 630)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(602, 333)
+position = Vector2(602, 291)
 scale = Vector2(2.08333, 1.97531)
 texture = ExtResource("9_ymfkd")
 
@@ -686,6 +700,15 @@ position = Vector2(5397, -343)
 
 [node name="bolt10" parent="bolts" instance=ExtResource("15_lsfj6")]
 position = Vector2(4915, -16)
+
+[node name="bolt18" parent="bolts" instance=ExtResource("15_lsfj6")]
+position = Vector2(3845, 145)
+
+[node name="bolt19" parent="bolts" instance=ExtResource("15_lsfj6")]
+position = Vector2(4059, -230)
+
+[node name="bolt20" parent="bolts" instance=ExtResource("15_lsfj6")]
+position = Vector2(4781, -238)
 
 [node name="bolt11" parent="bolts" instance=ExtResource("15_lsfj6")]
 position = Vector2(5477, -31)

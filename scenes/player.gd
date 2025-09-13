@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
-# ----------------- Physics Constants -----------------
+
+@onready var game_manager = %GameManager
+
+
 const GRAVITY = 980.0
 const WALK_SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-#
-#const DASH_IMPULSE_SPEED = 800.0
-#const DASH_DURATION = 0.15
-#const DASH_COOLDOWN = 0.5
-#const AIR_DASH_VERTICAL_IMPULSE = -50.0
 const acceleration = 0.1
 
 @export var dash_speed = 700.0
@@ -16,68 +14,42 @@ const acceleration = 0.1
 @export var dash_curve : Curve 
 @export var dash_cooldown = 1.0 
 
-# ----------------- State Variables -----------------
-enum States {IDLE,RUNNING,JUMPING,DASHING}
-var state: States = States.IDLE
-
-#
 var is_dashing: bool = false
 var dash_start_postion = 0 
 var dash_direction = 0
 var dash_timer = 0
 
 #var can_dash: bool = true
-var jumps_left: int = 2
 
 # ----------------- Node References -----------------
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-#@onready var dash_duration_timer: Timer = $DashDurationTImer
-#@onready var dash_cooldown_timer: Timer = $DashEffectTimer
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 @onready var dash_audio: AudioStreamPlayer2D = $DashAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
 
-# ----------------- Main Functions -----------------
-func _ready():
-	pass
-	# Timers are created dynamically if they don't exist, for "out of the box" functionality.
-	# We'll just create them on the fly to avoid relying on the scene tree.
-	#if not has_node("DashDurationTimer"):
-		#dash_duration_timer = Timer.new()
-		#add_child(dash_duration_timer)
-	#dash_duration_timer.wait_time = DASH_DURATION
-	#dash_duration_timer.one_shot = true
-	#dash_duration_timer.timeout.connect(_on_dash_duration_timer_timeout)
-	
-	#if not has_node("DashCooldownTimer"):
-		#dash_cooldown_timer = Timer.new()
-		#add_child(dash_cooldown_timer)
-	#dash_cooldown_timer.wait_time = DASH_COOLDOWN
-	#dash_cooldown_timer.one_shot = true
-	#dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timer_timeout)
 
+@export var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
+@export var dialogue_start: String = "start"
+
+var jumps_left: int 
+
+
+func _ready():
+	jumps_left = 2 if game_manager.can_double_jump else 1
+	pass
 
 func _physics_process(delta: float) -> void:
-	# Apply gravity if not on the floor
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	else:
-		# Reset jump and dash on the floor
-		jumps_left = 2
-		#can_dash = true
-
-	# Handle input for jumping and dashing
+		jumps_left = 2 if game_manager.can_double_jump else 1
+	
 	handle_input()
 	
+	if Input.is_action_just_pressed("dialogue"):
+		game_manager.play_dialogue(dialogue_resource,dialogue_start)
+		pass
 	
-	
-	
-	# Apply dash physics or normal movement
-	#if is_dashing:
-		## Keep horizontal velocity constant during the dash
-		#velocity.y = 0 
-	#else:
-		## Horizontal movement
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * WALK_SPEED
@@ -119,34 +91,12 @@ func handle_input():
 	if Input.is_action_just_pressed("jump") and jumps_left > 0:
 		velocity.y = JUMP_VELOCITY
 		jumps_left -= 1
-		# Uncomment this line if you have a JumpAudio node
 		footstep_audio.stop()
 		jump_audio.play()
-
+		print(game_manager.bolts)
 
 
 func start_dash():
-	#is_dashing = true
-	#can_dash = false
-	
-	## Stop footsteps immediately when dashing
-	#if footstep_audio.playing:
-		#footstep_audio.stop()
-	
-	#var dash_direction = Input.get_axis("left", "right")
-	#if dash_direction == 0:
-		#dash_direction = 1 if not animated_sprite.flip_h else -1
-	#
-	# Set a powerful, instantaneous horizontal velocity
-	#velocity.x = dash_direction * DASH_IMPULSE_SPEED
-	
-	# Add a slight vertical boost for a dynamic air dash feel
-	#if not is_on_floor():
-		#velocity.y = AIR_DASH_VERTICAL_IMPULSE
-#
-	#dash_duration_timer.start()
-	#dash_cooldown_timer.start()
-
 	dash_audio.play()
 
 # ----------------- Timer Callbacks -----------------

@@ -1,11 +1,15 @@
-~ something
-Nathan: [[Hi|vaj|kida]], this is some dialogue.
-Nathan: Here are some choices.
-- First fadla
-	Nathan: You picked the first one.
-- Second fadla
-	Nathan: You picked the second one.
-- ferto fadla => something
-- na fad conversation => END
-Nathan: For more information see the online documentation.
+
+
+~ start
+detective: Detective Pikachu reporting, i'll guide you through some basics. Press enter key to continue
+detective: you can move with WASD or arrow keys and jump with space/up_arrow/w key
+detective: go forward and collect some bolts to unlock abilities 
+=> END
+
+~ firstBolt
+detective: these are bolts , collect 4 more bolts to unlock double jump 
+=> END
+
+~ secondBolt
+detective: congrats! you just unlocked the double jump ability,  now press space/upArrow/w twice to double jump
 => END

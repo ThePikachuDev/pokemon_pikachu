@@ -10,10 +10,12 @@ extends Node2D
 
 
 func _input(event: InputEvent) -> void:
+	
 	pass	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	#MyDialougueManager.send_dialog(lines,"res://assets/my aesprite assets/pikachu pfp.png" )
 	#MyDialougueManager.dialouge_running.emit()
 	pass # Replace with function body.

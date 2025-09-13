@@ -223,7 +223,7 @@ bus = &"player movement"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 11)
-zoom = Vector2(2.895, 2.895)
+zoom = Vector2(2.83, 2.83)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true

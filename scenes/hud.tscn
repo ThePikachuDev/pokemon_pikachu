@@ -1,8 +1,115 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbitvcig2bjpk"]
+[gd_scene load_steps=20 format=3 uid="uid://bbitvcig2bjpk"]
 
 [ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://cbwj2ku06d12" path="res://assets/my aesprite assets/ui/red_heart.png" id="4_6fi6k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo2fv"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_047uy"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pdws"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd3ao"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i1j5"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mphia"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m4u7"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apjy4"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n1hp"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eld54"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3swnk"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkknv"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxdf7"]
+atlas = ExtResource("4_6fi6k")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5357l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fi6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo2fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_047uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pdws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd3ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i1j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mphia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m4u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apjy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n1hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eld54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3swnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkknv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxdf7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_5ysmq")
@@ -11,6 +118,8 @@ script = ExtResource("1_5ysmq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -827.0
+offset_bottom = -563.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_ahhtf")
@@ -18,3 +127,33 @@ theme_override_fonts/bold_font = ExtResource("2_oo0fn")
 bbcode_enabled = true
 text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : 3 [/font]
 "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 48.0
+offset_top = 86.0
+offset_right = 176.0
+offset_bottom = 126.0
+
+[node name="heart" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart"]
+scale = Vector2(1.845, 1.845)
+sprite_frames = SubResource("SpriteFrames_5357l")
+
+[node name="heart2" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart2"]
+scale = Vector2(1.845, 1.845)
+sprite_frames = SubResource("SpriteFrames_5357l")
+
+[node name="heart3" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart3"]
+scale = Vector2(1.845, 1.845)
+sprite_frames = SubResource("SpriteFrames_5357l")

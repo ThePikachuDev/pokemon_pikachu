@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dy2msgto4xmnk"]
+[gd_scene load_steps=21 format=3 uid="uid://dy2msgto4xmnk"]
 
 [ext_resource type="Script" uid="uid://b277xdqn4qhb5" path="res://scripts/main_menu.gd" id="1_yreha"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_21et7"]
@@ -10,7 +10,6 @@
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="7_gnvlk"]
 [ext_resource type="FontFile" uid="uid://cy0vldshwh6ah" path="res://assets/fonts/Monocraft.ttc" id="8_7tr8k"]
 [ext_resource type="AudioStream" uid="uid://fgbp6dk7cpvv" path="res://assets/music/pokemon music/1-01. Opening.mp3" id="8_dsf0y"]
-[ext_resource type="Texture2D" uid="uid://4uxeq3auavlh" path="res://assets/placeholders/forest bg.jpg" id="9_dsf0y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s8lox"]
 animations = [{
@@ -193,13 +192,6 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_21et7")
 theme_override_font_sizes/font_size = 128
 text = "Pokemon Pikachu  "
-
-[node name="ForestBg" type="Sprite2D" parent="."]
-visible = false
-z_index = -2
-position = Vector2(568, 322)
-scale = Vector2(1.60598, 1.73913)
-texture = ExtResource("9_dsf0y")
 
 [connection signal="pressed" from="VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

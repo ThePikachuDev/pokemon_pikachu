@@ -9,6 +9,5 @@ func _on_body_entered(body: Node2D) -> void:
 		pick_up_sound.play()
 		await pick_up_sound.finished
 		game_manager.add_bolt()
-		print(self)
 		self.queue_free()
 		

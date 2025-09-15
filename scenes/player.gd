@@ -19,6 +19,11 @@ var dash_start_postion = 0
 var dash_direction = 0
 var dash_timer = 0
 
+
+var heart_list : Array[TextureRect]
+var current_health = 3
+const MAX_HEALTH = 3
+
 #var can_dash: bool = true
 
 # ----------------- Node References -----------------
@@ -35,6 +40,7 @@ var jumps_left: int
 
 
 func _ready():
+	game_manager.load_hearts()
 	jumps_left = 2 if game_manager.can_double_jump else 1
 	pass
 

@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://d33uouutmckap" path="res://assets/fonts/Pixel Game Extrude.otf" id="3_267us"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af48w"]
-bg_color = Color(0.43823, 0.521087, 0.375908, 1)
+bg_color = Color(0.427621, 0.524325, 0.376423, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -1860,10 +1860,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 11
 theme_override_fonts/normal_font = ExtResource("2_0hx7h")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
-text = "Dialogue..."
+text = "Dialogue...a sdf asd fas as df a sd fa sd fa sdf a sdf as df as df asd f sd fsd fs "
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true

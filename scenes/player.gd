@@ -19,6 +19,8 @@ var dash_start_postion = 0
 var dash_direction = 0
 var dash_timer = 0
 
+var knockback: Vector2 = Vector2.ZERO
+var knockback_timer: float = 0.0
 
 var heart_list : Array[TextureRect]
 var current_health = 3
@@ -57,11 +59,18 @@ func _physics_process(delta: float) -> void:
 		pass
 	
 	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * WALK_SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 	
+	if knockback_timer > 0.0:
+		velocity = knockback
+		knockback_timer -= delta
+		if knockback_timer <= 0.0:
+			knockback = Vector2.ZERO
+	else:
+		if direction:
+			velocity.x = direction * WALK_SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+		
 	
 		# Dash
 	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
@@ -100,6 +109,11 @@ func handle_input():
 		footstep_audio.stop()
 		jump_audio.play()
 		print(game_manager.bolts)
+
+func apply_knockback(direction: Vector2, force: float , knockback_duration: float) -> void:
+	knockback = direction * force
+	knockback_timer = knockback_duration
+	pass
 
 
 func start_dash():
@@ -144,5 +158,6 @@ func _on_footstep_audio_finished():
 
 
 func _on_kill_zone_below_world_body_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
+	await game_manager.take_damage()
+	position = Vector2(0,0)
 	pass # Replace with function body.

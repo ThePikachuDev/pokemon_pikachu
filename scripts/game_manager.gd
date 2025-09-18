@@ -20,7 +20,18 @@ func load_hearts():
 
 func take_damage():
 	if health > 0:
+		print(hearts_list[health -1].get_child(0))
+		var heart_parent = hearts_list[health -1]
+		var animated_sprite = heart_parent.get_child(0)
+		
+		# Check if the child is a valid AnimatedSprite2D and then play the animation
+		if animated_sprite is AnimatedSprite2D:
+			animated_sprite.play("damage")
+			# You may want to await the animation's finish signal, not the play function itself
+			await animated_sprite.animation_finished
+			
 		health -= 1
+		
 		#i'll play auido over here
 		update_heart_display()
 	

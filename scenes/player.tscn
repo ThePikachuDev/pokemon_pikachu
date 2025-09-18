@@ -182,10 +182,11 @@ frame = 4
 frame_progress = 0.510126
 
 [node name="footstep_audio" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fjrip")
-bus = &"player movement"
+bus = &"sfx"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 11)
@@ -231,7 +232,7 @@ wait_time = 0.5
 
 [node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fjrip")
-bus = &"player movement"
+bus = &"sfx"
 
 [connection signal="timeout" from="DashDurationTImer" to="." method="_on_dash_duration_t_imer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]

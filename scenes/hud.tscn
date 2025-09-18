@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbitvcig2bjpk"]
+[gd_scene load_steps=21 format=3 uid="uid://bbitvcig2bjpk"]
 
 [ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
@@ -106,10 +106,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uxdf7")
 }],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+"loop": false,
+"name": &"damage",
+"speed": 30.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fi6k"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.37924, 0.653881, 0.886943, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_5ysmq")
@@ -141,6 +148,7 @@ layout_mode = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart"]
 scale = Vector2(1.845, 1.845)
 sprite_frames = SubResource("SpriteFrames_5357l")
+animation = &"damage"
 
 [node name="heart2" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -149,6 +157,7 @@ layout_mode = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart2"]
 scale = Vector2(1.845, 1.845)
 sprite_frames = SubResource("SpriteFrames_5357l")
+animation = &"damage"
 
 [node name="heart3" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -157,3 +166,21 @@ layout_mode = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart3"]
 scale = Vector2(1.845, 1.845)
 sprite_frames = SubResource("SpriteFrames_5357l")
+animation = &"damage"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -301.0
+offset_bottom = 374.0
+grow_horizontal = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_6fi6k")
+bbcode_enabled = true
+text = "hy! this is a notificaiotn !!"
+fit_content = true

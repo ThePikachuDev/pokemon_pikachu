@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckr81devamc1d"]
+
+[ext_resource type="Script" uid="uid://v3g8ne5h2aiq" path="res://scripts/proc_gen_world.gd" id="1_y6k6u"]
+
+[sub_resource type="TileSet" id="TileSet_y6k6u"]
+
+[node name="proc_gen_world" type="Node2D"]
+script = ExtResource("1_y6k6u")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_y6k6u")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dy2msgto4xmnk"]
+[gd_scene load_steps=22 format=3 uid="uid://dy2msgto4xmnk"]
 
 [ext_resource type="Script" uid="uid://b277xdqn4qhb5" path="res://scripts/main_menu.gd" id="1_yreha"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_21et7"]
@@ -46,31 +46,61 @@ Button/fonts/font = ExtResource("7_gnvlk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8lox"]
 content_margin_left = 5.0
-content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(8.66354e-07, 0.805929, 0.32926, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+bg_color = Color(0.356935, 0.748272, 0.306801, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.418184, 0.758537, 0.245683, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnvlk"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.396073, 0.596283, 0.93941, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.305838, 0.734329, 0.947097, 0.6)
+shadow_size = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnvlk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5q8qq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwek2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q8qq"]
 content_margin_left = 5.0
-content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(1, 0.351376, 0.477243, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+bg_color = Color(0.957658, 0.382925, 0.399829, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.44, 0.44, 0.6)
+shadow_size = 5
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -150,6 +180,14 @@ text = "Play
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VBoxContainer/play_button"]
 stream = ExtResource("6_dsf0y")
 
+[node name="options_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_21et7")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_gnvlk")
+text = "Options"
+
 [node name="quit_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -158,13 +196,12 @@ theme_override_fonts/font = ExtResource("2_21et7")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gnvlk")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_5q8qq")
-theme_override_styles/normal = SubResource("StyleBoxFlat_qwek2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5q8qq")
 text = "Quit"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_dsf0y")
 autoplay = true
-bus = &"bg Audio"
 
 [node name="quit_button_click_animation2" type="AnimatedSprite2D" parent="."]
 visible = false

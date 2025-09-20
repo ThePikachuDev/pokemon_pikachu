@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbitvcig2bjpk"]
+[gd_scene load_steps=30 format=3 uid="uid://bbitvcig2bjpk"]
 
 [ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="2_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://cbwj2ku06d12" path="res://assets/my aesprite assets/ui/red_heart.png" id="4_6fi6k"]
+[ext_resource type="PackedScene" uid="uid://bsddn2mm0my76" path="res://scenes/retro_shader.tscn" id="6_5pdws"]
+[ext_resource type="PackedScene" uid="uid://db42vxe47y3kg" path="res://scenes/options_page.tscn" id="6_047uy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
 atlas = ExtResource("4_6fi6k")
@@ -118,6 +120,59 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.37924, 0.653881, 0.886943, 1)
 
+[sub_resource type="Theme" id="Theme_uo2fv"]
+Button/colors/font_color = Color(0.993372, 0.993372, 0.993372, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_ahhtf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_047uy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pdws"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.356935, 0.748272, 0.306801, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+shadow_color = Color(0.418184, 0.758537, 0.245683, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd3ao"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.396073, 0.596283, 0.93941, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+shadow_color = Color(0.305838, 0.734329, 0.947097, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0i1j5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mphia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m4u7"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.957658, 0.382925, 0.399829, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+shadow_color = Color(1, 0.44, 0.44, 0.6)
+shadow_size = 5
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_5ysmq")
 
@@ -184,3 +239,87 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6fi6k")
 bbcode_enabled = true
 text = "hy! this is a notificaiotn !!"
 fit_content = true
+
+[node name="PauseMenu" type="Panel" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -203.0
+offset_top = 68.0
+offset_right = 259.0
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 112
+text = "Game Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -138.5
+offset_right = 120.5
+offset_bottom = 138.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="resume_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 1
+mouse_filter = 1
+theme = SubResource("Theme_uo2fv")
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_047uy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5pdws")
+text = "Resume
+"
+
+[node name="options_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_hd3ao")
+text = "Options"
+
+[node name="quit_button" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0i1j5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mphia")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0m4u7")
+text = "Quit"
+
+[node name="OptionsPage" parent="." node_paths=PackedStringArray("retro_shader") instance=ExtResource("6_047uy")]
+process_mode = 3
+visible = false
+mouse_filter = 1
+retro_shader = NodePath("../RetroShader")
+
+[node name="RetroShader" parent="." instance=ExtResource("6_5pdws")]
+process_mode = 3
+visible = false
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/options_button" to="." method="_on_options_button_pressed"]

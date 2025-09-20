@@ -1,25 +1,24 @@
 [gd_scene load_steps=10 format=3 uid="uid://db42vxe47y3kg"]
 
 [ext_resource type="Texture2D" uid="uid://bjsdvncsa8585" path="res://assets/my aesprite assets/ui/pokeball.png" id="1_24fkt"]
-[ext_resource type="Texture2D" uid="uid://crqp1sp1jjryj" path="res://assets/my aesprite assets/ui/grabber_icon_normal.png" id="1_ln188"]
+[ext_resource type="Script" uid="uid://bogjgp5gq82c7" path="res://scenes/options_page.gd" id="1_nwt33"]
 [ext_resource type="Script" uid="uid://iy4jvddgnjkn" path="res://scripts/h_slider.gd" id="2_o6tea"]
-[ext_resource type="AudioStream" uid="uid://bsnxg6gfbv4dt" path="res://assets/music/pokemon music/11 - Juniper Pokémon Lab.mp3" id="3_clmdq"]
-[ext_resource type="Texture2D" uid="uid://1tn04gsqaehy" path="res://assets/my aesprite assets/env/gastly.png" id="5_nwt33"]
+[ext_resource type="PackedScene" uid="uid://bsddn2mm0my76" path="res://scenes/retro_shader.tscn" id="4_knxmk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt4qn"]
-bg_color = Color(0.22, 0.22, 0.22, 0.427451)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rt4qn"]
 font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln188"]
-bg_color = Color(0.313354, 0.688271, 0.469245, 1)
+bg_color = Color(0.298698, 0.701494, 0.304536, 1)
 border_width_left = 150
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.781232, 0.852311, 0.638818, 1)
+border_color = Color(0.900985, 0.417206, 0.229283, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -38,13 +37,29 @@ expand_margin_top = 10.0
 expand_margin_right = 17.0
 expand_margin_bottom = 10.0
 
-[node name="OptionsPage" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clmdq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.356935, 0.748272, 0.306801, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+shadow_color = Color(0.418184, 0.758537, 0.245683, 0.6)
+
+[node name="OptionsPage" type="Control" node_paths=PackedStringArray("retro_shader")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nwt33")
+retro_shader = NodePath("RetroShader")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -59,13 +74,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rt4qn")
 
-[node name="Control" type="Control" parent="Panel"]
+[node name="volume_slider" type="Control" parent="Panel"]
 anchors_preset = 0
 offset_top = 32.0
 offset_right = 811.0
 offset_bottom = 87.0
 
-[node name="Label" type="Label" parent="Panel/Control"]
+[node name="Label" type="Label" parent="Panel/volume_slider"]
 z_index = 3
 layout_mode = 2
 offset_left = 109.0
@@ -77,14 +92,16 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "music"
 label_settings = SubResource("LabelSettings_rt4qn")
 
-[node name="HSlider" type="HSlider" parent="Panel/Control"]
+[node name="HSlider" type="HSlider" parent="Panel/volume_slider"]
 layout_mode = 2
 offset_left = 219.0
 offset_top = 16.0
 offset_right = 661.0
 offset_bottom = 55.0
 theme_override_icons/grabber = ExtResource("1_24fkt")
-theme_override_icons/grabber_highlight = ExtResource("1_ln188")
+theme_override_icons/grabber_highlight = ExtResource("1_24fkt")
+theme_override_icons/grabber_disabled = ExtResource("1_24fkt")
+theme_override_icons/tick = ExtResource("1_24fkt")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ln188")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_o6tea")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_o6tea")
@@ -93,11 +110,76 @@ step = 0.001
 script = ExtResource("2_o6tea")
 bus_name = "music"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_clmdq")
-autoplay = true
-bus = &"music"
+[node name="volume_slider2" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_top = 94.0
+offset_right = 811.0
+offset_bottom = 149.0
 
-[node name="Gastly" type="Sprite2D" parent="."]
-position = Vector2(340, 234)
-texture = ExtResource("5_nwt33")
+[node name="Label" type="Label" parent="Panel/volume_slider2"]
+z_index = 3
+layout_mode = 2
+offset_left = 119.0
+offset_top = 14.0
+offset_right = 257.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "sfx"
+label_settings = SubResource("LabelSettings_rt4qn")
+
+[node name="HSlider" type="HSlider" parent="Panel/volume_slider2"]
+layout_mode = 2
+offset_left = 219.0
+offset_top = 16.0
+offset_right = 661.0
+offset_bottom = 55.0
+theme_override_icons/grabber = ExtResource("1_24fkt")
+theme_override_icons/grabber_highlight = ExtResource("1_24fkt")
+theme_override_icons/grabber_disabled = ExtResource("1_24fkt")
+theme_override_icons/tick = ExtResource("1_24fkt")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ln188")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_o6tea")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_o6tea")
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_o6tea")
+bus_name = "sfx"
+
+[node name="RetroBoxContainer" type="Panel" parent="Panel"]
+layout_mode = 2
+offset_left = 80.0
+offset_top = 166.0
+offset_right = 636.0
+offset_bottom = 217.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel/RetroBoxContainer"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 546.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Panel/RetroBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Toggle Retro Shaders"
+
+[node name="RetroShaderToggleButton" type="Button" parent="Panel/RetroBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
+text = "Turn On"
+
+[node name="RetroShader" parent="." instance=ExtResource("4_knxmk")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Panel/RetroBoxContainer/VBoxContainer/RetroShaderToggleButton" to="." method="_on_retro_shader_toggle_button_pressed"]

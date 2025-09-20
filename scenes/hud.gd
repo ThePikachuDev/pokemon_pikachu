@@ -1,5 +1,10 @@
 extends CanvasLayer
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
+@onready var resume_button: Button = $PauseMenu/VBoxContainer/resume_button
+@onready var pause_menu: Panel = $PauseMenu
+@onready var options_page: Control = $OptionsPage
+@onready var retro_shader = $OptionsPage.retro_shader
+@onready var game_manager = %GameManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,4 +12,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	retro_shader.visible = GameManager.is_shader_enabled
+	print(retro_shader.visible)
+	if Input.is_action_just_pressed("exit") and !get_tree().paused:
+		get_tree().paused = true
+		pause_menu.visible = get_tree().paused 
+
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = false
+	pause_menu.visible = get_tree().paused 
+
+
+func _on_options_button_pressed() -> void:
+	if options_page.visible:
+		options_page.visible = false
+	else:
+		options_page.visible = true

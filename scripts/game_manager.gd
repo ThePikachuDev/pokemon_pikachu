@@ -5,6 +5,8 @@ var can_double_jump: bool
 
 var hearts_list : Array[TextureRect]
 var health = 3
+var is_shader_enabled: bool = false
+
 
 var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
 var dialogue_start = "start"

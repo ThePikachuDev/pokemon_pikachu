@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 @onready var game_manager = %GameManager
 
-
 const GRAVITY = 980.0
 const WALK_SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -83,6 +82,8 @@ func _physics_process(delta: float) -> void:
 	#perform dash
 	if is_dashing:
 		var current_distance = abs(position.x - dash_start_postion)
+		$particles/dash_particles.emitting = true
+		print($particles/dash_particles.emitting)
 		if current_distance >= dash_max_distance or is_on_wall():
 			is_dashing = false
 		else:

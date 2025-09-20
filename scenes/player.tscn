@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://c68ic6fsranbt"]
+[gd_scene load_steps=30 format=3 uid="uid://c68ic6fsranbt"]
 
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://32m17wqdtohs" path="res://assets/my aesprite assets/pikachu/pikachu_all_sprites_fr.png" id="3_fjrip"]
 [ext_resource type="AudioStream" uid="uid://r68qm5wsi487" path="res://assets/music/player-movement /404793__owlstorm__retro-video-game-sfx-jump.wav" id="6_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bpr8etfvkymeh" path="res://assets/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_04_rotated.png" id="6_smehm"]
 [ext_resource type="PackedScene" uid="uid://d02r3mredhtd0" path="res://scenes/my_dialogue_box.tscn" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://blghj7npig6fh" path="res://assets/music/audacity/jump or dash ? .mp3" id="7_fjrip"]
 
@@ -164,6 +165,21 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smehm"]
+
+[sub_resource type="Curve" id="Curve_qlg0r"]
+_data = [Vector2(0.00997151, 0.989081), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.433765), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qlg0r"]
+offsets = PackedFloat32Array(0, 0.708333, 1)
+colors = PackedColorArray(0.996078, 0.823529, 0.239216, 1, 1, 1, 1, 1, 1, 1, 0.462745, 0)
+
+[sub_resource type="Curve" id="Curve_fjrip"]
+_limits = [-500.0, 500.0, 0.0, 1.0]
+_data = [Vector2(1e-05, 476.813), 0.0, 0.0, 0, 0, Vector2(0.0957944, 345.422), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D"]
 light_mask = 5
 script = ExtResource("1_g2els")
@@ -177,9 +193,7 @@ shape = SubResource("CapsuleShape2D_f1ej7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.02344, 1)
 sprite_frames = SubResource("SpriteFrames_fulsm")
-animation = &"run"
-frame = 4
-frame_progress = 0.510126
+animation = &"idle"
 
 [node name="footstep_audio" type="AudioStreamPlayer2D" parent="."]
 bus = &"sfx"
@@ -189,6 +203,7 @@ stream = ExtResource("6_fjrip")
 bus = &"sfx"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+material = SubResource("ShaderMaterial_smehm")
 position = Vector2(2, 11)
 zoom = Vector2(2.83, 2.83)
 process_callback = 0
@@ -233,6 +248,43 @@ wait_time = 0.5
 [node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fjrip")
 bus = &"sfx"
+
+[node name="particles" type="Node2D" parent="."]
+
+[node name="dash_particles" type="CPUParticles2D" parent="particles"]
+position = Vector2(-12, 11)
+emitting = false
+amount = 70
+texture = ExtResource("6_smehm")
+lifetime = 0.5
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 12.75
+gravity = Vector2(-400, 50)
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_qlg0r")
+color_ramp = SubResource("Gradient_qlg0r")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+anim_speed_min = 3.88
+anim_speed_max = 29.97
+
+[node name="tail_particles" type="CPUParticles2D" parent="particles"]
+z_index = -2
+position = Vector2(-29, -1)
+emitting = false
+lifetime = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(20, 10)
+gravity = Vector2(-200, 100)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+orbit_velocity_curve = SubResource("Curve_fjrip")
+scale_amount_min = 0.01
+scale_amount_max = 0.01
 
 [connection signal="timeout" from="DashDurationTImer" to="." method="_on_dash_duration_t_imer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]

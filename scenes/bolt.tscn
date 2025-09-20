@@ -1,11 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b71hp7iq6vm08"]
+[gd_scene load_steps=8 format=3 uid="uid://b71hp7iq6vm08"]
 
 [ext_resource type="Texture2D" uid="uid://b7o6vyfv3bxjy" path="res://assets/my aesprite assets/ui/heart.png" id="1_gsnt5"]
 [ext_resource type="Script" uid="uid://52uo7vh3ya1h" path="res://scripts/bolt.gd" id="1_hu2p6"]
+[ext_resource type="Shader" uid="uid://bihpm46l2owdo" path="res://scenes/bolt.gdshader" id="2_sws5y"]
 [ext_resource type="AudioStream" uid="uid://dendqavnuc8gn" path="res://assets/music/audacity/Bolt pickup.mp3" id="3_s0h4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsnt5"]
 size = Vector2(22, 27)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jconi"]
+shader = ExtResource("2_sws5y")
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/frequency = 0.35
+shader_parameter/highlight_speed = 6.0
+shader_parameter/highlight_width = 15.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hu2p6"]
 animations = [{
@@ -28,6 +36,7 @@ position = Vector2(-2, 1.5)
 shape = SubResource("RectangleShape2D_gsnt5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_jconi")
 position = Vector2(9.53674e-07, 1)
 scale = Vector2(0.816408, 0.75)
 sprite_frames = SubResource("SpriteFrames_hu2p6")

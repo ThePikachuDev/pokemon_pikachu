@@ -1,15 +1,31 @@
 extends Control
 
+#@onready var game_manager = %GameManager
 @onready var play_button: Button = $VBoxContainer/play_button
 @onready var quit_button: Button = $VBoxContainer/quit_button
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $VBoxContainer/play_button/AudioStreamPlayer2D
 
+@onready var retro_shader_toggle_button = $OptionsPage/Panel/RetroBoxContainer/VBoxContainer/RetroShaderToggleButton
+@onready var retro_shader: ColorRect = $RetroShader
+
+#var is_shader_enabled = GameManager.is_shader_enabled
+
+
 # Track currently selected button
 var current_focus: Button = null
 var buttons: Array = []
+#
+	#if GameManager.is_shader_enabled:
+		#retro_shader_toggle_button.text = "Turn Off"
+		#retro_shader.visible = true
+		#print(retro_shader.visible)
+	#else:
+		#retro_shader_toggle_button.text = "Turn On"
+		#retro_shader.visible = false
+		#print(retro_shader.visible)
+	#
 
 func _ready() -> void:
-	# Get all buttons in the menu
 	buttons = [play_button, quit_button]
 	
 	# Set up focus neighbors for proper keyboard navigation
@@ -82,3 +98,6 @@ func _on_quit_button_pressed() -> void:
 	# Add a small delay to allow the animation to play
 	await get_tree().create_timer(0.3).timeout
 	get_tree().quit()
+
+func _on_options_button_pressed() -> void:
+	$OptionsPage.visible = true

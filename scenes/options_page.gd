@@ -20,12 +20,12 @@ func _on_retro_shader_toggle_button_pressed() -> void:
 	if GameManager.is_shader_enabled:
 		GameManager.is_shader_enabled = false
 		retro_shader.visible = GameManager.is_shader_enabled 
-		retro_shader_toggle_button.text = "Turn Off"
+		retro_shader_toggle_button.text = "Turn ON"
 		print(retro_shader.visible)
 	else:
 		GameManager.is_shader_enabled = true
 		retro_shader.visible = GameManager.is_shader_enabled 
-		retro_shader_toggle_button.text = "Turn On"
+		retro_shader_toggle_button.text = "Turn OFF"
 		print(retro_shader.visible)
 
 

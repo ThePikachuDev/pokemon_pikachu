@@ -17,12 +17,10 @@ func load_hearts():
 	var hearts_parent = $HUD/HBoxContainer
 	for heart in hearts_parent.get_children():
 		hearts_list.append(heart)
-	print(hearts_list)
 	
 
 func take_damage():
 	if health > 0:
-		print(hearts_list[health -1].get_child(0))
 		var heart_parent = hearts_list[health -1]
 		var animated_sprite = heart_parent.get_child(0)
 		
@@ -60,11 +58,7 @@ func add_bolt():
 	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
 	if bolts == 1:
 		play_dialogue(dialogue_resource, "firstBolt")
-		print("bolt 1 condition ran")
 	elif bolts == 5:
 		can_double_jump = true
 		play_dialogue(dialogue_resource,"secondBolt")
-		print("2nd condition run")
-
-	print(bolts)
   

@@ -273,6 +273,7 @@ anim_speed_min = 3.88
 anim_speed_max = 29.97
 
 [node name="tail_particles" type="CPUParticles2D" parent="particles"]
+visible = false
 z_index = -2
 position = Vector2(-29, -1)
 emitting = false

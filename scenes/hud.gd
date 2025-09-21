@@ -13,7 +13,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	retro_shader.visible = GameManager.is_shader_enabled
-	print(retro_shader.visible)
 	if Input.is_action_just_pressed("exit") and !get_tree().paused:
 		get_tree().paused = true
 		pause_menu.visible = get_tree().paused 
@@ -28,3 +27,13 @@ func _on_options_button_pressed() -> void:
 		options_page.visible = false
 	else:
 		options_page.visible = true
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/windowUI.tscn")
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()

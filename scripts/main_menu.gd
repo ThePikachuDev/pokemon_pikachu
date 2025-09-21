@@ -8,27 +8,13 @@ extends Control
 @onready var retro_shader_toggle_button = $OptionsPage/Panel/RetroBoxContainer/VBoxContainer/RetroShaderToggleButton
 @onready var retro_shader: ColorRect = $RetroShader
 
-#var is_shader_enabled = GameManager.is_shader_enabled
-
-
-# Track currently selected button
 var current_focus: Button = null
 var buttons: Array = []
-#
-	#if GameManager.is_shader_enabled:
-		#retro_shader_toggle_button.text = "Turn Off"
-		#retro_shader.visible = true
-		#print(retro_shader.visible)
-	#else:
-		#retro_shader_toggle_button.text = "Turn On"
-		#retro_shader.visible = false
-		#print(retro_shader.visible)
-	#
+
 
 func _ready() -> void:
 	buttons = [play_button, quit_button]
 	
-	# Set up focus neighbors for proper keyboard navigation
 	play_button.focus_neighbor_bottom = quit_button.get_path()
 	quit_button.focus_neighbor_top = play_button.get_path()
 	

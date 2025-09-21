@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds8hulwht70bg"]
+
+[ext_resource type="Script" uid="uid://bmg05jl3inmxt" path="res://scenes/gastly.gd" id="1_1j2ao"]
+[ext_resource type="Texture2D" uid="uid://1tn04gsqaehy" path="res://assets/my aesprite assets/env/gastly.png" id="1_nlymn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1j2ao"]
+radius = 49.2544
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlymn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nlymn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gastly" type="CharacterBody2D"]
+script = ExtResource("1_1j2ao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.63, 0.63)
+shape = SubResource("CircleShape2D_1j2ao")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nlymn")
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
+target_position = Vector2(-185.714, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

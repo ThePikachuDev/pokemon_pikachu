@@ -79,5 +79,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 # This function handles the player colliding with the enemy's head.
 func _on_head_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print('Enemy defeated!')
 		self.queue_free()

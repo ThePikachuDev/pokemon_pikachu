@@ -8,7 +8,7 @@ const WALK_SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 const acceleration = 0.1
 
-@export var dash_speed = 700.0
+@export var dash_speed = 500.0
 @export var dash_max_distance = 300.0
 @export var dash_curve : Curve 
 @export var dash_cooldown = 1.0 
@@ -83,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	if is_dashing:
 		var current_distance = abs(position.x - dash_start_postion)
 		$particles/dash_particles.emitting = true
-		print($particles/dash_particles.emitting)
 		if current_distance >= dash_max_distance or is_on_wall():
 			is_dashing = false
 		else:
@@ -109,7 +108,6 @@ func handle_input():
 		jumps_left -= 1
 		footstep_audio.stop()
 		jump_audio.play()
-		print(game_manager.bolts)
 
 func apply_knockback(direction: Vector2, force: float , knockback_duration: float) -> void:
 	knockback = direction * force

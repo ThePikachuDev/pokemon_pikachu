@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var player: CharacterBody2D
 @export var speed: int = 50
-@export var chase_speed: int = 100
+@export var chase_speed: int = 150
 @export var acceleration: int = 300
 
 @export var left_boundary: float = -125
@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var ray_cast_2d: RayCast2D = $Sprite2D/RayCast2D
 @onready var timer: Timer = $Timer
+@onready var game_manager = %GameManager
 
 var gravity: float = 980.0
 var direction: Vector2
@@ -30,18 +31,20 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	pass
-	
+	handle_gravity(delta)
+	handle_movement(delta)
+	change_direction()
+	look_for_player()
 
 func look_for_player():
 	if ray_cast_2d.is_colliding():
 		var collider = ray_cast_2d.get_collider()
 		if collider == player:
-			pass
+			chase_player()
 		elif current_state == States.CHASE:
-			pass
+			stop_chase()
 	elif current_state == States.CHASE:
-		pass
+		stop_chase()
 
 
 func chase_player() -> void:
@@ -60,7 +63,6 @@ func handle_movement(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(direction * chase_speed , acceleration * delta)
 	move_and_slide()
-	
 
 func change_direction() -> void:
 	if current_state == States.WANDER:
@@ -72,4 +74,30 @@ func change_direction() -> void:
 				ray_cast_2d.target_position = Vector2(left_boundary,0)
 		else:
 			if self.position.x >= left_bounds.x:
-				pass
+				direction = Vector2(-1,0)
+			else: 
+				sprite_2d.flip_h = true
+				ray_cast_2d.target_position = Vector2(right_boundary,0)
+	else:
+		direction = (player.position - self.position).normalized()
+		direction = sign(direction)
+		if direction.x == 1:
+			sprite_2d.flip_h = true
+			ray_cast_2d.target_position = Vector2(right_boundary,0)
+		else:
+			sprite_2d.flip_h = false
+			ray_cast_2d.target_position = Vector2(left_boundary,0)
+
+func handle_gravity(delta:float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+
+
+func _on_timer_timeout() -> void:
+	current_state = States.WANDER
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.name == player.name:
+		print("player got hit !!")

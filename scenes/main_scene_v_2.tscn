@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://b8o483r53rcdi"]
+[gd_scene load_steps=40 format=4 uid="uid://b8o483r53rcdi"]
 
 [ext_resource type="Texture2D" uid="uid://c8b4tktphbeqp" path="res://assets/my aesprite assets/env/grass_tiles.png" id="1_548ac"]
 [ext_resource type="Texture2D" uid="uid://d0v1v55drciay" path="res://assets/my aesprite assets/env/env_grass.png" id="2_7cvoq"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dsvvr4hhpa8cg" path="res://scenes/random_pokeball_points.gd" id="21_ssqb5"]
 [ext_resource type="Texture2D" uid="uid://bjsdvncsa8585" path="res://assets/my aesprite assets/ui/pokeball.png" id="22_aaiwx"]
 [ext_resource type="Texture2D" uid="uid://dpwksfwsb8pj3" path="res://assets/my aesprite assets/env/jigglypuff_fr.png" id="23_125dc"]
+[ext_resource type="PackedScene" uid="uid://ds8hulwht70bg" path="res://scenes/gastly.tscn" id="24_1rchv"]
 
 [sub_resource type="Theme" id="Theme_t6h7r"]
 /fonts/mainFont = ExtResource("5_h5r37")
@@ -914,6 +915,11 @@ position = Vector2(4764, -1370)
 position = Vector2(-531, -157.5)
 scale = Vector2(1.094, 1)
 texture = ExtResource("23_125dc")
+
+[node name="Gastly2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("24_1rchv")]
+position = Vector2(-176, 416)
+scale = Vector2(0.7, 0.7)
+player = NodePath("../Player")
 
 [connection signal="body_entered" from="killZoneBelowWorld" to="Player" method="_on_kill_zone_below_world_body_entered"]
 [connection signal="body_entered" from="pokeball" to="RandomPokeballPoints" method="_on_pokeball_body_entered"]

@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds8hulwht70bg"]
+[gd_scene load_steps=6 format=3 uid="uid://ds8hulwht70bg"]
 
 [ext_resource type="Script" uid="uid://bmg05jl3inmxt" path="res://scenes/gastly.gd" id="1_1j2ao"]
 [ext_resource type="Texture2D" uid="uid://1tn04gsqaehy" path="res://assets/my aesprite assets/env/gastly.png" id="1_nlymn"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1j2ao"]
-radius = 49.2544
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlymn"]
 animations = [{
@@ -17,12 +14,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1j2ao"]
+radius = 49.2544
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1j2ao"]
+radius = 35.0
+height = 70.0
+
 [node name="Gastly" type="CharacterBody2D"]
 script = ExtResource("1_1j2ao")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.63, 0.63)
-shape = SubResource("CircleShape2D_1j2ao")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nlymn")
@@ -33,3 +33,16 @@ target_position = Vector2(-185.714, 0)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.63, 0.63)
+shape = SubResource("CircleShape2D_1j2ao")
+
+[node name="hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_1j2ao")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="hitBox" to="." method="_on_hit_box_body_entered"]

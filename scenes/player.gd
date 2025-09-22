@@ -118,12 +118,6 @@ func apply_knockback(direction: Vector2, force: float , knockback_duration: floa
 func start_dash():
 	dash_audio.play()
 
-# ----------------- Timer Callbacks -----------------
-#func _on_dash_duration_timer_timeout():
-	#is_dashing = false
-#
-#func _on_dash_cooldown_timer_timeout():
-	#can_dash = true
 
 # ----------------- Animation and Direction -----------------
 func update_animation_and_direction():

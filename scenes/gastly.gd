@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $Sprite2D/RayCast2D
 @onready var timer: Timer = $Timer
 @onready var game_manager = %GameManager
+@onready var hurt_box: Area2D = $hurtBox
 
 var gravity: float = 980.0
 var direction: Vector2
@@ -91,13 +92,15 @@ func change_direction() -> void:
 func handle_gravity(delta:float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
-
 
 func _on_timer_timeout() -> void:
 	current_state = States.WANDER
 
-
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.name == player.name:
-		print("player got hit !!")
+		game_manager.take_damage()
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body.name == player.name:
+		self.queue_free()

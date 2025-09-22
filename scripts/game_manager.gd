@@ -7,7 +7,7 @@ var hearts_list : Array[TextureRect]
 var health = 3
 var is_shader_enabled: bool = false
 
-
+@export var dialogues_enabled: bool = false
 var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
 var dialogue_start = "start"
 
@@ -48,9 +48,10 @@ func _ready():
 	pass
 
 func play_dialogue(dialogue_resource, dialogue_start):
-	var balloon: Node = Balloon.instantiate()
-	get_tree().current_scene.add_child(balloon)
-	balloon.start(load(dialogue_resource), dialogue_start)
+	if dialogues_enabled:
+		var balloon: Node = Balloon.instantiate()
+		get_tree().current_scene.add_child(balloon)
+		balloon.start(load(dialogue_resource), dialogue_start)
 
 func add_bolt():
 	var bolt_label: RichTextLabel = $HUD/RichTextLabel

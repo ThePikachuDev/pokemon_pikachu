@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://c68ic6fsranbt"]
+[gd_scene load_steps=32 format=3 uid="uid://c68ic6fsranbt"]
 
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Shader" uid="uid://dcrkxjcntjceh" path="res://scenes/player.gdshader" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://32m17wqdtohs" path="res://assets/my aesprite assets/pikachu/pikachu_all_sprites_fr.png" id="3_fjrip"]
 [ext_resource type="AudioStream" uid="uid://r68qm5wsi487" path="res://assets/music/player-movement /404793__owlstorm__retro-video-game-sfx-jump.wav" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bpr8etfvkymeh" path="res://assets/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_04_rotated.png" id="6_smehm"]
@@ -14,6 +15,11 @@ point_count = 2
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
 radius = 15.0
 height = 40.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pv"]
+shader = ExtResource("2_fjrip")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("3_fjrip")
@@ -191,6 +197,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f1ej7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ur7pv")
 scale = Vector2(1.02344, 1)
 sprite_frames = SubResource("SpriteFrames_fulsm")
 animation = &"idle"

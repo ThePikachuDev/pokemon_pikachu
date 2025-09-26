@@ -7,11 +7,21 @@ var hearts_list : Array[TextureRect]
 var health = 3
 var is_shader_enabled: bool = false
 
+var checkpoint_position: Vector2 = Vector2(-999,-999)
+var previous_checkpoint_node: Sprite2D = null
+var active_checkpoint: Sprite2D
+
 @export var dialogues_enabled: bool = false
 var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
 var dialogue_start = "start"
 
 const Balloon = preload("res://dialogue/balloon.tscn")
+
+
+#func _load_level(new_level) -> void:
+	#checkpoint_position = Vector2(-999,-999)
+	#previous_checkpoint_node = null
+	#get_tree().change_scene_to_file(new_level)
 
 func load_hearts():
 	var hearts_parent = $HUD/HBoxContainer
@@ -41,6 +51,7 @@ func update_heart_display():
 		hearts_list[i].visible = i < health
 	
 	if health <= 0:
+		print(get_tree())
 		get_tree().reload_current_scene()
 
 

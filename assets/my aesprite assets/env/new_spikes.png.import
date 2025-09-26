@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmeuikjpb1p8t"
-path="res://.godot/imported/tree.png-b5c33ae12bd2d464f56562af2f3762a3.ctex"
+uid="uid://c7x5epvrd5vi8"
+path="res://.godot/imported/new_spikes.png-1031e91b2db4307b19c86ac8e820a4bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/env/tree.png"
-dest_files=["res://.godot/imported/tree.png-b5c33ae12bd2d464f56562af2f3762a3.ctex"]
+source_file="res://assets/my aesprite assets/env/new_spikes.png"
+dest_files=["res://.godot/imported/new_spikes.png-1031e91b2db4307b19c86ac8e820a4bb.ctex"]
 
 [params]
 

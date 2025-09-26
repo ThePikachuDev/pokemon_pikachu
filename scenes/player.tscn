@@ -294,5 +294,10 @@ orbit_velocity_curve = SubResource("Curve_fjrip")
 scale_amount_min = 0.01
 scale_amount_max = 0.01
 
+[node name="JumpHeightTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="timeout" from="DashDurationTImer" to="." method="_on_dash_duration_t_imer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]
+[connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]

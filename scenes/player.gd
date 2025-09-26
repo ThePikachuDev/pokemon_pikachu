@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -300.0
 const acceleration = 0.1
 
 @export var dash_speed = 500.0
-@export var dash_max_distance = 300.0
+@export var dash_max_distance = 200.0
 @export var dash_curve : Curve 
 @export var dash_cooldown = 1.0 
 
@@ -32,6 +32,7 @@ const MAX_HEALTH = 3
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
 @onready var dash_audio: AudioStreamPlayer2D = $DashAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
+@onready var jump_height_timer: Timer = $JumpHeightTimer
 
 
 @export var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
@@ -41,6 +42,11 @@ var jumps_left: int
 
 
 func _ready():
+	add_to_group("player")
+	
+	if GameManager.checkpoint_position != Vector2(-999,-999):
+		global_position = GameManager.checkpoint_position
+	
 	game_manager.load_hearts()
 	jumps_left = 2 if game_manager.can_double_jump else 1
 	pass
@@ -51,7 +57,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		jumps_left = 2 if game_manager.can_double_jump else 1
 	
-	handle_input()
+	if Input.is_action_just_pressed("jump"):
+		jump_height_timer.start()
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_just_pressed("dialogue"):
 		game_manager.play_dialogue(dialogue_resource,dialogue_start)
@@ -100,14 +109,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-# ----------------- Input Handling -----------------
-func handle_input():
-	# Jump
-	if Input.is_action_just_pressed("jump") and jumps_left > 0:
-		velocity.y = JUMP_VELOCITY
-		jumps_left -= 1
-		footstep_audio.stop()
-		jump_audio.play()
 
 func apply_knockback(direction: Vector2, force: float , knockback_duration: float) -> void:
 	knockback = direction * force
@@ -142,6 +143,15 @@ func update_animation_and_direction():
 	elif velocity.x < 0:
 		animated_sprite.flip_h = true
 
+
+
+
+func _on_jump_height_timer_timeout() -> void:
+	if !Input.is_action_pressed("jump"):
+		if velocity.y < -100:
+			velocity.y = -100
+		
+
 # ----------------- Audio Callbacks -----------------
 func _on_footstep_audio_finished():
 	# When the current footstep sound finishes, check if the character is still moving.
@@ -149,8 +159,7 @@ func _on_footstep_audio_finished():
 	if is_on_floor() and velocity.x != 0:
 		footstep_audio.play()
 
-
+ 
 func _on_kill_zone_below_world_body_entered(body: Node2D) -> void:
 	await game_manager.take_damage()
-	position = Vector2(0,0)
-	pass # Replace with function body.
+	position = GameManager.active_checkpoint.global_position

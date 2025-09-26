@@ -9,5 +9,5 @@ void fragment(){
 	if (active == true) {
 		COLOR = vec4(flash_color, t.a);
 	}
-	
+
 }

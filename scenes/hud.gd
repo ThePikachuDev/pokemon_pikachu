@@ -18,13 +18,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("exit") and !get_tree().paused:
 		get_tree().paused = true
 		pause_menu.visible = get_tree().paused 
-	
 
 
-#
 #func launch_notification():
+	#notification.position = Vector2.ZERO
 	#var tween := create_tween()
-	#tween.tween_property(notification,"visible", true,1)
+	#tween.tween_property(notification,"global_position", -notification.size,1)
 
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false

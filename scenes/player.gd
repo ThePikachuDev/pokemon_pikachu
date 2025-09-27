@@ -22,6 +22,8 @@ var dash_timer = 0
 var knockback: Vector2 = Vector2.ZERO
 var knockback_timer: float = 0.0
 
+var can_coyote_jump: bool = false
+
 var heart_list : Array[TextureRect]
 var current_health = 3
 const MAX_HEALTH = 3
@@ -34,7 +36,7 @@ const MAX_HEALTH = 3
 @onready var dash_audio: AudioStreamPlayer2D = $DashAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
 @onready var jump_height_timer: Timer = $JumpHeightTimer
-
+@onready var coyote_timer: Timer = $CoyoteTimer
 
 
 @export var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
@@ -54,15 +56,18 @@ func _ready():
 	pass
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+#	&& (can_coyote_jump == false)
+	if not is_on_floor() :
 		velocity.y += GRAVITY * delta
-	else:
-		jumps_left = 2 if game_manager.can_double_jump else 1
+	#else:
+		#jumps_left = 2 if game_manager.can_double_jump else 1
 	
 	if Input.is_action_just_pressed("jump"):
 		jump_height_timer.start()
-		if is_on_floor():
+		if is_on_floor() || can_coyote_jump:
 			velocity.y = JUMP_VELOCITY
+			if can_coyote_jump:
+				can_coyote_jump = false 
 	
 	if Input.is_action_just_pressed("dialogue"):
 		game_manager.play_dialogue(dialogue_resource,dialogue_start)
@@ -81,6 +86,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 		
+	
+	
 	
 		# Dash
 	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
@@ -107,9 +114,16 @@ func _physics_process(delta: float) -> void:
 	# Update sprite direction and animation, including footstep audio logic
 	update_animation_and_direction()
 	
-	
+	var was_on_floor = is_on_floor()
 	move_and_slide()
+	
+	# Coyote Timer !
+	if was_on_floor && !is_on_floor() && velocity.y >= 0:
+		can_coyote_jump = true
+		coyote_timer.start()
 
+func _on_coyote_timer_timeout() -> void:
+	can_coyote_jump = false
 
 func apply_knockback(direction: Vector2, force: float , knockback_duration: float) -> void:
 	knockback = direction * force

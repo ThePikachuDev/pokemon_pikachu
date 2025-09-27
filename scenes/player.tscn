@@ -365,6 +365,11 @@ libraries = {
 [node name="HurtTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="DashDurationTImer" to="." method="_on_dash_duration_t_imer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]
 [connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

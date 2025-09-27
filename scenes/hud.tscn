@@ -245,6 +245,7 @@ sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 
 [node name="NotificationContainer" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

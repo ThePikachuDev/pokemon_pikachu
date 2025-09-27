@@ -17,7 +17,8 @@ var dialogue_start = "start"
 
 const Balloon = preload("res://dialogue/balloon.tscn")
 
-@onready var player_animated_sprite: AnimatedSprite2D = $"../Player/AnimatedSprite2D"
+@onready var player_hurt_animtion: AnimationPlayer = $"../Player/HurtAnimation"
+@onready var player_hurt_timer: Timer = $"../Player/HurtTimer"
 
 #func _load_level(new_level) -> void:
 	#checkpoint_position = Vector2(-999,-999)
@@ -36,7 +37,10 @@ func take_damage():
 		var heart_parent = hearts_list[health -1]
 		var animated_sprite = heart_parent.get_child(0)
 		
-
+		player_hurt_animtion.play("hurt_animation")
+		player_hurt_timer.start()
+		await player_hurt_timer.timeout
+		player_hurt_animtion.play("RESET")
 		# Check if the child is a valid AnimatedSprite2D and then play the animation
 		if animated_sprite is AnimatedSprite2D:
 			animated_sprite.play("damage")

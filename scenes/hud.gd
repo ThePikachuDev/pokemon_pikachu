@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var options_page: Control = $OptionsPage
 @onready var retro_shader = $OptionsPage.retro_shader
 @onready var game_manager = %GameManager
+@onready var notification_container: VBoxContainer = $NotificationContainer
+@onready var notification: Panel = $NotificationContainer/Notification
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +18,13 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("exit") and !get_tree().paused:
 		get_tree().paused = true
 		pause_menu.visible = get_tree().paused 
+	
+
+
+#
+#func launch_notification():
+	#var tween := create_tween()
+	#tween.tween_property(notification,"visible", true,1)
 
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false

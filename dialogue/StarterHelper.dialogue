@@ -13,3 +13,19 @@ detective: these are bolts , collect 4 more bolts to unlock double jump
 ~ secondBolt
 detective: congrats! you just unlocked the double jump ability,  now press space/upArrow/w twice to double jump
 => END
+
+
+~ teamRocketStart
+Jessie: Prepare for trouble!
+James: And Make it double!
+Jessie: To Protect the world from devastation!
+James: To Unite all peoples within our nation!
+Jessie: To denounce the evils of truth and love!
+James: To extend our reach to the starts above!
+Jessie: Jessie!
+James: James!
+Jessie: Team Rocket blasts off at the speed of light
+James: Surrender now, or prepare to fight
+Meowth: Meowth!
+Meowth: Thats right!
+=> END

@@ -8,18 +8,16 @@
 [ext_resource type="FontFile" uid="uid://d33uouutmckap" path="res://assets/fonts/Pixel Game Extrude.otf" id="3_267us"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af48w"]
-bg_color = Color(0.427621, 0.524325, 0.376423, 1)
+bg_color = Color(0.75529, 0.347052, 0.300159, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_blend = true
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-shadow_color = Color(0.231482, 0.568231, 0.0721575, 0.6)
-shadow_size = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5t74j"]
 
@@ -1785,7 +1783,12 @@ RichTextLabel/styles/focus = SubResource("StyleBoxFlat_gl7yp")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_engg8")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_267us"]
-bg_color = Color(0.4752, 0.66, 0.3828, 0.752941)
+bg_color = Color(0.321976, 0.629878, 0.842885, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(3.99485e-06, 0.504332, 0.504854, 1)
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
@@ -1874,10 +1877,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -354.0
-offset_top = 267.0
-offset_right = -194.0
-offset_bottom = 337.0
+offset_left = -338.0
+offset_top = 3.0
+offset_right = -178.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8

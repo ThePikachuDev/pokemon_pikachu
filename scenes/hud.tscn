@@ -118,7 +118,12 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.37924, 0.653881, 0.886943, 1)
+bg_color = Color(0.835454, 0.26925, 0.265179, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_uo2fv"]
 Button/colors/font_color = Color(0.993372, 0.993372, 0.993372, 1)
@@ -194,28 +199,30 @@ script = ExtResource("1_5ysmq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -827.0
-offset_bottom = -563.0
+offset_left = 8.0
+offset_right = -353.0
+offset_bottom = -398.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_ahhtf")
 theme_override_fonts/bold_font = ExtResource("2_oo0fn")
 bbcode_enabled = true
-text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : 3 [/font]
+text = "[img=200x200]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=128]bolts : 3 [/font]
 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 48.0
-offset_top = 86.0
-offset_right = 176.0
-offset_bottom = 126.0
+offset_left = 62.0
+offset_top = 115.0
+offset_right = 282.0
+offset_bottom = 158.0
+theme_override_constants/separation = 50
 
 [node name="heart" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart"]
-scale = Vector2(1.845, 1.845)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 
@@ -224,7 +231,7 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart2"]
-scale = Vector2(1.845, 1.845)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 
@@ -233,12 +240,11 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart3"]
-scale = Vector2(1.845, 1.845)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
+[node name="NotificationContainer" type="VBoxContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -246,8 +252,14 @@ offset_left = -301.0
 offset_bottom = 374.0
 grow_horizontal = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Notification" type="Panel" parent="NotificationContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="Notification" type="RichTextLabel" parent="NotificationContainer/Notification"]
+layout_mode = 2
+offset_right = 301.0
+offset_bottom = 60.0
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_6fi6k")

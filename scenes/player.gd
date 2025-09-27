@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var game_manager = %GameManager
+@onready var hurt_animation: AnimationPlayer = $HurtAnimation
 
 const GRAVITY = 980.0
 const WALK_SPEED = 200.0
@@ -99,7 +100,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
 			velocity.y = 0
 	
-	# reduce dash timer 
 	if dash_timer > 0:
 		dash_timer -= delta
 	

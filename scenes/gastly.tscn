@@ -24,6 +24,7 @@ size = Vector2(91, 57)
 height = 32.0
 
 [node name="Gastly" type="CharacterBody2D"]
+scale = Vector2(0.495, 0.495)
 script = ExtResource("1_1j2ao")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

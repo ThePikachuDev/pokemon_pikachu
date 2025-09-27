@@ -8,8 +8,8 @@ const WALK_SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 const acceleration = 0.1
 
-@export var dash_speed = 500.0
-@export var dash_max_distance = 200.0
+@export var dash_speed = 400.0
+@export var dash_max_distance = 150.0
 @export var dash_curve : Curve 
 @export var dash_cooldown = 1.0 
 
@@ -33,6 +33,7 @@ const MAX_HEALTH = 3
 @onready var dash_audio: AudioStreamPlayer2D = $DashAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
 @onready var jump_height_timer: Timer = $JumpHeightTimer
+
 
 
 @export var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
@@ -148,8 +149,8 @@ func update_animation_and_direction():
 
 func _on_jump_height_timer_timeout() -> void:
 	if !Input.is_action_pressed("jump"):
-		if velocity.y < -100:
-			velocity.y = -100
+		if velocity.y < -20:
+			velocity.y = -20
 		
 
 # ----------------- Audio Callbacks -----------------

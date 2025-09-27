@@ -3,8 +3,8 @@
 ~ start
 detective: Detective Pikachu reporting, i'll guide you through some basics. Press enter key to continue
 detective: you can move with WASD or arrow keys and jump with space/up_arrow/w key
-detective: go forward and collect some bolts to unlock abilities 
-=> END
+detective: do dash using shift key while going in a direction
+ => END
 
 ~ firstBolt
 detective: these are bolts , collect 4 more bolts to unlock double jump 

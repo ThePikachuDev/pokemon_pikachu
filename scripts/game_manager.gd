@@ -11,12 +11,13 @@ var checkpoint_position: Vector2 = Vector2(-999,-999)
 var previous_checkpoint_node: Sprite2D = null
 var active_checkpoint: Sprite2D
 
-@export var dialogues_enabled: bool = false
+@export var dialogues_enabled: bool = true
 var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
 var dialogue_start = "start"
 
 const Balloon = preload("res://dialogue/balloon.tscn")
 
+@onready var player_animated_sprite: AnimatedSprite2D = $"../Player/AnimatedSprite2D"
 
 #func _load_level(new_level) -> void:
 	#checkpoint_position = Vector2(-999,-999)
@@ -31,9 +32,11 @@ func load_hearts():
 
 func take_damage():
 	if health > 0:
+		print(health)
 		var heart_parent = hearts_list[health -1]
 		var animated_sprite = heart_parent.get_child(0)
 		
+
 		# Check if the child is a valid AnimatedSprite2D and then play the animation
 		if animated_sprite is AnimatedSprite2D:
 			animated_sprite.play("damage")
@@ -52,7 +55,7 @@ func update_heart_display():
 	
 	if health <= 0:
 		print(get_tree())
-		get_tree().reload_current_scene()
+		await get_tree().call_deferred("reload_current_scene")
 
 
 func _ready():
@@ -68,9 +71,9 @@ func add_bolt():
 	var bolt_label: RichTextLabel = $HUD/RichTextLabel
 	bolts += 1
 	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
-	if bolts == 1:
-		play_dialogue(dialogue_resource, "firstBolt")
-	elif bolts == 5:
-		can_double_jump = true
-		play_dialogue(dialogue_resource,"secondBolt")
-  
+	#if bolts == 1:
+		#play_dialogue(dialogue_resource, "firstBolt")
+	#elif bolts == 5:
+		#can_double_jump = true
+		#play_dialogue(dialogue_resource,"secondBolt")
+  #

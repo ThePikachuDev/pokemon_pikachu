@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://c0clr6bj8shji"]
 
-[ext_resource type="Texture2D" uid="uid://cb5jyolg3ga37" path="res://assets/my aesprite assets/env/terrain_tileset/desert.png" id="1_014kd"]
+[ext_resource type="Texture2D" uid="uid://cb5jyolg3ga37" path="res://assets/my aesprite assets/desert.png" id="1_014kd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
 texture = ExtResource("1_014kd")

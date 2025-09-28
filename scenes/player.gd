@@ -30,6 +30,8 @@ const MAX_HEALTH = 3
 
 #var can_dash: bool = true
 
+var enemies_in_thunderbolt_area: Array = []
+
 # ----------------- Node References -----------------
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_audio: AudioStreamPlayer2D = $jump_audio
@@ -125,6 +127,24 @@ func _physics_process(delta: float) -> void:
 func _on_coyote_timer_timeout() -> void:
 	can_coyote_jump = false
 
+
+func _process(delta: float) -> void:
+	if game_manager.can_thunderbolt:
+		if Input.is_action_just_pressed("thunderBolt"):
+			for enemy in enemies_in_thunderbolt_area:
+				var thunder_animation = enemy.get_node("ThunderAnimation")
+				print("enemy detected " , enemy.position)
+				thunder_animation.visible = true
+				thunder_animation.play("default")
+				
+				var timer = get_tree().create_timer(1.0)
+				await timer.timeout
+				if enemy:
+					enemy.queue_free()
+			game_manager.bolts -= 5
+			game_manager.update_bolt_label()
+
+
 func apply_knockback(direction: Vector2, force: float , knockback_duration: float) -> void:
 	knockback = direction * force
 	knockback_timer = knockback_duration
@@ -178,3 +198,23 @@ func _on_footstep_audio_finished():
 func _on_kill_zone_below_world_body_entered(body: Node2D) -> void:
 	await game_manager.take_damage()
 	position = GameManager.active_checkpoint.global_position
+
+
+func _on_thunder_bolt_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		enemies_in_thunderbolt_area.append(body)
+		#if Input.is_action_pressed("thunderBolt"):
+			#print("fun ran")
+			#var thunder_animation = body.get_node("ThunderAnimation")
+			#print("enemy detected " , body.position)
+			#thunder_animation.visible = true
+			#thunder_animation.play("default")
+			#var timer = get_tree().create_timer(1)
+			#await timer.timeout
+			#body.queue_free()
+			
+
+
+func _on_thunder_bolt_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		enemies_in_thunderbolt_area.erase(body)

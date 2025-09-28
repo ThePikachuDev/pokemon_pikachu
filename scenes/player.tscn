@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c68ic6fsranbt"]
+[gd_scene load_steps=38 format=3 uid="uid://c68ic6fsranbt"]
 
 [ext_resource type="Script" uid="uid://d14upvk2m8nig" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Shader" uid="uid://dcrkxjcntjceh" path="res://scenes/player.gdshader" id="2_fjrip"]
@@ -234,6 +234,9 @@ _data = {
 &"hurt_animation": SubResource("Animation_smehm")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_smehm"]
+radius = 240.832
+
 [node name="Player" type="CharacterBody2D"]
 light_mask = 5
 visibility_layer = 129
@@ -369,7 +372,14 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="ThunderBoltArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThunderBoltArea"]
+shape = SubResource("CircleShape2D_smehm")
+
 [connection signal="timeout" from="DashDurationTImer" to="." method="_on_dash_duration_t_imer_timeout"]
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]
 [connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="body_entered" from="ThunderBoltArea" to="." method="_on_thunder_bolt_area_body_entered"]
+[connection signal="body_exited" from="ThunderBoltArea" to="." method="_on_thunder_bolt_area_body_exited"]

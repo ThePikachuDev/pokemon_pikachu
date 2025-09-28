@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb5jyolg3ga37"
-path="res://.godot/imported/desert.png-12b8c188980563f7cda6eeda6402f89b.ctex"
+uid="uid://b67oyi0k3ljab"
+path="res://.godot/imported/lightning_skill1_frame2.png-3a69a7817163225a0be10d203dc58a4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/my aesprite assets/env/terrain_tileset/desert.png"
-dest_files=["res://.godot/imported/desert.png-12b8c188980563f7cda6eeda6402f89b.ctex"]
+source_file="res://assets/Pixel Art Skill Animations - Lightning/VFX1/Frames/lightning_skill1_frame2.png"
+dest_files=["res://.godot/imported/lightning_skill1_frame2.png-3a69a7817163225a0be10d203dc58a4f.ctex"]
 
 [params]
 

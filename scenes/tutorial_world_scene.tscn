@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdrsnvnt4tpdl" path="res://assets/my aesprite assets/env/parallax_sky/sky_bg_birds.png" id="3_w0cxp"]
 [ext_resource type="Texture2D" uid="uid://cpi1iputhxcle" path="res://assets/my aesprite assets/env/parallax_sky/clouds.png" id="4_wl8jg"]
 [ext_resource type="Texture2D" uid="uid://c8b4tktphbeqp" path="res://assets/my aesprite assets/env/grass_tiles.png" id="5_2fdgp"]
-[ext_resource type="Texture2D" uid="uid://cb5jyolg3ga37" path="res://assets/my aesprite assets/env/terrain_tileset/desert.png" id="6_wl8jg"]
+[ext_resource type="Texture2D" uid="uid://cb5jyolg3ga37" path="res://assets/my aesprite assets/desert.png" id="6_wl8jg"]
 [ext_resource type="Texture2D" uid="uid://ctjrtlj4xuv88" path="res://assets/my aesprite assets/env/platform.png" id="7_0f3m3"]
 [ext_resource type="Texture2D" uid="uid://cmeuikjpb1p8t" path="res://assets/my aesprite assets/tree.png" id="7_2cwml"]
 [ext_resource type="PackedScene" uid="uid://c68ic6fsranbt" path="res://scenes/player.tscn" id="9_crxvh"]

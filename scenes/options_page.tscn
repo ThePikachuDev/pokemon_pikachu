@@ -146,12 +146,30 @@ step = 0.001
 script = ExtResource("2_o6tea")
 bus_name = "sfx"
 
+[node name="MuteMusicButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 185.0
+offset_right = 212.0
+offset_bottom = 227.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
+text = "Mute Music"
+
+[node name="MuteSFXButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 185.0
+offset_right = 370.0
+offset_bottom = 227.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
+text = "Mute SFX"
+
 [node name="RetroBoxContainer" type="Panel" parent="Panel"]
 layout_mode = 2
 offset_left = 80.0
-offset_top = 166.0
+offset_top = 254.0
 offset_right = 636.0
-offset_bottom = 217.0
+offset_bottom = 305.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Panel/RetroBoxContainer"]
 layout_mode = 0
@@ -182,4 +200,6 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Panel/MuteMusicButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/MuteSFXButton" to="." method="_on_mute_sfx_button_pressed"]
 [connection signal="pressed" from="Panel/RetroBoxContainer/VBoxContainer/RetroShaderToggleButton" to="." method="_on_retro_shader_toggle_button_pressed"]

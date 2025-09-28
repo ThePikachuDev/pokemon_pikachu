@@ -22,6 +22,7 @@ var time_since_last_attack: float = 0.0
 
 # This function is called once when the node is ready.
 func _ready() -> void:
+	add_to_group("enemy")
 	# Make sure the leaves are invisible initially.
 	leaves.visible = false
 	# Connect the timer's timeout signal.

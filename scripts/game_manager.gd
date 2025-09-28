@@ -7,6 +7,8 @@ var hearts_list : Array[TextureRect]
 var health = 3
 var is_shader_enabled: bool = false
 
+var can_thunderbolt: bool = false
+
 var checkpoint_position: Vector2 = Vector2(-999,-999)
 var previous_checkpoint_node: Sprite2D = null
 var active_checkpoint: Sprite2D
@@ -19,6 +21,8 @@ const Balloon = preload("res://dialogue/balloon.tscn")
 
 @onready var player_hurt_animtion: AnimationPlayer = $"../Player/HurtAnimation"
 @onready var player_hurt_timer: Timer = $"../Player/HurtTimer"
+
+@onready var bolt_label: RichTextLabel = $HUD/RichTextLabel
 
 #func _load_level(new_level) -> void:
 	#checkpoint_position = Vector2(-999,-999)
@@ -71,9 +75,14 @@ func play_dialogue(dialogue_resource, dialogue_start):
 		get_tree().current_scene.add_child(balloon)
 		balloon.start(load(dialogue_resource), dialogue_start)
 
+func update_bolt_label():
+	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
+
+
 func add_bolt():
-	var bolt_label: RichTextLabel = $HUD/RichTextLabel
 	bolts += 1
+	if bolts >= 5:
+		can_thunderbolt = true
 	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
 	#if bolts == 1:
 		#play_dialogue(dialogue_resource, "firstBolt")

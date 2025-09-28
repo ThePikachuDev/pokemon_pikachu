@@ -27,6 +27,7 @@ enum States{
 var current_state = States.WANDER
 
 func _ready() -> void:
+	add_to_group("enemy")
 	left_bounds = self.position + Vector2(left_boundary, 0)
 	right_bounds = self.position + Vector2(right_boundary, 0 )
 	

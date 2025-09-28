@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://lxtivvonujh2"]
+[gd_scene load_steps=14 format=3 uid="uid://lxtivvonujh2"]
 
 [ext_resource type="Texture2D" uid="uid://cxxhhsamau0g7" path="res://assets/my aesprite assets/env/enemy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dek7xlc6m8q3g" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://bva7lhftbqesu" path="res://assets/my aesprite assets/leaves.png" id="3_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://b8kqw8lte2i0r" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame1.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://bon1e80h0y3v8" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame2.png" id="5_ipns3"]
+[ext_resource type="Texture2D" uid="uid://kvfdpng25ouu" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame3.png" id="6_8qclf"]
+[ext_resource type="Texture2D" uid="uid://duk0mu8q6t86a" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame4.png" id="7_w8i8w"]
+[ext_resource type="Texture2D" uid="uid://bhwiu2kl130t" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame5.png" id="8_otmr2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -24,6 +29,29 @@ height = 37.4634
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
 size = Vector2(31, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtq4b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_md484")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ipns3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8qclf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w8i8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_otmr2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="enemy" type="RigidBody2D"]
 script = ExtResource("1_md0e3")
@@ -64,6 +92,12 @@ wait_time = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
 position = Vector2(0.5, -18.5)
 shape = SubResource("RectangleShape2D_5uy6h")
+
+[node name="ThunderAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -90.909)
+sprite_frames = SubResource("SpriteFrames_wtq4b")
+frame_progress = 0.0264789
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Leaves/Area2D" to="." method="_on_area_2d_body_entered"]

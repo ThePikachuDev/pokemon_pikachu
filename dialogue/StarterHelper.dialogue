@@ -4,6 +4,8 @@
 detective: Detective Pikachu reporting, i'll guide you through some basics. Press enter key to continue
 detective: you can move with WASD or arrow keys and jump with space/up_arrow/w key
 detective: do dash using shift key while going in a direction
+detective: if don't know where to go , just go in right direction 
+detective: pss..pss.. collect 5 or more bolts and then you can use thunderBolt on an enemy using F key if its in your range
  => END
 
 ~ firstBolt

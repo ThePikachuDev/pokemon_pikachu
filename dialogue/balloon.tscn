@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://d33uouutmckap" path="res://assets/fonts/Pixel Game Extrude.otf" id="3_267us"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af48w"]
-bg_color = Color(0.75529, 0.347052, 0.300159, 1)
+bg_color = Color(0.899265, 0.477592, 0.364616, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -1809,7 +1809,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -262.0
+offset_top = -244.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 5

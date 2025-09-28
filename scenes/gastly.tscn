@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds8hulwht70bg"]
+[gd_scene load_steps=13 format=3 uid="uid://ds8hulwht70bg"]
 
 [ext_resource type="Script" uid="uid://bmg05jl3inmxt" path="res://scenes/gastly.gd" id="1_1j2ao"]
 [ext_resource type="Texture2D" uid="uid://1tn04gsqaehy" path="res://assets/my aesprite assets/env/gastly.png" id="1_nlymn"]
+[ext_resource type="Texture2D" uid="uid://b8kqw8lte2i0r" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame1.png" id="3_rpdil"]
+[ext_resource type="Texture2D" uid="uid://bon1e80h0y3v8" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame2.png" id="4_xdkp8"]
+[ext_resource type="Texture2D" uid="uid://kvfdpng25ouu" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame3.png" id="5_tntme"]
+[ext_resource type="Texture2D" uid="uid://duk0mu8q6t86a" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame4.png" id="6_p01s0"]
+[ext_resource type="Texture2D" uid="uid://bhwiu2kl130t" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame5.png" id="7_gc1fv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlymn"]
 animations = [{
@@ -22,6 +27,29 @@ size = Vector2(91, 57)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fifwy"]
 height = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1j2ao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rpdil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xdkp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tntme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p01s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gc1fv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Gastly" type="CharacterBody2D"]
 scale = Vector2(0.495, 0.495)
@@ -55,6 +83,11 @@ shape = SubResource("RectangleShape2D_1j2ao")
 position = Vector2(-1, -17)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fifwy")
+
+[node name="ThunderAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -90.909)
+sprite_frames = SubResource("SpriteFrames_1j2ao")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="hitBox" to="." method="_on_hit_box_body_entered"]

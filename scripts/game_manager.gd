@@ -76,7 +76,7 @@ func play_dialogue(dialogue_resource, dialogue_start):
 		balloon.start(load(dialogue_resource), dialogue_start)
 
 func update_bolt_label():
-	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
+	bolt_label.text = "[img=128x128]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : " + str(bolts) + " [/font]" 
 
 
 func add_bolt():

@@ -8,12 +8,18 @@ extends CanvasLayer
 @onready var notification_container: VBoxContainer = $NotificationContainer
 @onready var notification: Panel = $NotificationContainer/Notification
 
+@onready var fps_counter: Label = $FpsCounter
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rich_text_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : 0[/font]"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	fps_counter.text = "FPS: " + str(Engine.get_frames_per_second())
 	retro_shader.visible = GameManager.is_shader_enabled
 	if Input.is_action_just_pressed("exit") and !get_tree().paused:
 		get_tree().paused = true

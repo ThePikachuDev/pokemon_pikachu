@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqk8t2dauv1ei"]
+
+[ext_resource type="Script" uid="uid://b87lh7h3ji347" path="res://scenes/hoopa_ring.gd" id="1_8tee1"]
+[ext_resource type="Texture2D" uid="uid://d12mdgfjh0d7v" path="res://assets/my aesprite assets/env/terrain_tileset/HoopaRing.png" id="1_oevsh"]
+[ext_resource type="PackedScene" uid="uid://c8pypuosatyr2" path="res://scenes/scene_transition_animation.tscn" id="3_8sj1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tee1"]
+size = Vector2(34, 88)
+
+[sub_resource type="Animation" id="Animation_8sj1y"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8tee1"]
+resource_name = "floating"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sj1y"]
+_data = {
+&"RESET": SubResource("Animation_8sj1y"),
+&"floating": SubResource("Animation_8tee1")
+}
+
+[node name="HoopaRing" type="Area2D"]
+script = ExtResource("1_8tee1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.379822)
+texture = ExtResource("1_oevsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 5)
+shape = SubResource("RectangleShape2D_8tee1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8sj1y")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("3_8sj1y")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

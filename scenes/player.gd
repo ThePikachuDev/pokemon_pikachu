@@ -39,6 +39,21 @@ var enemies_in_thunderbolt_area: Array = []
 @onready var footstep_audio: AudioStreamPlayer2D = $footstep_audio
 @onready var jump_height_timer: Timer = $JumpHeightTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var jump_particles: CPUParticles2D = $particles/JumpParticles
+@onready var walk_particles: CPUParticles2D = $particles/WalkParticles
+@onready var dash_particles: CPUParticles2D = $particles/dash_particles
+@onready var thunder_bolt_audio: AudioStreamPlayer2D = $ThunderBoltAudio
+
+@onready var attack_parent: Node2D = $Attack
+@onready var attack_sprite: Sprite2D = $Attack/Sprite2D
+@onready var attack_area_2d: Area2D = $Attack/Sprite2D/AttackArea2D
+
+var look_dir: Vector2 = Vector2.RIGHT
+
+var TotalAttackDuration: float = 0.26
+var attack_duratoin_timer: float = 0.0
+var attack_distance: float = 6.0
+
 
 
 @export var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
@@ -49,6 +64,8 @@ var jumps_left: int
 
 func _ready():
 	add_to_group("player")
+	attack_sprite.modulate.a = 0.0
+	attack_area_2d.get_node("CollisionShape2D").disabled = true
 	
 	if GameManager.checkpoint_position != Vector2(-999,-999):
 		global_position = GameManager.checkpoint_position
@@ -67,6 +84,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump_height_timer.start()
 		if is_on_floor() || can_coyote_jump:
+			jump_particles.emitting = true
 			velocity.y = JUMP_VELOCITY
 			if can_coyote_jump:
 				can_coyote_jump = false 
@@ -77,6 +95,9 @@ func _physics_process(delta: float) -> void:
 	
 	var direction = Input.get_axis("left", "right")
 	
+	#if direction:
+		#look_dir.x = direction
+	
 	if knockback_timer > 0.0:
 		velocity = knockback
 		knockback_timer -= delta
@@ -85,13 +106,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		if direction:
 			velocity.x = direction * WALK_SPEED
+			#$particles/WalkParticles.emitting = true
 		else:
+			#$particles/WalkParticles.emitting = false
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+	
+	if velocity.x:
+		walk_particles.emitting = true
+	else:
+		walk_particles.emitting = false
 		
 	
 	
-	
-		# Dash
 	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
 		is_dashing = true
 		dash_start_postion = position.x
@@ -102,7 +128,7 @@ func _physics_process(delta: float) -> void:
 	#perform dash
 	if is_dashing:
 		var current_distance = abs(position.x - dash_start_postion)
-		$particles/dash_particles.emitting = true
+		dash_particles.emitting = true
 		if current_distance >= dash_max_distance or is_on_wall():
 			is_dashing = false
 		else:
@@ -128,7 +154,7 @@ func _on_coyote_timer_timeout() -> void:
 	can_coyote_jump = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if game_manager.can_thunderbolt:
 		if Input.is_action_just_pressed("thunderBolt"):
 			for enemy in enemies_in_thunderbolt_area:
@@ -136,13 +162,13 @@ func _process(delta: float) -> void:
 				print("enemy detected " , enemy.position)
 				thunder_animation.visible = true
 				thunder_animation.play("default")
-				
+				thunder_bolt_audio.play()
 				var timer = get_tree().create_timer(1.0)
 				await timer.timeout
 				if enemy:
 					enemy.queue_free()
-			game_manager.bolts -= 5
-			game_manager.update_bolt_label()
+					game_manager.bolts -= 5
+					game_manager.update_bolt_label()
 
 
 func apply_knockback(direction: Vector2, force: float , knockback_duration: float) -> void:
@@ -195,7 +221,7 @@ func _on_footstep_audio_finished():
 		footstep_audio.play()
 
  
-func _on_kill_zone_below_world_body_entered(body: Node2D) -> void:
+func _on_kill_zone_below_world_body_entered(_body: Node2D) -> void:
 	await game_manager.take_damage()
 	position = GameManager.active_checkpoint.global_position
 

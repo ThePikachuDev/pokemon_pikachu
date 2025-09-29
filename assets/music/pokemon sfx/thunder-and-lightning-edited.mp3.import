@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjl3rvp8upnnj"
+path="res://.godot/imported/thunder-and-lightning-edited.mp3-9130b8c2415a89ebfe0cd6ec7281fda8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/pokemon sfx/thunder-and-lightning-edited.mp3"
+dest_files=["res://.godot/imported/thunder-and-lightning-edited.mp3-9130b8c2415a89ebfe0cd6ec7281fda8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 		leaves.flip_h = current_direction == -1
 
 # This function initiates the leaf-throwing action.
-func throw_leaves(dir: int) -> void:
+func throw_leaves(_dir: int) -> void:
 	is_throwing = true
 	leaves.position = animated_enemy_sprite.position
 	leaves.visible = true

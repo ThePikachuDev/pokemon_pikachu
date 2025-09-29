@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bbitvcig2bjpk"]
+[gd_scene load_steps=32 format=3 uid="uid://bbitvcig2bjpk"]
 
 [ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://cbwj2ku06d12" path="res://assets/my aesprite assets/ui/red_heart.png" id="4_6fi6k"]
 [ext_resource type="PackedScene" uid="uid://bsddn2mm0my76" path="res://scenes/retro_shader.tscn" id="6_5pdws"]
 [ext_resource type="PackedScene" uid="uid://db42vxe47y3kg" path="res://scenes/options_page.tscn" id="6_047uy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i1j5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
 atlas = ExtResource("4_6fi6k")
@@ -196,25 +207,21 @@ shadow_size = 5
 script = ExtResource("1_5ysmq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_right = -353.0
-offset_bottom = -398.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 1.0
+offset_right = 381.0
+offset_bottom = 169.0
 theme_override_fonts/normal_font = ExtResource("1_ahhtf")
 theme_override_fonts/bold_font = ExtResource("2_oo0fn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0i1j5")
 bbcode_enabled = true
-text = "[img=200x200]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=128]bolts : 3 [/font]
+text = "[img=128x128]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : 3           [/font]
 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 62.0
-offset_top = 115.0
-offset_right = 282.0
-offset_bottom = 158.0
+offset_left = 54.0
+offset_top = 111.0
+offset_right = 274.0
+offset_bottom = 154.0
 theme_override_constants/separation = 50
 
 [node name="heart" type="TextureRect" parent="HBoxContainer"]
@@ -358,6 +365,16 @@ process_mode = 3
 visible = false
 mouse_filter = 1
 retro_shader = NodePath("../RetroShader")
+
+[node name="FpsCounter" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 13.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "FPS: "
 
 [node name="RetroShader" parent="." instance=ExtResource("6_5pdws")]
 process_mode = 3

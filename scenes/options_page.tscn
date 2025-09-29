@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://db42vxe47y3kg"]
+[gd_scene load_steps=14 format=3 uid="uid://db42vxe47y3kg"]
 
 [ext_resource type="Texture2D" uid="uid://bjsdvncsa8585" path="res://assets/my aesprite assets/ui/pokeball.png" id="1_24fkt"]
 [ext_resource type="Script" uid="uid://bogjgp5gq82c7" path="res://scenes/options_page.gd" id="1_nwt33"]
@@ -6,7 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bsddn2mm0my76" path="res://scenes/retro_shader.tscn" id="4_knxmk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt4qn"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.285254, 0.560265, 0.406918, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rt4qn"]
 font_size = 48
@@ -37,18 +42,66 @@ expand_margin_top = 10.0
 expand_margin_right = 17.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwt33"]
+content_margin_left = 7.0
+content_margin_top = 5.0
+content_margin_right = 7.0
+content_margin_bottom = 5.0
+bg_color = Color(0.356935, 0.748272, 0.306801, 1)
+border_width_bottom = 10
+border_color = Color(5.22219e-06, 0.710683, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.418184, 0.758537, 0.245683, 0.6)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clmdq"]
 content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
 bg_color = Color(0.356935, 0.748272, 0.306801, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0, 0, 0, 1)
+border_width_bottom = 10
+border_color = Color(5.22219e-06, 0.710683, 0, 1)
 border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.418184, 0.758537, 0.245683, 0.6)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knxmk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knxmk"]
+bg_color = Color(0.901961, 0.415686, 0.227451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24fkt"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.356935, 0.748272, 0.306801, 1)
+border_width_bottom = 10
+border_color = Color(5.22219e-06, 0.710683, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 shadow_color = Color(0.418184, 0.758537, 0.245683, 0.6)
 
 [node name="OptionsPage" type="Control" node_paths=PackedStringArray("retro_shader")]
@@ -148,46 +201,55 @@ bus_name = "sfx"
 
 [node name="MuteMusicButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 185.0
-offset_right = 212.0
-offset_bottom = 227.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
+offset_left = 72.0
+offset_top = 175.0
+offset_right = 202.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_nwt33")
 text = "Mute Music"
 
 [node name="MuteSFXButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 247.0
-offset_top = 185.0
-offset_right = 370.0
-offset_bottom = 227.0
+offset_left = 230.0
+offset_top = 175.0
+offset_right = 353.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
 text = "Mute SFX"
 
 [node name="RetroBoxContainer" type="Panel" parent="Panel"]
 layout_mode = 2
-offset_left = 80.0
-offset_top = 254.0
-offset_right = 636.0
-offset_bottom = 305.0
+offset_left = 69.0
+offset_top = 234.0
+offset_right = 625.0
+offset_bottom = 285.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_knxmk")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Panel/RetroBoxContainer"]
 layout_mode = 0
 offset_left = 4.0
+offset_top = 6.0
 offset_right = 546.0
 offset_bottom = 60.0
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Panel/RetroBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-text = "Toggle Retro Shaders"
+theme_override_styles/normal = SubResource("StyleBoxFlat_knxmk")
+text = "Toggle Retro Shaders > "
 
 [node name="RetroShaderToggleButton" type="Button" parent="Panel/RetroBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_24fkt")
 text = "Turn On"
 
 [node name="RetroShader" parent="." instance=ExtResource("4_knxmk")]

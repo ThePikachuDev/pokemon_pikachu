@@ -22,8 +22,8 @@
 "suffix": ""
 },
 &"default_portrait": "detective",
-&"description": "",
-&"display_name": "Helpercharacter",
+&"description": "A good pikachu calling from a tower to help you ",
+&"display_name": "Detective",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),

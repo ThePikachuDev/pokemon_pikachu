@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 const GRAVITY = 980.0
 const WALK_SPEED = 200.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -320.0
 const acceleration = 0.1
 
 @export var dash_speed = 400.0

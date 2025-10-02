@@ -19,16 +19,14 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scripts/game_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"Hoopa": "res://dialogic_timelines/Hoopa.dch",
-"HoopaRingCharacter": "res://dialogic_timelines/HoopaRingCharacter.dch"
+"Helpercharacter": "res://dialogic_timelines/Helpercharacter.dch"
 }
 directories/dtl_directory={
-"team_rocket": "res://dialogic_timelines/team_rocket.dtl",
+"HelperTimeline": "res://assets/portrait/detective/HelperTimeline.dtl",
 "timeline": "res://dialogic_timelines/timeline.dtl"
 }
 layout/style_directory={
@@ -66,7 +64,7 @@ runtime/balloon_path="res://dialogue/balloon.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [gui]
 

@@ -1060,7 +1060,7 @@ script = ExtResource("14_gqf76")
 [node name="HUD" parent="GameManager" instance=ExtResource("13_w48x8")]
 
 [node name="Player" parent="." instance=ExtResource("2_lic58")]
-position = Vector2(7097, -3)
+position = Vector2(-393, 402)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
 process_mode = 3
@@ -1133,7 +1133,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAIAAAABAAAAAAAEAAkAAAACAAAAAAADAAk
 tile_set = SubResource("TileSet_vxgfi")
 
 [node name="killZoneBelowWorld" type="Area2D" parent="."]
-position = Vector2(1436, 733)
+position = Vector2(1436, 517)
 script = ExtResource("7_14gs7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killZoneBelowWorld"]

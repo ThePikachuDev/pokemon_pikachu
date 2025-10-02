@@ -1,15 +1,5 @@
-join Hoopa left
-Hoopa: umm.. hello there !!
-Hoopa: it looks like you are in search of someone
-Hoopa: i saw some guys in white shirt with the letter R on it going to Pewter City
-Hoopa: they had ash with them, he is my friend
-join HoopaRingCharacter center
-Hoopa: i can only use my hoopa rings to travel through places but i can't attack someone 'yet'
-Hoopa: so you can use my hoopa rings to find them and hopefully rescuing Ash
-Hoopa: Are You Ready For This ?
-- Hell Yeah !!
-	Hoopa: Okay then , hop into my ring , it'll teleport you to pewter city
-	Hoopa: this city is known for rock type pokemon and you'll be in a huge disadvantage over there , so be carefull
-	[signal arg="unlock_ring"]
-- I think i Should Train More First
-	Hoopa: Oh yeah , pretty logical decision , then i'll send you to a Training Tower where you can upgrade and buy powerups from shops !
+Helpercharacter: Detective Pikachu reporting, i'll guide you through some basics. Press enter key to continue
+Helpercharacter: you can move with WASD or arrow keys and jump with space/up_arrow/w key
+Helpercharacter: do dash using shift key while going in a direction
+Helpercharacter: if don't know where to go , just go in right direction
+Helpercharacter: pss..pss.. collect 5 or more bolts and then you can use thunderBolt on an enemy using F key if its in your range

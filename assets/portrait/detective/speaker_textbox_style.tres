@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=19 format=3 uid="uid://b1pjs83wiox76"]
+
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_jqt4p"]
+[ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="2_us34l"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="3_us34l"]
+[ext_resource type="Script" uid="uid://bk84r61kckpxa" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="4_1oong"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="4_h6nng"]
+[ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="5_j7w4w"]
+[ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="6_ipt57"]
+[ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="6_j7w4w"]
+[ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="7_6kpil"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="7_ipt57"]
+[ext_resource type="Script" uid="uid://dpv2dfiv5dhmr" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="8_4pa0y"]
+[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="8_6kpil"]
+[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="9_4pa0y"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="10_qbbxg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1w"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 1)
+skew = Vector2(0.073, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="PackedScene" id="PackedScene_qbbxg"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Custom", "script", "CanvasLayer", "BackgroundLayer", "disabled", "apply_overrides_on_ready", "FullAdvanceInputLayer", "TextboxWithSpeakerPortrait", "layout_mode", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "mouse_filter", "box_panel", "Control", "Anchor", "anchor_left", "anchor_top", "Panel", "unique_name_in_owner", "self_modulate", "offset_left", "offset_top", "offset_right", "offset_bottom", "PanelContainer", "HBox", "theme_override_constants/separation", "HBoxContainer", "PortraitPanel", "clip_children", "size_flags_horizontal", "size_flags_stretch_ratio", "theme_override_styles/panel", "PortraitBackgroundColor", "color", "ColorRect", "DialogicNode_PortraitContainer", "mode", "container_ids", "debug_character_portrait", "VBoxContainer", "DialogicNode_NameLabel", "theme_override_font_sizes/font_size", "text", "Label", "DialogicNode_DialogText", "size_flags_vertical", "theme_override_font_sizes/normal_font_size", "bbcode_enabled", "scroll_following", "visible_characters_behavior", "textbox_root", "RichTextLabel", "DialogicNode_TypeSounds", "AudioStreamPlayer", "Glossary", "VN_ChoiceLayer", "TextInputLayer", "ExampleHistoryScene", "font_use_global_size", "font_custom_size", "font_use_global_fonts", "font_custom_normal", "font_custom_bold", "font_custom_italics"),
+"node_count": 18,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 2147483647, 3, 1, 2, 4, 2, 5, 2, 0, 0, 0, 2147483647, 6, 3, 1, 5, 2, 0, 0, 0, 16, 7, -1, 9, 8, 4, 9, 5, 10, 6, 11, 6, 12, 7, 13, 7, 14, 7, 1, 8, 15, 9, 0, 3, 0, 16, 17, -1, 9, 8, 10, 9, 11, 18, 12, 19, 6, 10, 12, 11, 6, 12, 7, 13, 13, 14, 7, 0, 4, 0, 27, 20, -1, 15, 21, 2, 22, 14, 8, 10, 9, 11, 18, 12, 19, 6, 10, 12, 11, 6, 23, 15, 24, 16, 25, 17, 26, 18, 12, 7, 13, 13, 14, 7, 0, 5, 0, 30, 28, -1, 3, 8, 7, 14, 7, 29, 5, 0, 6, 0, 20, 31, -1, 7, 21, 2, 32, 10, 8, 7, 33, 4, 34, 19, 14, 7, 35, 20, 0, 7, 0, 38, 36, -1, 13, 21, 2, 8, 10, 9, 5, 10, 6, 11, 6, 23, 21, 24, 22, 25, 23, 26, 24, 12, 7, 13, 7, 14, 7, 37, 25, 0, 8, 0, 16, 39, -1, 12, 8, 10, 9, 5, 10, 6, 11, 6, 24, 26, 12, 7, 13, 7, 14, 7, 1, 27, 40, 10, 41, 28, 42, 29, 0, 6, 0, 43, 43, -1, 3, 8, 7, 33, 4, 14, 7, 0, 10, 0, 47, 44, -1, 5, 21, 2, 8, 7, 45, 30, 46, 31, 1, 32, 0, 10, 0, 55, 48, -1, 10, 21, 2, 8, 7, 49, 4, 50, 33, 51, 2, 46, 34, 52, 2, 53, 10, 1, 35, 1073741878, 36, 0, 12, 0, 57, 56, -1, 1, 1, 37, 0, 0, 0, 2147483647, 58, 38, 1, 5, 2, 0, 0, 0, 2147483647, 59, 39, 1, 5, 2, 0, 0, 0, 2147483647, 60, 40, 1, 5, 2, 0, 0, 0, 2147483647, 61, 41, 8, 62, 2, 63, 5, 64, 2, 65, 42, 66, 42, 67, 42, 4, 43, 5, 2, 0),
+"variants": [ExtResource("2_us34l"), ExtResource("3_us34l"), true, ExtResource("4_h6nng"), 3, 15, 1.0, 2, ExtResource("4_1oong"), "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/default_stylebox.tres", 1, 7, 0.5, 0, Color(0.533333, 0.376471, 0.176471, 1), -345.0, -190.0, 345.0, -4.0, 0.3, SubResource("StyleBoxFlat_dmg1w"), -7.0, -3.0, 7.0, 3.0, Color(0, 0, 0, 0.231373), 4.0, ExtResource("5_j7w4w"), PackedStringArray("1"), "speaker", 8, "Name", ExtResource("6_ipt57"), 6, "Some text", ExtResource("7_6kpil"), NodePath("../../.."), ExtResource("8_4pa0y"), ExtResource("6_j7w4w"), ExtResource("7_ipt57"), ExtResource("8_6kpil"), ExtResource("9_4pa0y"), "", false],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_h6nng"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("DefaultLayoutBase", "CanvasLayer", "script"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0),
+"variants": [ExtResource("2_us34l")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_h3525"]
+script = ExtResource("2_jqt4p")
+scene = SubResource("PackedScene_h6nng")
+overrides = {
+"global_font_size": "20.0"
+}
+
+[resource]
+script = ExtResource("10_qbbxg")
+name = "speaker_textbox_style"
+layer_list = Array[String]([])
+layer_info = {
+"": SubResource("Resource_h3525")
+}
+base_scene = SubResource("PackedScene_qbbxg")
+base_overrides = {}
+layers = Array[ExtResource("2_jqt4p")]([])
+metadata/_latest_layer = ""

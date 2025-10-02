@@ -208,18 +208,18 @@ offset_bottom = 217.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_nwt33")
-text = "Mute Music"
+text = "Toggle Music"
 
 [node name="MuteSFXButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 230.0
+offset_left = 246.0
 offset_top = 175.0
-offset_right = 353.0
+offset_right = 376.0
 offset_bottom = 217.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_clmdq")
-text = "Mute SFX"
+text = "Toggle SFX"
 
 [node name="RetroBoxContainer" type="Panel" parent="Panel"]
 layout_mode = 2

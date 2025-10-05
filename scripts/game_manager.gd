@@ -62,6 +62,7 @@ func update_heart_display():
 		hearts_list[i].visible = i < health
 	
 	if health <= 0:
+		bolts = 0
 		print(get_tree())
 		await get_tree().call_deferred("reload_current_scene")
 
@@ -81,8 +82,11 @@ func update_bolt_label():
 
 func add_bolt():
 	bolts += 1
+	
 	if bolts >= 5:
 		can_thunderbolt = true
+	else:
+		can_thunderbolt = false
 	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
 	#if bolts == 1:
 		#play_dialogue(dialogue_resource, "firstBolt")

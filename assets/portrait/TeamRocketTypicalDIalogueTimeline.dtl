@@ -1,0 +1,30 @@
+join JessyCharacter center
+JessyCharacter: Prepare for trouble!
+leave JessyCharacter
+join JamesCharacter right
+JamesCharacter: And Make it double!
+leave JamesCharacter
+join JessyCharacter left
+JessyCharacter: To Protect the world from devastation!
+leave JessyCharacter
+join JamesCharacter right
+JamesCharacter: To Unite all peoples within our nation!
+leave JamesCharacter
+join JessyCharacter left
+JessyCharacter: To denounce the evils of truth and love!
+leave JessyCharacter
+join JamesCharacter right
+JamesCharacter: To extend our reach to the starts above!
+leave JamesCharacter
+join JessyCharacter left
+JessyCharacter: Jessie!
+leave JessyCharacter
+join JamesCharacter right
+JamesCharacter: James!
+leave JamesCharacter
+join JessyCharacter left
+JessyCharacter: Team Rocket blasts off at the speed of light
+leave JessyCharacter
+join MeowthCharacter right
+MeowthCharacter: Surrender now, or prepare to fight
+leave --All--

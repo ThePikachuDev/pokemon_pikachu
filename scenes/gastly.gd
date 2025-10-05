@@ -8,12 +8,13 @@ extends CharacterBody2D
 @export var left_boundary: float = -125
 @export var right_boundary: float  = 125
 
-
+@onready var gastly_voice: AudioStreamPlayer2D = $GastlyVoice
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var ray_cast_2d: RayCast2D = $Sprite2D/RayCast2D
 @onready var timer: Timer = $Timer
 @onready var game_manager = %GameManager
 @onready var hurt_box: Area2D = $hurtBox
+@onready var gastly_voice_timer: Timer = $GastlyVoiceTimer
 
 var gravity: float = 980.0
 var direction: Vector2
@@ -26,17 +27,24 @@ enum States{
 }
 var current_state = States.WANDER
 
+var rng = RandomNumberGenerator.new()
+var randNum 
+
 func _ready() -> void:
 	add_to_group("enemy")
 	left_bounds = self.position + Vector2(left_boundary, 0)
 	right_bounds = self.position + Vector2(right_boundary, 0 )
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	handle_gravity(delta)
 	handle_movement(delta)
 	change_direction()
 	look_for_player()
+	randNum = rng.randi_range(0,10)
+	if randNum > 5:
+		gastly_voice.play()
+		await gastly_voice.finished
 
 func look_for_player():
 	if ray_cast_2d.is_colliding():
@@ -105,3 +113,12 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.name == player.name:
 		self.queue_free()
+
+
+func _on_gastly_voice_timer_timeout() -> void:
+	gastly_voice.play()
+	await gastly_voice.finished
+	var random_gastly_voice_number = rng.randi_range(3,8)
+	gastly_voice_timer.wait_time = random_gastly_voice_number
+	gastly_voice_timer.start()
+	

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1lf6blorjn2o"
+path="res://.godot/imported/odish_voice.mp3-d5c56e5e0dbee862feca2324103e9965.mp3str"
+
+[deps]
+
+source_file="res://assets/music/pokemon sfx/odish_voice.mp3"
+dest_files=["res://.godot/imported/odish_voice.mp3-d5c56e5e0dbee862feca2324103e9965.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

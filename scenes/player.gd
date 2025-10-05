@@ -54,7 +54,9 @@ var TotalAttackDuration: float = 0.26
 var attack_duratoin_timer: float = 0.0
 var attack_distance: float = 6.0
 
-
+var is_tower_in_area: bool = false
+var tower_node
+var tower_activated: bool = false
 
 @export var dialogue_resource = "res://dialogue/StarterHelper.dialogue"
 @export var dialogue_start: String = "start"
@@ -90,7 +92,7 @@ func _physics_process(delta: float) -> void:
 				can_coyote_jump = false 
 	
 	if Input.is_action_just_pressed("dialogue"):
-		game_manager.play_dialogue(dialogue_resource,dialogue_start)
+		#game_manager.play_dialogue(dialogue_resource,dialogue_start)
 		pass
 	
 	var direction = Input.get_axis("left", "right")
@@ -155,8 +157,26 @@ func _on_coyote_timer_timeout() -> void:
 
 
 func _process(_delta: float) -> void:
+	
+
+	
 	if game_manager.can_thunderbolt:
 		if Input.is_action_just_pressed("thunderBolt"):
+		
+			if tower_node:
+				print("attacking tower node")
+				var thunder_animation = tower_node.get_node("ThunderAnimation")
+				thunder_animation.visible = true
+				thunder_animation.play("default")
+				thunder_bolt_audio.play()
+				var timer = get_tree().create_timer(1.0)
+				await timer.timeout
+				thunder_animation.stop()
+				thunder_animation.visible = false
+				game_manager.bolts -= 5
+				game_manager.update_bolt_label()
+			
+			
 			for enemy in enemies_in_thunderbolt_area:
 				var thunder_animation = enemy.get_node("ThunderAnimation")
 				print("enemy detected " , enemy.position)
@@ -227,6 +247,14 @@ func _on_kill_zone_below_world_body_entered(_body: Node2D) -> void:
 
 
 func _on_thunder_bolt_area_body_entered(body: Node2D) -> void:
+	
+	print(body)
+	
+	if body.is_in_group("interactable_tower"):
+		print("tower exited")
+		is_tower_in_area = true
+		tower_node = body
+	
 	if body.is_in_group("enemy"):
 		enemies_in_thunderbolt_area.append(body)
 		#if Input.is_action_pressed("thunderBolt"):
@@ -242,5 +270,12 @@ func _on_thunder_bolt_area_body_entered(body: Node2D) -> void:
 
 
 func _on_thunder_bolt_area_body_exited(body: Node2D) -> void:
+	print(body)
+	
+	if body.is_in_group("interactable_tower"):
+		print("tower exited")
+		is_tower_in_area = false
+		tower_node = null
+	
 	if body.is_in_group("enemy"):
 		enemies_in_thunderbolt_area.erase(body)

@@ -25,19 +25,25 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "Helpercharacter": "res://dialogic_timelines/Helpercharacter.dch",
-"HoopaCharacter": "res://dialogic_timelines/HoopaCharacter.dch"
+"HoopaCharacter": "res://dialogic_timelines/HoopaCharacter.dch",
+"JamesCharacter": "res://dialogic_timelines/JamesCharacter.dch",
+"JessyCharacter": "res://dialogic_timelines/JessyCharacter.dch",
+"MeowthCharacter": "res://dialogic_timelines/MeowthCharacter.dch"
 }
 directories/dtl_directory={
 "HelperTimeline": "res://assets/portrait/detective/HelperTimeline.dtl",
 "HoopaFirstMeetTimeline": "res://dialogic_timelines/HoopaFirstMeetTimeline.dtl",
+"TeamRocketTypicalDIalogueTimeline": "res://assets/portrait/TeamRocketTypicalDIalogueTimeline.dtl",
+"new_testing_visual_timeline": "res://dialogic_timelines/new_testing_visual_timeline.dtl",
 "timeline": "res://dialogic_timelines/timeline.dtl"
 }
 layout/style_directory={
 "": "res://dialogic_timelines/New_File.tres",
-"New_File": "res://dialogic_timelines/New_File.tres"
+"New_File": "res://dialogic_timelines/New_File.tres",
+"New_File 2": "res://assets/New_File.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://dialogic_timelines/New_File.tres"]
+layout/style_list=["res://dialogic_timelines/New_File.tres", "res://assets/New_File.tres"]
 layout/default_style="res://dialogic_timelines/New_File.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"

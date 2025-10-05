@@ -279,7 +279,7 @@ bus = &"sfx"
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_smehm")
 position = Vector2(2, 11)
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(2.38, 2.38)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -404,7 +404,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="ThunderBoltArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ThunderBoltArea"]
 shape = SubResource("CircleShape2D_smehm")
@@ -431,5 +430,6 @@ shape = SubResource("RectangleShape2D_y4r1p")
 [connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]
 [connection signal="timeout" from="JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="area_entered" from="ThunderBoltArea" to="." method="_on_thunder_bolt_area_area_entered"]
 [connection signal="body_entered" from="ThunderBoltArea" to="." method="_on_thunder_bolt_area_body_entered"]
 [connection signal="body_exited" from="ThunderBoltArea" to="." method="_on_thunder_bolt_area_body_exited"]

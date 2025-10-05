@@ -7,6 +7,7 @@ var is_player_in_range: bool
 @export var i_wanna_use_my_custom_sprite: bool 
 @export var texture: Texture 
 @export var timeline: DialogicTimeline 
+@export var f_addons: bool = false
 
 func _ready() -> void:
 	if i_wanna_use_my_custom_sprite:
@@ -19,6 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if is_player_in_range:
+			
 			Dialogic.start(timeline)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

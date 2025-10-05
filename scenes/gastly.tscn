@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds8hulwht70bg"]
+[gd_scene load_steps=14 format=3 uid="uid://ds8hulwht70bg"]
 
 [ext_resource type="Script" uid="uid://bmg05jl3inmxt" path="res://scenes/gastly.gd" id="1_1j2ao"]
 [ext_resource type="Texture2D" uid="uid://1tn04gsqaehy" path="res://assets/my aesprite assets/env/gastly.png" id="1_nlymn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kvfdpng25ouu" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame3.png" id="5_tntme"]
 [ext_resource type="Texture2D" uid="uid://duk0mu8q6t86a" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame4.png" id="6_p01s0"]
 [ext_resource type="Texture2D" uid="uid://bhwiu2kl130t" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame5.png" id="7_gc1fv"]
+[ext_resource type="AudioStream" uid="uid://chfrplk1qn10j" path="res://assets/music/pokemon sfx/gastly_voice.mp3" id="8_xdkp8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlymn"]
 animations = [{
@@ -89,6 +90,14 @@ visible = false
 position = Vector2(0, -90.909)
 sprite_frames = SubResource("SpriteFrames_1j2ao")
 
+[node name="GastlyVoice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xdkp8")
+volume_db = -12.49
+
+[node name="GastlyVoiceTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="hitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="hurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="GastlyVoiceTimer" to="." method="_on_gastly_voice_timer_timeout"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://6shrk5htex4y"]
+
+[ext_resource type="Script" uid="uid://fngrrltwcixv" path="res://scenes/interactable_tower.gd" id="1_7hvpc"]
+[ext_resource type="Texture2D" uid="uid://b8kqw8lte2i0r" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame1.png" id="2_h38e0"]
+[ext_resource type="Texture2D" uid="uid://bon1e80h0y3v8" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame2.png" id="3_bnr4c"]
+[ext_resource type="Texture2D" uid="uid://kvfdpng25ouu" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame3.png" id="4_g6ndv"]
+[ext_resource type="Texture2D" uid="uid://duk0mu8q6t86a" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame4.png" id="5_o1jav"]
+[ext_resource type="Texture2D" uid="uid://bhwiu2kl130t" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame5.png" id="6_fx1ar"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wbkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h38e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bnr4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g6ndv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o1jav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fx1ar")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnr4c"]
+size = Vector2(54.8387, 185.645)
+
+[node name="InteractableTower" type="StaticBody2D" groups=["interactable_tower"]]
+scale = Vector2(0.31, 0.31)
+script = ExtResource("1_7hvpc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 54.0
+offset_bottom = 185.0
+
+[node name="ThunderAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(32.2581, -61.8768)
+sprite_frames = SubResource("SpriteFrames_4wbkc")
+frame = 3
+frame_progress = 0.0939986
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(27.4194, 92.8225)
+shape = SubResource("RectangleShape2D_bnr4c")

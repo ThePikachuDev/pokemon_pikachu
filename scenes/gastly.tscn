@@ -92,7 +92,6 @@ sprite_frames = SubResource("SpriteFrames_1j2ao")
 
 [node name="GastlyVoice" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_xdkp8")
-volume_db = -12.49
 
 [node name="GastlyVoiceTimer" type="Timer" parent="."]
 wait_time = 3.0

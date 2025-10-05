@@ -34,6 +34,8 @@ func _ready() -> void:
 	add_to_group("enemy")
 	left_bounds = self.position + Vector2(left_boundary, 0)
 	right_bounds = self.position + Vector2(right_boundary, 0 )
+	gastly_voice_timer.wait_time = rng.randf_range(3.0, 10.0)
+	gastly_voice_timer.start()
 	
 
 func _physics_process(delta: float) -> void:	
@@ -41,10 +43,7 @@ func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	change_direction()
 	look_for_player()
-	randNum = rng.randi_range(0,10)
-	if randNum > 5:
-		gastly_voice.play()
-		await gastly_voice.finished
+
 
 func look_for_player():
 	if ray_cast_2d.is_colliding():
@@ -106,6 +105,7 @@ func _on_timer_timeout() -> void:
 	current_state = States.WANDER
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
+	
 	if body.name == player.name:
 		game_manager.take_damage()
 

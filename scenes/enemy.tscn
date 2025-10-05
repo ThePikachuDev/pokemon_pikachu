@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lxtivvonujh2"]
+[gd_scene load_steps=15 format=3 uid="uid://lxtivvonujh2"]
 
 [ext_resource type="Texture2D" uid="uid://cxxhhsamau0g7" path="res://assets/my aesprite assets/env/enemy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dek7xlc6m8q3g" path="res://scripts/enemy.gd" id="1_md0e3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kvfdpng25ouu" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame3.png" id="6_8qclf"]
 [ext_resource type="Texture2D" uid="uid://duk0mu8q6t86a" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame4.png" id="7_w8i8w"]
 [ext_resource type="Texture2D" uid="uid://bhwiu2kl130t" path="res://assets/Pixel Art Skill Animations - Lightning/VFX3/Frames/lightning_skill3_frame5.png" id="8_otmr2"]
+[ext_resource type="AudioStream" uid="uid://c1lf6blorjn2o" path="res://assets/music/pokemon sfx/odish_voice.mp3" id="9_ipns3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -98,6 +99,9 @@ visible = false
 position = Vector2(0, -90.909)
 sprite_frames = SubResource("SpriteFrames_wtq4b")
 frame_progress = 0.0264789
+
+[node name="OdishVoice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ipns3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Leaves/Area2D" to="." method="_on_area_2d_body_entered"]

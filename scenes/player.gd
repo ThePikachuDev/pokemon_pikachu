@@ -48,6 +48,10 @@ var enemies_in_thunderbolt_area: Array = []
 @onready var attack_sprite: Sprite2D = $Attack/Sprite2D
 @onready var attack_area_2d: Area2D = $Attack/Sprite2D/AttackArea2D
 
+
+@onready var pikachu_idle_voice_timer: Timer = $PikachuIdleVoiceTimer
+@onready var pikachu_idle_voice: AudioStreamPlayer2D = $PikachuIdleVoice
+
 var look_dir: Vector2 = Vector2.RIGHT
 
 var TotalAttackDuration: float = 0.26
@@ -63,6 +67,7 @@ var tower_activated: bool = false
 
 var jumps_left: int 
 
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	add_to_group("player")
@@ -75,6 +80,8 @@ func _ready():
 	game_manager.load_hearts()
 	jumps_left = 2 if game_manager.can_double_jump else 1
 	pass
+	pikachu_idle_voice_timer.wait_time = rng.randf_range(3.0, 10.0)
+	pikachu_idle_voice_timer.start()
 
 func _physics_process(delta: float) -> void:
 #	&& (can_coyote_jump == false)
@@ -279,3 +286,12 @@ func _on_thunder_bolt_area_body_exited(body: Node2D) -> void:
 	
 	if body.is_in_group("enemy"):
 		enemies_in_thunderbolt_area.erase(body)
+
+
+func _on_pikachu_idle_voice_timer_timeout() -> void:
+	pikachu_idle_voice.play()
+	await pikachu_idle_voice.finished
+	var random_gastly_voice_number = rng.randi_range(3,8)
+	pikachu_idle_voice_timer.wait_time = random_gastly_voice_number
+	pikachu_idle_voice_timer.start()
+	

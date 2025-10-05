@@ -8,6 +8,7 @@ extends Node2D
 @onready var animated_enemy_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var head: Area2D = $head
 @onready var game_manager = %GameManager
+@onready var odish_voice: AudioStreamPlayer2D = $OdishVoice
 
 # Set a constant for the movement speed for better organization.
 const LEAVES_SPEED = 200.0 # Adjust this value to change how fast the leaves move.
@@ -54,7 +55,9 @@ func throw_leaves(_dir: int) -> void:
 	is_throwing = true
 	leaves.position = animated_enemy_sprite.position
 	leaves.visible = true
+	odish_voice.play()
 	timer.start()
+	
 
 # This function is called when the leaves timer runs out.
 func _on_timer_timeout() -> void:

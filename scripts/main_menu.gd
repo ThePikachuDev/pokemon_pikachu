@@ -8,11 +8,31 @@ extends Control
 @onready var retro_shader_toggle_button = $OptionsPage/Panel/RetroBoxContainer/VBoxContainer/RetroShaderToggleButton
 @onready var retro_shader: ColorRect = $RetroShader
 
+@onready var music_player: AudioStreamPlayer2D = $MusicPlayer
+@onready var options_page: Control = $OptionsPage
+
+
+const MUSIC_TRACKS = [
+	preload("res://assets/music/main menu bg music/1-24. St. Anne.ogg"),
+	preload("res://assets/music/main menu bg music/1-34. Casino.ogg"),
+	preload("res://assets/music/main menu bg music/1-39. Theme Of Cinnabar Island.ogg")
+]
+
 var current_focus: Button = null
 var buttons: Array = []
 
+func play_randome_track():
+	var random_index = randi() % MUSIC_TRACKS.size()
+	var random_track = MUSIC_TRACKS[random_index]
+	music_player.stream = random_track
+	
+	music_player.play()
 
 func _ready() -> void:
+	play_randome_track()
+	
+	options_page.visible = false
+	
 	buttons = [play_button, quit_button]
 	
 	play_button.focus_neighbor_bottom = quit_button.get_path()
@@ -87,3 +107,7 @@ func _on_quit_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	$OptionsPage.visible = true
+
+
+func _on_music_player_finished() -> void:
+	play_randome_track()

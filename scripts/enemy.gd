@@ -29,6 +29,10 @@ func _ready() -> void:
 	# Connect the timer's timeout signal.
 	timer.timeout.connect(_on_timer_timeout)
 	
+#
+#func _physics_process(delta: float) -> void:
+	#position.y = sin(Time.get_ticks_msec() / 1000.0 * 50) * 10
+
 # This function is called every frame and is used for game logic.
 func _process(delta: float) -> void:
 	# Cast rays to check for collisions only if not currently throwing leaves.

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7crvvxem85hh"
+path="res://.godot/imported/1-44. Hall of Fame.ogg-5c86b2ea03fe9a64ca0eba520d6a383d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/background music/1-44. Hall of Fame.ogg"
+dest_files=["res://.godot/imported/1-44. Hall of Fame.ogg-5c86b2ea03fe9a64ca0eba520d6a383d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

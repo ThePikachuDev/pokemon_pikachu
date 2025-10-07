@@ -15,7 +15,7 @@
 script = ExtResource("2_rnxu7")
 scene = ExtResource("1_q6u0m")
 overrides = {
-"global_font_size": "50.0"
+"global_font_size": "35.0"
 }
 
 [sub_resource type="Resource" id="Resource_7fmo4"]
@@ -34,10 +34,9 @@ overrides = {}
 script = ExtResource("2_rnxu7")
 scene = ExtResource("5_q6u0m")
 overrides = {
-"box_distance": "10.0",
 "box_modulate_custom_color": "Color(0.286458, 0.276015, 0.276015, 1)",
 "box_modulate_global_color": "false",
-"box_size": "Vector2(1000, 250)",
+"box_size": "Vector2(700, 170)",
 "name_label_color_mode": "2",
 "name_label_custom_color": "Color(0.651042, 0.632392, 0.632392, 1)",
 "name_label_hide_when_no_character": "true",

@@ -13,10 +13,12 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+corner_detail = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
 atlas = ExtResource("4_6fi6k")
@@ -118,6 +120,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uxdf7")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"damage",
@@ -204,32 +209,33 @@ shadow_color = Color(1, 0.44, 0.44, 0.6)
 shadow_size = 5
 
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_5ysmq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 1.0
-offset_right = 381.0
-offset_bottom = 169.0
+offset_right = 261.0
+offset_bottom = 158.0
 theme_override_fonts/normal_font = ExtResource("1_ahhtf")
 theme_override_fonts/bold_font = ExtResource("2_oo0fn")
+theme_override_font_sizes/bold_font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_0i1j5")
 bbcode_enabled = true
-text = "[img=128x128]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : 3           [/font]
-"
+text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : 0 [/font]"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 54.0
-offset_top = 111.0
-offset_right = 274.0
-offset_bottom = 154.0
-theme_override_constants/separation = 50
+offset_left = 56.0
+offset_top = 113.0
+offset_right = 276.0
+offset_bottom = 153.0
+theme_override_constants/separation = 30
 
 [node name="heart" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart"]
-scale = Vector2(3, 3)
+scale = Vector2(2.24, 2.24)
 sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 
@@ -238,7 +244,7 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart2"]
-scale = Vector2(3, 3)
+scale = Vector2(2.24, 2.24)
 sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 
@@ -247,7 +253,7 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/heart3"]
-scale = Vector2(3, 3)
+scale = Vector2(2.24, 2.24)
 sprite_frames = SubResource("SpriteFrames_5357l")
 animation = &"damage"
 

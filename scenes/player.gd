@@ -80,7 +80,7 @@ func _ready():
 	game_manager.load_hearts()
 	jumps_left = 2 if game_manager.can_double_jump else 1
 	pass
-	pikachu_idle_voice_timer.wait_time = rng.randf_range(3.0, 10.0)
+	pikachu_idle_voice_timer.wait_time = rng.randf_range(8.0, 30.0)
 	pikachu_idle_voice_timer.start()
 
 func _physics_process(delta: float) -> void:

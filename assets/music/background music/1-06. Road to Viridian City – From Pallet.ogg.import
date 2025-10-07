@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ii1av3ymqgmm"
+path="res://.godot/imported/1-06. Road to Viridian City – From Pallet.ogg-03bb976805750f6bbfe227a8ec2842a7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/background music/1-06. Road to Viridian City – From Pallet.ogg"
+dest_files=["res://.godot/imported/1-06. Road to Viridian City – From Pallet.ogg-03bb976805750f6bbfe227a8ec2842a7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

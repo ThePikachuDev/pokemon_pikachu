@@ -2,6 +2,7 @@ extends CanvasLayer
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
 @onready var resume_button: Button = $PauseMenu/VBoxContainer/resume_button
 @onready var pause_menu: Panel = $PauseMenu
+
 @onready var options_page: Control = $OptionsPage
 @onready var retro_shader = $OptionsPage.retro_shader
 @onready var game_manager = %GameManager
@@ -16,6 +17,7 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rich_text_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : 0[/font]"
+	#options_page.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -24,6 +26,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("exit") and !get_tree().paused:
 		get_tree().paused = true
 		pause_menu.visible = get_tree().paused 
+		pause_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+		
+		
 
 
 #func launch_notification():

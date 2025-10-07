@@ -3,7 +3,6 @@ extends Control
 #@onready var game_manager = %GameManager
 @onready var retro_shader_toggle_button: Button = $Panel/RetroBoxContainer/VBoxContainer/RetroShaderToggleButton
 
-# Global variables (e.g., at the top of your script)
 var music_volume_before_mute: float = 0.0
 var sfx_volume_before_mute: float = 0.0
 var is_music_muted: bool = false
@@ -12,19 +11,6 @@ const MUTE_VOLUME_DB: float = -80.0 # Define a minimum volume for mute
 
 
 @export var retro_shader: ColorRect 
-#
-#func _ready() -> void:
-	#if music_muted:
-		#AudioServer.set_bus_volume_db(
-			#AudioServer.get_bus_index("music"),
-			#0
-		#)
-		#
-	#if sfx_muted:
-		#AudioServer.set_bus_volume_db(
-		#AudioServer.get_bus_index("sfx"),
-		#0
-	#)	
 
 func _on_retro_shader_toggle_button_pressed() -> void:
 	if GameManager.is_shader_enabled:
@@ -38,7 +24,8 @@ func _on_retro_shader_toggle_button_pressed() -> void:
 
 
 func _on_mouse_entered() -> void:
-	$".".visible = false
+	self.visible = false
+	
 
 #var bus_name: String
 #
@@ -47,9 +34,7 @@ func _on_mouse_entered() -> void:
 #func _ready() -> void:
 	#bus_index = AudioServer.get_bus_index(bus_name)
 	#value_changed.connect(_on_value_changed)
-	#value = db_to_linear(
-		#AudioServer.get_bus_volume_db(bus_index)
-	#)
+	#value = db_to
 
 func _on_button_pressed() -> void:
 	var music_bus_index: int = AudioServer.get_bus_index("music")

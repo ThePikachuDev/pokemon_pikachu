@@ -1,5 +1,15 @@
 extends Node
 
+const MUSIC_TRACKS = [
+	preload("res://assets/music/background music/1-06. Road to Viridian City – From Pallet.ogg"),
+	preload("res://assets/music/background music/1-19. Theme Of Cerulean City.ogg"),
+	preload("res://assets/music/background music/1-44. Hall of Fame.ogg"),
+	preload("res://assets/music/background music/game-music-loop-7-145285.ogg"),
+]
+
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+
+
 var bolts = 0
 var can_double_jump: bool
 
@@ -24,10 +34,43 @@ const Balloon = preload("res://dialogue/balloon.tscn")
 
 @onready var bolt_label: RichTextLabel = $HUD/RichTextLabel
 
+@onready var pause_menu = $HUD/OptionsPage
+
 #func _load_level(new_level) -> void:
 	#checkpoint_position = Vector2(-999,-999)
 	#previous_checkpoint_node = null
 	#get_tree().change_scene_to_file(new_level)
+
+func play_randome_track():
+	var random_index = randi() % MUSIC_TRACKS.size()
+	var random_track = MUSIC_TRACKS[random_index]
+	
+	music_player.stream = random_track
+	
+	music_player.play()
+
+
+func _on_music_player_finished() -> void:
+	# TEMPORARY CHECK
+	if music_player == null:
+		push_error("ERROR: MusicPlayer not found! Check your scene tree and the path: $MusicPlayer")
+		return
+	# END TEMPORARY CHECK
+
+	
+	play_randome_track()
+
+
+func _ready():
+	# TEMPORARY CHECK
+	if music_player == null:
+		push_error("ERROR: MusicPlayer not found! Check your scene tree and the path: $MusicPlayer")
+		return
+	# END TEMPORARY CHECK
+	
+	play_randome_track()
+
+
 
 func load_hearts():
 	var hearts_parent = $HUD/HBoxContainer
@@ -67,8 +110,6 @@ func update_heart_display():
 		await get_tree().call_deferred("reload_current_scene")
 
 
-func _ready():
-	pass
 
 func play_dialogue(dialogue_resource, dialogue_start):
 	if dialogues_enabled:
@@ -77,7 +118,7 @@ func play_dialogue(dialogue_resource, dialogue_start):
 		balloon.start(load(dialogue_resource), dialogue_start)
 
 func update_bolt_label():
-	bolt_label.text = "[img=128x128]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : " + str(bolts) + " [/font]" 
+	bolt_label.text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : " + str(bolts) + " [/font]" 
 
 
 func add_bolt():

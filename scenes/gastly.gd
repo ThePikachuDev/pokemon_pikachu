@@ -118,7 +118,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 func _on_gastly_voice_timer_timeout() -> void:
 	gastly_voice.play()
 	await gastly_voice.finished
-	var random_gastly_voice_number = rng.randi_range(3,8)
+	var random_gastly_voice_number = rng.randi_range(10,60)
 	gastly_voice_timer.wait_time = random_gastly_voice_number
 	gastly_voice_timer.start()
 	

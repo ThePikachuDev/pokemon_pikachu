@@ -5,12 +5,15 @@ var rng = RandomNumberGenerator.new()
 @onready var pokeball: Area2D = $"../pokeball"
 @onready var jigglypuff_fr: Sprite2D = $"../JigglypuffFr"
 
+@export var can_spawn_pokemon: bool = false
+
 func _ready() -> void:
 	for point in self.get_children():
 		points_array.append(point)
 	print(points_array.size())
 	rng.randomize()
-	generate_random_ball()
+	if can_spawn_pokemon:
+		generate_random_ball()
 	
 func generate_random_ball():
 	var random_number = rng.randi_range(0, points_array.size() - 1)

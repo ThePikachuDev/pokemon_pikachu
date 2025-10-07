@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvhpmvepv175"
+path="res://.godot/imported/1-24. St. Anne.ogg-f7a026fec9cb9d12aecb5a7a5dc13d5f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/main menu bg music/1-24. St. Anne.ogg"
+dest_files=["res://.godot/imported/1-24. St. Anne.ogg-f7a026fec9cb9d12aecb5a7a5dc13d5f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

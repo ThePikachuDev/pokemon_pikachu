@@ -280,7 +280,7 @@ bus = &"sfx"
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_smehm")
 position = Vector2(2, 11)
-zoom = Vector2(2.38, 2.38)
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -398,6 +398,7 @@ libraries = {
 }
 
 [node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]

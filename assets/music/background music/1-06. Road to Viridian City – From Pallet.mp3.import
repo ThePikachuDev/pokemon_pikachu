@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://y7p6ryuxweyo"
+path="res://.godot/imported/1-06. Road to Viridian City – From Pallet.mp3-de92e5599cfe8eaed2a22a9236f8a9a7.mp3str"
+
+[deps]
+
+source_file="res://assets/music/background music/1-06. Road to Viridian City – From Pallet.mp3"
+dest_files=["res://.godot/imported/1-06. Road to Viridian City – From Pallet.mp3-de92e5599cfe8eaed2a22a9236f8a9a7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

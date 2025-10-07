@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6c5ok0khxbpd"
+path="res://.godot/imported/1-19. Theme Of Cerulean City.ogg-22e7a1ffedc3e9b38d3f02d4c2bac6aa.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/background music/1-19. Theme Of Cerulean City.ogg"
+dest_files=["res://.godot/imported/1-19. Theme Of Cerulean City.ogg-22e7a1ffedc3e9b38d3f02d4c2bac6aa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

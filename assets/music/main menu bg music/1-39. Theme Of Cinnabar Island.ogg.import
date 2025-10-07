@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmemrhwca8qxp"
+path="res://.godot/imported/1-39. Theme Of Cinnabar Island.ogg-0e2bda8ddc9e86a16e67eb7fdceb9b3a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/main menu bg music/1-39. Theme Of Cinnabar Island.ogg"
+dest_files=["res://.godot/imported/1-39. Theme Of Cinnabar Island.ogg-0e2bda8ddc9e86a16e67eb7fdceb9b3a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -25,16 +25,6 @@ func _on_retro_shader_toggle_button_pressed() -> void:
 
 func _on_mouse_entered() -> void:
 	self.visible = false
-	
-
-#var bus_name: String
-#
-#var bus_index: int
-#
-#func _ready() -> void:
-	#bus_index = AudioServer.get_bus_index(bus_name)
-	#value_changed.connect(_on_value_changed)
-	#value = db_to
 
 func _on_button_pressed() -> void:
 	var music_bus_index: int = AudioServer.get_bus_index("music")

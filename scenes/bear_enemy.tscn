@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://t7m8c531pacg"]
+
+[ext_resource type="Texture2D" uid="uid://84typh708w4e" path="res://assets/Tilesets/Enemies/bear_brown.png" id="1_8a1w0"]
+[ext_resource type="Script" uid="uid://dp6hr7rfemjn1" path="res://scenes/bear_enemy.gd" id="1_j80kg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j80kg"]
+size = Vector2(22, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5akn"]
+atlas = ExtResource("1_8a1w0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbtxt"]
+atlas = ExtResource("1_8a1w0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2fux"]
+atlas = ExtResource("1_8a1w0")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7g0b"]
+atlas = ExtResource("1_8a1w0")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmfjm"]
+atlas = ExtResource("1_8a1w0")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ld0"]
+atlas = ExtResource("1_8a1w0")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqm1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5akn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbtxt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2fux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7g0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmfjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8ld0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seuxo"]
+size = Vector2(24, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1058d"]
+radius = 76.2365
+
+[node name="BearEnemy" type="CharacterBody2D"]
+script = ExtResource("1_j80kg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-108, 311.5)
+shape = SubResource("RectangleShape2D_j80kg")
+
+[node name="BearEnemySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-111, 304)
+sprite_frames = SubResource("SpriteFrames_oqm1j")
+animation = &"run"
+autoplay = "default"
+
+[node name="HitBox" type="Area2D" parent="BearEnemySprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BearEnemySprite/HitBox"]
+position = Vector2(2, 7)
+shape = SubResource("RectangleShape2D_seuxo")
+
+[node name="PlayerDetect" type="Area2D" parent="BearEnemySprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BearEnemySprite/PlayerDetect"]
+shape = SubResource("CircleShape2D_1058d")
+
+[node name="EdgeCheck" type="RayCast2D" parent="."]
+position = Vector2(-109, 321)

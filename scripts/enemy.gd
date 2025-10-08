@@ -1,6 +1,5 @@
 extends Node2D
 
-# Get nodes using @onready for proper initialization
 @onready var ray_cast_left: RayCast2D = $RayCast2D
 @onready var ray_cast_right: RayCast2D = $RayCast2D2
 @onready var leaves: Sprite2D = $Leaves
@@ -10,9 +9,8 @@ extends Node2D
 @onready var game_manager = %GameManager
 @onready var odish_voice: AudioStreamPlayer2D = $OdishVoice
 
-# Set a constant for the movement speed for better organization.
 const LEAVES_SPEED = 200.0 # Adjust this value to change how fast the leaves move.
-const ATTACK_COOLDOWN = 1.0 # The time in seconds between each leaf throw.
+const ATTACK_COOLDOWN = 0.7 # The time in seconds between each leaf throw.
 
 # A variable to track the current direction of movement.
 var current_direction: int = 1
@@ -54,16 +52,13 @@ func _process(delta: float) -> void:
 		# Flip the leaves sprite based on the direction.
 		leaves.flip_h = current_direction == -1
 
-# This function initiates the leaf-throwing action.
 func throw_leaves(_dir: int) -> void:
 	is_throwing = true
 	leaves.position = animated_enemy_sprite.position
 	leaves.visible = true
 	odish_voice.play()
 	timer.start()
-	
 
-# This function is called when the leaves timer runs out.
 func _on_timer_timeout() -> void:
 	is_throwing = false
 	leaves.visible = false
@@ -77,14 +72,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		# This assumes the Player has an 'apply_knockback' function.
 		body.apply_knockback(knockback_direction, 300.0, 0.12)
 		game_manager.take_damage()
-
-		# Hide the leaves immediately on collision to prevent continuous damage.
+	
 		leaves.visible = false
 		is_throwing = false
 		leaves.position = animated_enemy_sprite.position
 		timer.stop()
-		
-# This function handles the player colliding with the enemy's head.
+
 func _on_head_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		self.queue_free()

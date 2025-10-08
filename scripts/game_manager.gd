@@ -7,6 +7,7 @@ const MUSIC_TRACKS = [
 	preload("res://assets/music/background music/game-music-loop-7-145285.ogg"),
 ]
 
+#@onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 
@@ -31,43 +32,34 @@ const Balloon = preload("res://dialogue/balloon.tscn")
 
 @onready var player_hurt_animtion: AnimationPlayer = $"../Player/HurtAnimation"
 @onready var player_hurt_timer: Timer = $"../Player/HurtTimer"
-
 @onready var bolt_label: RichTextLabel = $HUD/RichTextLabel
-
 @onready var pause_menu = $HUD/OptionsPage
 
-#func _load_level(new_level) -> void:
-	#checkpoint_position = Vector2(-999,-999)
-	#previous_checkpoint_node = null
-	#get_tree().change_scene_to_file(new_level)
+
+@export var music_enabled: bool = true
+
+
+func _load_level(new_level) -> void:
+	checkpoint_position = Vector2(-999,-999)
+	previous_checkpoint_node = null
+	get_tree().change_scene_to_file(new_level)
+
 
 func play_randome_track():
 	var random_index = randi() % MUSIC_TRACKS.size()
 	var random_track = MUSIC_TRACKS[random_index]
 	
-	music_player.stream = random_track
-	
-	music_player.play()
+	if music_enabled:
+		if music_player:
+			music_player.stream = random_track
+			music_player.play()
 
 
 func _on_music_player_finished() -> void:
-	# TEMPORARY CHECK
-	if music_player == null:
-		push_error("ERROR: MusicPlayer not found! Check your scene tree and the path: $MusicPlayer")
-		return
-	# END TEMPORARY CHECK
-
-	
 	play_randome_track()
 
 
 func _ready():
-	# TEMPORARY CHECK
-	if music_player == null:
-		push_error("ERROR: MusicPlayer not found! Check your scene tree and the path: $MusicPlayer")
-		return
-	# END TEMPORARY CHECK
-	
 	play_randome_track()
 
 
@@ -88,15 +80,11 @@ func take_damage():
 		player_hurt_timer.start()
 		await player_hurt_timer.timeout
 		player_hurt_animtion.play("RESET")
-		# Check if the child is a valid AnimatedSprite2D and then play the animation
 		if animated_sprite is AnimatedSprite2D:
 			animated_sprite.play("damage")
-			# You may want to await the animation's finish signal, not the play function itself
 			await animated_sprite.animation_finished
 			
 		health -= 1
-		
-		#i'll play auido over here
 		update_heart_display()
 	
 

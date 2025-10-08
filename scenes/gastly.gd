@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var defualtImage: bool = true
 @export var player: CharacterBody2D
 @export var speed: int = 50
 @export var chase_speed: int = 150
@@ -30,7 +31,7 @@ var current_state = States.WANDER
 var rng = RandomNumberGenerator.new()
 var randNum 
 
-func _ready() -> void:
+func _ready() -> void:	
 	add_to_group("enemy")
 	left_bounds = self.position + Vector2(left_boundary, 0)
 	right_bounds = self.position + Vector2(right_boundary, 0 )
@@ -39,6 +40,8 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:	
+	if !defualtImage:
+		sprite_2d.visible = false
 	handle_gravity(delta)
 	handle_movement(delta)
 	change_direction()

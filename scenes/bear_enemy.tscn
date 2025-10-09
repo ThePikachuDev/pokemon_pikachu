@@ -71,11 +71,11 @@ radius = 76.2365
 script = ExtResource("1_j80kg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-108, 311.5)
+position = Vector2(4, -0.5)
 shape = SubResource("RectangleShape2D_j80kg")
 
 [node name="BearEnemySprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-111, 304)
+position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_oqm1j")
 animation = &"run"
 autoplay = "default"
@@ -92,4 +92,4 @@ shape = SubResource("RectangleShape2D_seuxo")
 shape = SubResource("CircleShape2D_1058d")
 
 [node name="EdgeCheck" type="RayCast2D" parent="."]
-position = Vector2(-109, 321)
+position = Vector2(3, 9)

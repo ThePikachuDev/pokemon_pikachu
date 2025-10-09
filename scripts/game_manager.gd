@@ -35,8 +35,26 @@ const Balloon = preload("res://dialogue/balloon.tscn")
 @onready var bolt_label: RichTextLabel = $HUD/RichTextLabel
 @onready var pause_menu = $HUD/OptionsPage
 
-
 @export var music_enabled: bool = true
+
+var player_speed = 200.0
+var player_jump_speed = -320.0
+
+var shop_items = {
+	"super_speed":{
+		"enabled": false,
+		"speed_mult": 2,
+		"duration": 120
+	},
+	"super_dash": {
+		"enabled": false,
+		"dash_mult": 2,
+		"duration": 120,
+	},
+	"full_health": {
+		
+	}
+}
 
 
 func _load_level(new_level) -> void:

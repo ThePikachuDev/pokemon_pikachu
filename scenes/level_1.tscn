@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://c0clr6bj8shji"]
+[gd_scene load_steps=46 format=4 uid="uid://c0clr6bj8shji"]
 
 [ext_resource type="Texture2D" uid="uid://cb5jyolg3ga37" path="res://assets/my aesprite assets/desert.png" id="1_014kd"]
 [ext_resource type="Script" uid="uid://bpcosxg8c11ur" path="res://scenes/level_1.gd" id="1_bswci"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bqk8t2dauv1ei" path="res://scenes/hoopa_ring.tscn" id="21_so66j"]
 [ext_resource type="PackedScene" uid="uid://btsi3ridrkv5t" path="res://scenes/shop.tscn" id="24_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://b71hp7iq6vm08" path="res://scenes/bolt.tscn" id="24_x2fux"]
+[ext_resource type="PackedScene" uid="uid://hyqy4qmhl0fx" path="res://scenes/components/kill_zone.tscn" id="25_s7g0b"]
 [ext_resource type="PackedScene" uid="uid://dmoqih1muw2xs" path="res://scenes/checkpoint.tscn" id="25_x2fux"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
@@ -1302,6 +1303,12 @@ acceleration = null
 left_boundary = null
 right_boundary = null
 
+[node name="HoopaRing" parent="." instance=ExtResource("21_so66j")]
+position = Vector2(-747, 237)
+
+[node name="Shop" parent="." instance=ExtResource("24_wbtxt")]
+position = Vector2(682, 266)
+
 [node name="Obstacles" type="Node" parent="."]
 
 [node name="Fire" type="Node" parent="Obstacles"]
@@ -1408,42 +1415,41 @@ sprite_frames = SubResource("SpriteFrames_7gny6")
 autoplay = "default"
 frame_progress = 0.986102
 
-[node name="HoopaRing" parent="." instance=ExtResource("21_so66j")]
-position = Vector2(178, 156)
+[node name="HandyItems" type="Node" parent="."]
 
-[node name="Shop" parent="." instance=ExtResource("24_wbtxt")]
-position = Vector2(682, 266)
+[node name="Bolts" type="Node" parent="HandyItems"]
 
-[node name="Bolts" type="Node" parent="."]
-
-[node name="bolt" parent="Bolts" instance=ExtResource("24_x2fux")]
+[node name="bolt" parent="HandyItems/Bolts" instance=ExtResource("24_x2fux")]
 position = Vector2(107, 298)
 
-[node name="bolt3" parent="Bolts" instance=ExtResource("24_x2fux")]
+[node name="bolt3" parent="HandyItems/Bolts" instance=ExtResource("24_x2fux")]
 position = Vector2(897, 232)
 
-[node name="bolt2" parent="Bolts" instance=ExtResource("24_x2fux")]
+[node name="bolt2" parent="HandyItems/Bolts" instance=ExtResource("24_x2fux")]
 position = Vector2(-93, 298)
 
-[node name="CheckPoints" type="Node" parent="."]
+[node name="CheckPoints" type="Node" parent="HandyItems"]
 
-[node name="Checkpoint" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(1002, 224)
 
-[node name="Checkpoint2" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint2" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(2899, 160)
 
-[node name="Checkpoint3" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint3" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(4091, 176)
 
-[node name="Checkpoint4" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint4" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(5740, 160)
 
-[node name="Checkpoint5" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint5" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(7475, 32)
 
-[node name="Checkpoint6" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint6" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(9212, 64)
 
-[node name="Checkpoint7" parent="CheckPoints" instance=ExtResource("25_x2fux")]
+[node name="Checkpoint7" parent="HandyItems/CheckPoints" instance=ExtResource("25_x2fux")]
 position = Vector2(10399, 128)
+
+[node name="KillZone" parent="." instance=ExtResource("25_s7g0b")]
+position = Vector2(0, 696)

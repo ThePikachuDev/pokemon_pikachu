@@ -1,13 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://btsi3ridrkv5t"]
+[gd_scene load_steps=18 format=3 uid="uid://btsi3ridrkv5t"]
 
 [ext_resource type="PackedScene" uid="uid://d3neky58nnctb" path="res://scenes/components/interactable.tscn" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://cgqpvu52nof43" path="res://scenes/shop.gd" id="1_xfvoa"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="3_032fp"]
+[ext_resource type="Texture2D" uid="uid://btfchghws68fb" path="res://assets/powerups /Gemini_Generated_Image_7885ve7885ve7885.png" id="3_y6sft"]
 [ext_resource type="FontFile" uid="uid://cysqx60p2slth" path="res://assets/fonts/Pixel Game.otf" id="4_2fc2m"]
-[ext_resource type="Texture2D" uid="uid://cxfihq1knfku1" path="res://assets/jumpy1.png" id="5_2fc2m"]
+[ext_resource type="Texture2D" uid="uid://d3g601k5vl5r3" path="res://assets/powerups /faster_speed.png" id="5_8r1wq"]
+[ext_resource type="Texture2D" uid="uid://56qvy1kbtvmd" path="res://assets/powerups /full_health.png" id="6_ajxib"]
+[ext_resource type="Texture2D" uid="uid://bfddleb3nod5c" path="res://assets/powerups /higher_jump.png" id="7_ajxib"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6sft"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4ofw"]
+texture = ExtResource("3_y6sft")
+region_rect = Rect2(67, 0, 1177, 768)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
 bg_color = Color(0.342299, 0.6448, 0.837119, 1)
@@ -15,7 +19,16 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.110671, 0.657673, 0.935552, 1)
+border_color = Color(0.0152501, 0.38323, 0.559104, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v8qu"]
+bg_color = Color(2.64719e-07, 0.209824, 0.0174113, 1)
+border_width_bottom = 5
+border_color = Color(0, 0.580392, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -30,25 +43,68 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r1wq"]
-bg_color = Color(0.8158, 0.337859, 0.256211, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heatd"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
+bg_color = Color(0.933837, 0.4162, 0.352059, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ofw"]
+bg_color = Color(0.532837, 0.80801, 0.488053, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6sft"]
+bg_color = Color(0.875995, 0.412055, 0.377859, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.717647, 0, 0, 1)
+border_color = Color(0.639696, 0.150498, 0.0385168, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajxib"]
-bg_color = Color(0.253277, 0.584978, 0.433798, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44xle"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
+bg_color = Color(0.933333, 0.415686, 0.352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24it5"]
+bg_color = Color(0.762884, 0.449011, 0.777004, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.137689, 0.444236, 0.256169, 1)
+border_color = Color(0.496239, 0.175356, 0.570249, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -68,7 +124,6 @@ offset_bottom = 21.0
 color = Color(0.767613, 0.96334, 0.716385, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="BlackBackground" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -79,18 +134,16 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.321569)
 
 [node name="ShopContainer" type="Panel" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -238.0
-offset_right = 381.0
-offset_bottom = 176.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = 88.0
+offset_right = -133.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_y6sft")
+theme_override_styles/panel = SubResource("StyleBoxTexture_m4ofw")
 
 [node name="BoltsLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 1
@@ -104,25 +157,29 @@ bbcode_enabled = true
 text = "[img=38x48]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=48]bolts : 0 [/font]"
 
 [node name="WelcomeLabel" type="Label" parent="CanvasLayer/ShopContainer"]
-layout_mode = 0
-offset_left = 249.0
-offset_top = 18.0
-offset_right = 627.0
-offset_bottom = 56.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -189.0
+offset_top = 16.0
+offset_right = 189.0
+offset_bottom = 54.0
+grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 48
 text = "Welcome To Our Shop !"
 
-[node name="ItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
+[node name="SpeedItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 107.0
-offset_right = 256.0
-offset_bottom = 337.0
+offset_left = 66.0
+offset_top = 123.0
+offset_right = 272.0
+offset_bottom = 353.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_032fp")
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopContainer/ItemCard"]
+[node name="SpeedButton" type="Button" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -130,76 +187,82 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.0
-offset_top = -52.0
+offset_top = -25.0
 offset_right = 46.0
-offset_bottom = -11.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_1v8qu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2fc2m")
 text = "Buy"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ShopContainer/ItemCard"]
+[node name="SpeedTexture" type="TextureRect" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.0
-offset_top = 17.0
-offset_right = 64.0
-offset_bottom = 112.0
+offset_left = -77.0
+offset_top = 20.0
+offset_right = 77.0
+offset_bottom = 135.0
 grow_horizontal = 2
-texture = ExtResource("5_2fc2m")
+texture = ExtResource("5_8r1wq")
 expand_mode = 1
 
-[node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard"]
+[node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -116.0
-offset_right = 78.0
-offset_bottom = -90.0
+offset_left = -77.0
+offset_top = -107.0
+offset_right = 76.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
-text = "Tokyo Tickets"
+theme_override_styles/normal = SubResource("StyleBoxFlat_heatd")
+text = "Super Speed"
 
-[node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard"]
+[node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 143.0
+offset_top = 163.0
 offset_right = 185.0
-offset_bottom = 172.0
+offset_bottom = 196.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
-text = "You can buy this Item to go to Tokyo."
+text = "Double Your Running Speed For 2 minutes."
 autowrap_mode = 2
 
-[node name="CostLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard"]
+[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 87.0
-offset_bottom = 19.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "Cost: Lock IN"
+offset_left = -1.0
+offset_right = 83.0
+offset_bottom = 23.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_m4ofw")
+bbcode_enabled = true
+text = "[img=20x20]res://assets/my aesprite assets/ui/heart.png[/img][font s=16 ]cost: 5[/font]"
 
-[node name="ItemCard2" type="Panel" parent="CanvasLayer/ShopContainer"]
+[node name="SpeedTimer" type="Timer" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
+wait_time = 120.0
+
+[node name="HealthItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
-offset_left = 322.0
-offset_top = 107.0
-offset_right = 528.0
-offset_bottom = 337.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_8r1wq")
+offset_left = 338.0
+offset_top = 123.0
+offset_right = 544.0
+offset_bottom = 353.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y6sft")
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopContainer/ItemCard2"]
+[node name="HealthButton" type="Button" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -207,76 +270,79 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.0
-offset_top = -52.0
+offset_top = -25.0
 offset_right = 46.0
-offset_bottom = -11.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_1v8qu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2fc2m")
 text = "Buy"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ShopContainer/ItemCard2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.0
-offset_top = 17.0
-offset_right = 64.0
-offset_bottom = 112.0
+offset_left = -70.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 129.0
 grow_horizontal = 2
-texture = ExtResource("5_2fc2m")
+texture = ExtResource("6_ajxib")
 expand_mode = 1
 
-[node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard2"]
+[node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -116.0
-offset_right = 78.0
-offset_bottom = -90.0
+offset_left = -79.0
+offset_top = -106.0
+offset_right = 71.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
-text = "Tokyo Tickets"
+theme_override_styles/normal = SubResource("StyleBoxFlat_44xle")
+text = "Full Health"
 
-[node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard2"]
+[node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 143.0
-offset_right = 185.0
-offset_bottom = 172.0
+offset_left = 25.0
+offset_top = 163.0
+offset_right = 183.0
+offset_bottom = 200.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
-text = "You can buy this Item to go to Tokyo."
+text = "you have done enough! recover your full health"
 autowrap_mode = 2
 
-[node name="CostLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard2"]
+[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 87.0
-offset_bottom = 19.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "Cost: Lock IN"
+offset_left = -1.0
+offset_right = 83.0
+offset_bottom = 23.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_m4ofw")
+bbcode_enabled = true
+text = "[img=20x20]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=16 ]bolts: 4 [/font]"
 
-[node name="ItemCard3" type="Panel" parent="CanvasLayer/ShopContainer"]
+[node name="JumpItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
-offset_left = 578.0
-offset_top = 107.0
-offset_right = 784.0
-offset_bottom = 337.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ajxib")
+offset_left = 610.0
+offset_top = 123.0
+offset_right = 816.0
+offset_bottom = 353.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_24it5")
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopContainer/ItemCard3"]
+[node name="JumpButton" type="Button" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -284,65 +350,72 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.0
-offset_top = -52.0
+offset_top = -25.0
 offset_right = 46.0
-offset_bottom = -11.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_1v8qu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2fc2m")
 text = "Buy"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ShopContainer/ItemCard3"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.0
-offset_top = 17.0
-offset_right = 64.0
-offset_bottom = 112.0
+offset_left = -76.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 130.0
 grow_horizontal = 2
-texture = ExtResource("5_2fc2m")
+texture = ExtResource("7_ajxib")
 expand_mode = 1
 
-[node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard3"]
+[node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -116.0
-offset_right = 78.0
-offset_bottom = -90.0
+offset_left = -71.0
+offset_top = -106.0
+offset_right = 68.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
-text = "Tokyo Tickets"
+theme_override_styles/normal = SubResource("StyleBoxFlat_heatd")
+text = "Super Jump"
 
-[node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard3"]
+[node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 143.0
-offset_right = 185.0
-offset_bottom = 172.0
+offset_left = 25.0
+offset_top = 163.0
+offset_right = 183.0
+offset_bottom = 200.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
-text = "You can buy this Item to go to Tokyo."
+text = "Do Higher Jump With this Power UP !!"
 autowrap_mode = 2
 
-[node name="CostLabel" type="Label" parent="CanvasLayer/ShopContainer/ItemCard3"]
+[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 87.0
-offset_bottom = 19.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = "Cost: Lock IN"
+offset_left = -1.0
+offset_right = 83.0
+offset_bottom = 23.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_m4ofw")
+bbcode_enabled = true
+text = "[img=20x20]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=16 ]bolts: 7 [/font]"
+
+[node name="JumpTimer" type="Timer" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 
 [connection signal="mouse_entered" from="CanvasLayer/BlackBackground" to="." method="_on_black_background_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ShopContainer/SpeedItemCard/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/ShopContainer/SpeedItemCard/SpeedTimer" to="." method="_on_speed_timer_timeout"]

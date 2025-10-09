@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var hurt_animation: AnimationPlayer = $HurtAnimation
 
 const GRAVITY = 980.0
-const WALK_SPEED = 200.0
-const JUMP_VELOCITY = -320.0
+var WALK_SPEED = GameManager.player_speed
+var JUMP_VELOCITY = GameManager.player_jump_speed
 const acceleration = 0.1
 
 @export var dash_speed = 400.0

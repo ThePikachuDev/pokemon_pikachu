@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://btsi3ridrkv5t"]
+[gd_scene load_steps=22 format=3 uid="uid://btsi3ridrkv5t"]
 
 [ext_resource type="PackedScene" uid="uid://d3neky58nnctb" path="res://scenes/components/interactable.tscn" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://cgqpvu52nof43" path="res://scenes/shop.gd" id="1_xfvoa"]
@@ -110,10 +110,88 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mqwv"]
+bg_color = Color(0.377016, 0.591532, 0.973919, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="Animation" id="Animation_m4ofw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopContainer/ItemBoughtPopUp:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(531, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopContainer/ItemBoughtPopUp:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y6sft"]
+resource_name = "item_bought"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopContainer/ItemBoughtPopUp:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(531, 56.43), Vector2(531, 51), Vector2(531, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopContainer/ItemBoughtPopUp:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.966667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4ofw"]
+_data = {
+&"RESET": SubResource("Animation_m4ofw"),
+&"item_bought": SubResource("Animation_y6sft")
+}
+
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_xfvoa")
 
 [node name="Interactable" parent="." instance=ExtResource("1_lx5au")]
+visible = false
 position = Vector2(0, -8)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -124,6 +202,7 @@ offset_bottom = 21.0
 color = Color(0.767613, 0.96334, 0.716385, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="BlackBackground" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -240,7 +319,7 @@ theme_override_constants/line_spacing = -1
 text = "Double Your Running Speed For 2 minutes."
 autowrap_mode = 2
 
-[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
+[node name="SpeedCostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
 layout_mode = 0
 offset_left = -1.0
 offset_right = 83.0
@@ -296,17 +375,14 @@ expand_mode = 1
 
 [node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -79.0
-offset_top = -106.0
-offset_right = 71.0
-offset_bottom = -70.0
+offset_left = -75.0
+offset_top = 120.0
+offset_right = 75.0
+offset_bottom = 156.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_44xle")
@@ -320,10 +396,10 @@ offset_right = 183.0
 offset_bottom = 200.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
-text = "you have done enough! recover your full health"
+text = "it doesn't update the UI but you actually get 3 hearts ( believe me ) "
 autowrap_mode = 2
 
-[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/HealthItemCard"]
+[node name="HealthCostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 0
 offset_left = -1.0
 offset_right = 83.0
@@ -333,6 +409,16 @@ theme_override_font_sizes/bold_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_m4ofw")
 bbcode_enabled = true
 text = "[img=20x20]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=16 ]bolts: 4 [/font]"
+
+[node name="Label" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "WIP !!"
 
 [node name="JumpItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
@@ -400,10 +486,10 @@ offset_right = 183.0
 offset_bottom = 200.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
-text = "Do Higher Jump With this Power UP !!"
+text = "Do Higher Jumps With this Power UP !!"
 autowrap_mode = 2
 
-[node name="CostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/JumpItemCard"]
+[node name="JumpCostLabel" type="RichTextLabel" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 layout_mode = 0
 offset_left = -1.0
 offset_right = 83.0
@@ -416,6 +502,33 @@ text = "[img=20x20]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=
 
 [node name="JumpTimer" type="Timer" parent="CanvasLayer/ShopContainer/JumpItemCard"]
 
+[node name="ItemBoughtPopUp" type="Label" parent="CanvasLayer/ShopContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -265.5
+offset_top = -37.0
+offset_right = 265.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_7mqwv")
+text = "you Bought [Item Name] !!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_m4ofw")
+}
+
 [connection signal="mouse_entered" from="CanvasLayer/BlackBackground" to="." method="_on_black_background_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ShopContainer/SpeedItemCard/SpeedButton" to="." method="_on_speed_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/ShopContainer/SpeedItemCard/SpeedTimer" to="." method="_on_speed_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ShopContainer/HealthItemCard/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopContainer/JumpItemCard/JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/ShopContainer/JumpItemCard/JumpTimer" to="." method="_on_jump_timer_timeout"]

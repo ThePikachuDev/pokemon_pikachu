@@ -1070,7 +1070,7 @@ autoplay = true
 bus = &"music"
 
 [node name="Player" parent="." instance=ExtResource("2_lic58")]
-position = Vector2(-389, 379)
+position = Vector2(7182, -23)
 
 [node name="labels" type="Node" parent="."]
 
@@ -1375,6 +1375,7 @@ position = Vector2(960, 346)
 [node name="HoopaRing" parent="." instance=ExtResource("28_u0gff")]
 position = Vector2(7281, 10)
 scale = Vector2(0.444808, 0.375984)
+can_teleport = true
 
 [node name="Label" type="Label" parent="HoopaRing"]
 anchors_preset = -1

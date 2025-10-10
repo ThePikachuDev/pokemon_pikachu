@@ -114,8 +114,10 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	if body.name == player.name:
-		self.queue_free()
+	if body:
+		if body.name:
+			if body.name == player.name:
+				self.queue_free()
 
 
 func _on_gastly_voice_timer_timeout() -> void:

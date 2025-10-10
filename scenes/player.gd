@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var hurt_animation: AnimationPlayer = $HurtAnimation
 
 const GRAVITY = 980.0
-var WALK_SPEED = GameManager.player_speed
-var JUMP_VELOCITY = GameManager.player_jump_speed
+@onready var WALK_SPEED = game_manager.player_speed
+@onready var JUMP_VELOCITY = game_manager.player_jump_speed
 const acceleration = 0.1
 
 @export var dash_speed = 400.0
@@ -83,6 +83,9 @@ func _ready():
 	pikachu_idle_voice_timer.start()
 
 func _physics_process(delta: float) -> void:
+	WALK_SPEED = game_manager.player_speed
+	JUMP_VELOCITY = game_manager.player_jump_speed
+	
 	if not is_on_floor() :
 		velocity.y += GRAVITY * delta
 	
@@ -93,9 +96,9 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			if can_coyote_jump:
 				can_coyote_jump = false 
-	
-	if Input.is_action_just_pressed("dialogue"):
-		pass
+	#
+	#if Input.is_action_just_pressed("dialogue"):
+		#pass
 	
 	var direction = Input.get_axis("left", "right")
 	

@@ -14,6 +14,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			GameManager.previous_checkpoint_node._update_sprite()
 		GameManager.previous_checkpoint_node = self
 		_update_sprite()
+	print(GameManager.active_checkpoint)
+	print(GameManager.checkpoint_position)
+
 
 func _update_sprite() -> void:
 	if marker.global_position == GameManager.checkpoint_position:

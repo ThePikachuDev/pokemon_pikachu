@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuainhoqkm1m4"]
+
+[ext_resource type="Script" uid="uid://d3tdbkjst2alg" path="res://scenes/components/obstacle_kill_zone.gd" id="1_w01f2"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_w01f2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

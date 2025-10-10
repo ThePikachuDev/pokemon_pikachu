@@ -35,6 +35,7 @@ const Balloon = preload("res://dialogue/balloon.tscn")
 @onready var bolt_label: RichTextLabel = $HUD/RichTextLabel
 @onready var pause_menu = $HUD/OptionsPage
 
+
 @export var music_enabled: bool = true
 
 var player_speed = 200.0
@@ -86,7 +87,6 @@ func load_hearts():
 	var hearts_parent = $HUD/HBoxContainer
 	for heart in hearts_parent.get_children():
 		hearts_list.append(heart)
-	
 
 func take_damage():
 	if health > 0:

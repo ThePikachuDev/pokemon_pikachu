@@ -223,6 +223,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0i1j5")
 bbcode_enabled = true
 text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : 0 [/font]"
 
+[node name="FpsCounter" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_bottom = 38.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "FPS: "
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 56.0
 offset_top = 113.0
@@ -371,16 +381,6 @@ process_mode = 3
 visible = false
 mouse_filter = 1
 retro_shader = NodePath("../RetroShader")
-
-[node name="FpsCounter" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 13.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 48
-text = "FPS: "
 
 [node name="RetroShader" parent="." instance=ExtResource("6_5pdws")]
 process_mode = 3

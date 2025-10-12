@@ -41,7 +41,7 @@ func _on_speed_button_pressed() -> void:
 	item_bought("Super Speed",super_speed_cost)
 	if game_manager.bolts >= super_speed_cost:
 		game_manager.bolts -= super_speed_cost
-		game_manager.player_speed += 300
+		game_manager.player_speed += 150
 		print("game_manager speed : ", game_manager.player_speed)
 		print("GameManager speed : ",GameManager.player_speed)
 		speed_timer.start()
@@ -62,7 +62,7 @@ func _on_jump_button_pressed() -> void:
 	item_bought("Super Jump", super_jump_cost)
 	if game_manager.bolts >= super_jump_cost:
 		game_manager.bolts -= super_jump_cost
-		game_manager.player_jump_speed *= 2
+		game_manager.player_jump_speed *= 1.4
 
 func item_bought(item_text: String, cost: int):
 	if game_manager.bolts >= cost:

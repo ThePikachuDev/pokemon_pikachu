@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs657b7c8jsdh"]
+[gd_scene load_steps=5 format=3 uid="uid://cs657b7c8jsdh"]
 
 [ext_resource type="Script" uid="uid://p5tax4yyx7js" path="res://scenes/components/rolling_ball_enemy.gd" id="1_p8xjb"]
 [ext_resource type="Texture2D" uid="uid://dv5dsnxjnd8hm" path="res://assets/my aesprite assets/electrode.png" id="2_p8xjb"]
-[ext_resource type="PackedScene" uid="uid://cuainhoqkm1m4" path="res://scenes/components/obstacle_kill_zone.tscn" id="3_3hn02"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkqkw"]
-radius = 32.0156
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dteva"]
 radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8xjb"]
+radius = 31.8416
 
 [node name="RollingBallEnemy" type="CharacterBody2D"]
 scale = Vector2(0.6, 0.6)
@@ -20,7 +19,9 @@ shape = SubResource("CircleShape2D_kkqkw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_p8xjb")
 
-[node name="KillZone" parent="." instance=ExtResource("3_3hn02")]
+[node name="KillZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-shape = SubResource("CircleShape2D_dteva")
+shape = SubResource("CircleShape2D_p8xjb")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

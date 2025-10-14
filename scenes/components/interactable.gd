@@ -8,9 +8,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("interact"):
-		#if is_player_in_range:
-			#
+	#if Input.is_action_just_pressed("interact"
 	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

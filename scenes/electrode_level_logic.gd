@@ -21,7 +21,7 @@ func _ready() -> void:
 	electrode_test.position = electrode_spawner.global_position - electrodes_parent.global_position
 	
 	electrodes_parent.add_child(electrode_test)
-	print("✅ TEST: Manually spawned an electrode (should be visible now)!")
+	#print("✅ TEST: Manually spawned an electrode (should be visible now)!")
 	
 	# Start the repeating spawn
 	electrode_spawning_timer.start()
@@ -36,10 +36,10 @@ func _on_electrode_spawning_timer_timeout() -> void:
 	
 	# Add the new electrode to the designated parent node.
 	electrodes_parent.add_child(electrode)
-	print("⭐ Electrode added at local position: ", electrode.position)
+	#print("⭐ Electrode added at local position: ", electrode.position)
 
 
 func _on_electrode_destroyer_body_entered(body: Node2D) -> void:
 	if body.is_in_group("electrode"):
 		body.queue_free()
-		print("💥 Electrode destroyed")
+		#print("💥 Electrode destroyed")

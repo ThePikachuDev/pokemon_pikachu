@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bbitvcig2bjpk"]
+[gd_scene load_steps=35 format=3 uid="uid://bbitvcig2bjpk"]
 
 [ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
@@ -19,6 +19,30 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mphia"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5n1hp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apjy4"]
+bg_color = Color(0.36656, 0.79, 0.2607, 1)
+border_width_bottom = 5
+border_color = Color(0.135372, 0.496736, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
 atlas = ExtResource("4_6fi6k")
@@ -225,8 +249,9 @@ bbcode_enabled = true
 text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : 0 [/font]"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 410.0
-offset_bottom = 84.0
+offset_right = 367.0
+offset_bottom = 82.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_mphia")
 bbcode_enabled = true
 text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=64]bolts : 0 [/font]"
 
@@ -234,16 +259,24 @@ text = "[img=80x80]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -90.0
+offset_left = -97.0
 offset_bottom = 38.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_5n1hp")
 text = "FPS: "
 
+[node name="HealthBarBackground" type="Panel" parent="."]
+offset_left = 1.0
+offset_top = 91.0
+offset_right = 212.0
+offset_bottom = 149.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_apjy4")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 56.0
+offset_left = 32.0
 offset_top = 113.0
-offset_right = 276.0
+offset_right = 252.0
 offset_bottom = 153.0
 theme_override_constants/separation = 30
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btsi3ridrkv5t"]
+[gd_scene load_steps=23 format=3 uid="uid://btsi3ridrkv5t"]
 
 [ext_resource type="PackedScene" uid="uid://d3neky58nnctb" path="res://scenes/components/interactable.tscn" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://cgqpvu52nof43" path="res://scenes/shop.gd" id="1_xfvoa"]
@@ -43,12 +43,12 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heatd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gobkm"]
 content_margin_left = 9.0
 content_margin_top = 3.0
 content_margin_right = 9.0
 content_margin_bottom = 3.0
-bg_color = Color(0.933837, 0.4162, 0.352059, 1)
+bg_color = Color(0.887112, 0.342846, 0.509882, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -87,7 +87,7 @@ content_margin_left = 9.0
 content_margin_top = 3.0
 content_margin_right = 9.0
 content_margin_bottom = 3.0
-bg_color = Color(0.933333, 0.415686, 0.352941, 1)
+bg_color = Color(0.91, 0.091, 0, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -109,6 +109,22 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heatd"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
+bg_color = Color(0.48353, 0.5667, 0.957864, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mqwv"]
 bg_color = Color(0.377016, 0.591532, 0.973919, 1)
@@ -253,9 +269,9 @@ text = "Welcome To Our Shop !"
 [node name="SpeedItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
 offset_left = 66.0
-offset_top = 123.0
-offset_right = 272.0
-offset_bottom = 353.0
+offset_top = 114.0
+offset_right = 292.0
+offset_bottom = 401.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_032fp")
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
@@ -282,10 +298,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -77.0
-offset_top = 20.0
-offset_right = 77.0
-offset_bottom = 135.0
+offset_left = -95.0
+offset_top = 16.0
+offset_right = 91.0
+offset_bottom = 155.0
 grow_horizontal = 2
 texture = ExtResource("5_8r1wq")
 expand_mode = 1
@@ -297,25 +313,34 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -77.0
-offset_top = -107.0
-offset_right = 76.0
-offset_bottom = -71.0
+offset_left = -76.5
+offset_top = -84.0
+offset_right = 76.5
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_heatd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gobkm")
 text = "Super Speed"
 
 [node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/SpeedItemCard"]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 163.0
-offset_right = 185.0
-offset_bottom = 196.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -145.0
+offset_right = 94.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("4_2fc2m")
+theme_override_font_sizes/font_size = 24
 text = "Double Your Running Speed For 2 minutes."
 autowrap_mode = 2
 
@@ -335,10 +360,10 @@ wait_time = 120.0
 
 [node name="HealthItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
-offset_left = 338.0
-offset_top = 123.0
-offset_right = 544.0
-offset_bottom = 353.0
+offset_left = 340.0
+offset_top = 88.0
+offset_right = 574.0
+offset_bottom = 370.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y6sft")
 
 [node name="HealthButton" type="Button" parent="CanvasLayer/ShopContainer/HealthItemCard"]
@@ -375,14 +400,17 @@ expand_mode = 1
 
 [node name="ItemHeadingLabel" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -75.0
-offset_top = 120.0
-offset_right = 75.0
-offset_bottom = 156.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -87.0
+offset_right = 74.0
+offset_bottom = -51.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_44xle")
@@ -390,12 +418,14 @@ text = "Full Health"
 
 [node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 163.0
-offset_right = 183.0
-offset_bottom = 200.0
+offset_left = 11.0
+offset_top = 119.0
+offset_right = 226.0
+offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("4_2fc2m")
+theme_override_font_sizes/font_size = 24
 text = "it doesn't update the UI but you actually get 3 hearts ( believe me ) "
 autowrap_mode = 2
 
@@ -410,22 +440,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m4ofw")
 bbcode_enabled = true
 text = "[img=20x20]res://assets/my aesprite assets/ui/heart.png[/img][b][font s=16 ]bolts: 4 [/font]"
 
-[node name="Label" type="Label" parent="CanvasLayer/ShopContainer/HealthItemCard"]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 8.0
-offset_right = 200.0
-offset_bottom = 34.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "WIP !!"
-
 [node name="JumpItemCard" type="Panel" parent="CanvasLayer/ShopContainer"]
 layout_mode = 0
-offset_left = 610.0
-offset_top = 123.0
-offset_right = 816.0
-offset_bottom = 353.0
+offset_left = 616.0
+offset_top = 121.0
+offset_right = 860.0
+offset_bottom = 410.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_24it5")
 
 [node name="JumpButton" type="Button" parent="CanvasLayer/ShopContainer/JumpItemCard"]
@@ -452,10 +472,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -76.0
-offset_top = 9.0
-offset_right = 76.0
-offset_bottom = 130.0
+offset_left = -85.0
+offset_top = -1.0
+offset_right = 85.0
+offset_bottom = 144.0
 grow_horizontal = 2
 texture = ExtResource("7_ajxib")
 expand_mode = 1
@@ -468,9 +488,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -71.0
-offset_top = -106.0
+offset_top = -82.0
 offset_right = 68.0
-offset_bottom = -70.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 5
@@ -479,13 +499,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_heatd")
 text = "Super Jump"
 
 [node name="ItemInfoLabel" type="Label" parent="CanvasLayer/ShopContainer/JumpItemCard"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 163.0
-offset_right = 183.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 144.0
+offset_right = 98.0
+offset_bottom = 198.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("4_2fc2m")
+theme_override_font_sizes/font_size = 24
 text = "Do Higher Jumps With this Power UP !!"
 autowrap_mode = 2
 

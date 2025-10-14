@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var game_manager = %GameManager
 @onready var notification_container: VBoxContainer = $NotificationContainer
 @onready var notification: Panel = $NotificationContainer/Notification
+@onready var health_bar_background: Panel = $HealthBarBackground
 
 @onready var fps_counter: Label = $FpsCounter
 
@@ -22,7 +23,10 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 		pause_menu.visible = get_tree().paused 
 		pause_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 
+	
+	
 
 #func launch_notification():
 	#notification.position = Vector2.ZERO

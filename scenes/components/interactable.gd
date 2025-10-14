@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("interact"
+	#if Input.is_action_just_pressed("intera
 	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

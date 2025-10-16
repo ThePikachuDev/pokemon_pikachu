@@ -10,4 +10,3 @@ func _on_body_entered(body: Node2D) -> void:
 		await pick_up_sound.finished
 		game_manager.add_bolt()
 		self.queue_free()
-		

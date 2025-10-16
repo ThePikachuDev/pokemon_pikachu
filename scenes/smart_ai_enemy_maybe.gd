@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var patrol_points: Array[Marker2D] = []
 var current_point_index = 0
  
-@onready var detection_area: Area2D = $Area2D  # Reference to the detection area
-var player: Node2D = null  # Reference to the player, initially set to null
+@onready var detection_area: Area2D = $Area2D 
+var player: Node2D = null  
  
 func _ready() -> void:
 	if patrol_points.size() == 0:
@@ -16,18 +16,16 @@ func _ready() -> void:
  
 func _on_player_detected(body: Node2D) -> void:
 	if body.name == "Player":
-		player = body  # Set the player reference when detected
- 
+		player = body
 func _on_player_lost(body: Node2D) -> void:
 	if body == player:
-		player = null  # Reset the player reference when they leave
- 
+		player = null 
 func _process(delta: float) -> void:
 	if player:
-		chase_player()  # If a player is detected, chase them
+		chase_player()  
 	else:
-		patrol()  # Call the patrol function every frame
-	move_and_slide()  # Apply movement to the enemy
+		patrol() 
+	move_and_slide() 
  
 func chase_player() -> void:
 	velocity = (player.global_position - global_position).normalized() * speed

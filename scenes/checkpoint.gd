@@ -1,6 +1,5 @@
 extends Sprite2D
 
-
 @onready var marker: Marker2D = $Marker2D
 
 func _ready() -> void:
@@ -16,7 +15,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		_update_sprite()
 	print(GameManager.active_checkpoint)
 	print(GameManager.checkpoint_position)
-
 
 func _update_sprite() -> void:
 	if marker.global_position == GameManager.checkpoint_position:

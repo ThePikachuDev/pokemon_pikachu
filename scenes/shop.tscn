@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btsi3ridrkv5t"]
+[gd_scene load_steps=24 format=3 uid="uid://btsi3ridrkv5t"]
 
 [ext_resource type="PackedScene" uid="uid://d3neky58nnctb" path="res://scenes/components/interactable.tscn" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://cgqpvu52nof43" path="res://scenes/shop.gd" id="1_xfvoa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3g601k5vl5r3" path="res://assets/powerups /faster_speed.png" id="5_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://56qvy1kbtvmd" path="res://assets/powerups /full_health.png" id="6_ajxib"]
 [ext_resource type="Texture2D" uid="uid://bfddleb3nod5c" path="res://assets/powerups /higher_jump.png" id="7_ajxib"]
+[ext_resource type="Texture2D" uid="uid://dwiqgwogn2qit" path="res://assets/my aesprite assets/shop.png" id="9_m4ofw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4ofw"]
 texture = ExtResource("3_y6sft")
@@ -207,15 +208,7 @@ _data = {
 script = ExtResource("1_xfvoa")
 
 [node name="Interactable" parent="." instance=ExtResource("1_lx5au")]
-visible = false
 position = Vector2(0, -8)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 21.0
-color = Color(0.767613, 0.96334, 0.716385, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -420,8 +413,8 @@ text = "Full Health"
 layout_mode = 0
 offset_left = 11.0
 offset_top = 119.0
-offset_right = 226.0
-offset_bottom = 192.0
+offset_right = 233.0
+offset_bottom = 193.0
 theme_override_colors/font_color = Color(0.282407, 0.282407, 0.282407, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = ExtResource("4_2fc2m")
@@ -551,6 +544,10 @@ text = "you Bought [Item Name] !!"
 libraries = {
 &"": SubResource("AnimationLibrary_m4ofw")
 }
+
+[node name="Shop" type="Sprite2D" parent="."]
+scale = Vector2(0.71875, 0.75)
+texture = ExtResource("9_m4ofw")
 
 [connection signal="mouse_entered" from="CanvasLayer/BlackBackground" to="." method="_on_black_background_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ShopContainer/SpeedItemCard/SpeedButton" to="." method="_on_speed_button_pressed"]

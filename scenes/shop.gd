@@ -29,10 +29,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		canvas_layer.visible = !canvas_layer.visible
-	#
-	#if is_speed_enabled:
-		#game_manager.speed *= 2
-		#speed_timer.start()
 
 func _on_black_background_mouse_entered() -> void:
 	canvas_layer.visible = false

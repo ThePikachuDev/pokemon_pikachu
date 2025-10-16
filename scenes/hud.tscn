@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bbitvcig2bjpk"]
+[gd_scene load_steps=34 format=3 uid="uid://bbitvcig2bjpk"]
 
 [ext_resource type="Script" uid="uid://tkf0idcsabt3" path="res://scenes/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cowu6k3svsj7s" path="res://assets/fonts/monogram.ttf" id="1_ahhtf"]
@@ -34,15 +34,6 @@ bg_color = Color(0, 0, 0, 1)
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 expand_margin_left = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apjy4"]
-bg_color = Color(0.36656, 0.79, 0.2607, 1)
-border_width_bottom = 5
-border_color = Color(0.135372, 0.496736, 0, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
 atlas = ExtResource("4_6fi6k")
@@ -266,18 +257,15 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_5n1hp")
 text = "FPS: "
 
-[node name="HealthBarBackground" type="Panel" parent="."]
-offset_left = 1.0
-offset_top = 91.0
-offset_right = 212.0
-offset_bottom = 149.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_apjy4")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 32.0
-offset_top = 113.0
-offset_right = 252.0
-offset_bottom = 153.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 24.0
+offset_right = 110.0
+offset_bottom = 64.0
+grow_horizontal = 2
 theme_override_constants/separation = 30
 
 [node name="heart" type="TextureRect" parent="HBoxContainer"]
